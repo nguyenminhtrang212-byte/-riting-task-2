@@ -1,0 +1,805 @@
+<!DOCTYPE html>
+<html lang="vi">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+<title>Writing Task 2 · TV & films vs visiting · Link 1 – Tự học</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Baloo+2:wght@500;700;800&family=Be+Vietnam+Pro:wght@400;500;600;700&display=swap" rel="stylesheet">
+<script src="https://cdn.jsdelivr.net/npm/lamejs@1.2.1/lame.min.js" defer></script>
+<style>
+:root{
+  --bg:#EEF4F7; --paper:#FFFFFF; --ink:#13293D; --muted:#5A7184; --line:#D3E1E8;
+  --sea:#0E6E86; --sea2:#2A9BB3; --seaSoft:#DCEFF4; --coral:#D9573E; --coralSoft:#FBE4DE;
+  --sun:#F2B33D; --sunSoft:#FFF3D6; --ok:#1E8F52; --okSoft:#DDF3E6; --bad:#C93A2A; --badSoft:#FBE1DD;
+  --plum:#6B4FA0; --plumSoft:#ECE6F6;
+  --head:"Baloo 2","Be Vietnam Pro",system-ui,sans-serif;
+  --body:"Be Vietnam Pro",system-ui,-apple-system,"Segoe UI",Roboto,sans-serif;
+  box-sizing:border-box;
+  padding-top:env(safe-area-inset-top,0px); padding-bottom:env(safe-area-inset-bottom,0px);
+}
+@media (prefers-color-scheme: dark){ :root:not([data-theme="light"]){
+  --bg:#0C1A24; --paper:#132A38; --ink:#E4EFF4; --muted:#9CB4C2; --line:#264A5C;
+  --sea:#4CC0D6; --sea2:#2A9BB3; --seaSoft:#173E4B; --coral:#FF8066; --coralSoft:#4A2622;
+  --sun:#F2B33D; --sunSoft:#45381A; --ok:#4FD08A; --okSoft:#173D2A; --bad:#FF7A6A; --badSoft:#4A2320;
+  --plum:#B59AE8; --plumSoft:#2E2443;
+}}
+:root[data-theme="dark"]{
+  --bg:#0C1A24; --paper:#132A38; --ink:#E4EFF4; --muted:#9CB4C2; --line:#264A5C;
+  --sea:#4CC0D6; --sea2:#2A9BB3; --seaSoft:#173E4B; --coral:#FF8066; --coralSoft:#4A2622;
+  --sun:#F2B33D; --sunSoft:#45381A; --ok:#4FD08A; --okSoft:#173D2A; --bad:#FF7A6A; --badSoft:#4A2320;
+  --plum:#B59AE8; --plumSoft:#2E2443;
+}
+*,*::before,*::after{box-sizing:inherit}
+body{margin:0;background:var(--bg);color:var(--ink);font-family:var(--body);font-size:16px;line-height:1.6}
+button{font:inherit;color:inherit;cursor:pointer}
+button:focus-visible,input:focus-visible,textarea:focus-visible,select:focus-visible{outline:3px solid var(--sun);outline-offset:2px}
+a{color:var(--sea)}
+.wrap{max-width:1000px;margin:0 auto;padding:16px}
+.hero{background:var(--paper);border:2px solid var(--ink);border-radius:18px;padding:20px 22px;position:relative;overflow:hidden}
+.hero::after{content:"";position:absolute;left:0;right:0;bottom:0;height:8px;background:repeating-linear-gradient(90deg,var(--sea2) 0 22px,var(--sun) 22px 44px,var(--coral) 44px 66px)}
+.hero h1{font-family:var(--head);font-weight:800;font-size:clamp(26px,4.6vw,40px);line-height:1.08;margin:0 0 6px}
+.hero .sub{color:var(--muted);margin:0 0 12px}
+.prompt{border-left:4px solid var(--sea2);padding:8px 0 8px 14px;margin:6px 0 10px;font-size:17px}
+.prompt p{margin:0 0 6px}
+.prompt .pq{font-weight:700}
+.badge{display:inline-block;font-size:13px;font-weight:700;border-radius:999px;padding:2px 10px;background:var(--seaSoft);color:var(--sea);margin-right:6px}
+.settings{display:flex;flex-wrap:wrap;gap:10px 18px;align-items:center;margin:14px 0 6px;font-size:14px;color:var(--muted)}
+.settings select{max-width:240px;padding:5px 8px;border-radius:8px;border:1px solid var(--line);background:var(--paper);color:var(--ink)}
+.settings input[type=range]{accent-color:var(--sea)}
+.tabs{display:flex;gap:6px;overflow-x:auto;position:sticky;top:env(safe-area-inset-top,0px);z-index:5;background:var(--bg);padding:8px 0;margin-bottom:8px}
+.tab{flex:0 0 auto;border:2px solid var(--line);background:var(--paper);border-radius:999px;padding:7px 14px;font-weight:600;font-size:15px;white-space:nowrap}
+.tab[aria-selected=true]{background:var(--ink);color:var(--paper);border-color:var(--ink)}
+.tab.done::after{content:" ✓";color:var(--ok)}
+.tab[aria-selected=true].done::after{color:var(--sun)}
+.panel{display:none}
+.panel.on{display:block}
+h2{font-family:var(--head);font-weight:800;font-size:27px;margin:10px 0 4px;line-height:1.15}
+h3{font-family:var(--head);font-weight:700;font-size:20px;margin:20px 0 6px}
+h4{font-size:16px;margin:12px 0 4px}
+.hint{color:var(--muted);font-size:14.5px;margin:0 0 12px}
+.card{background:var(--paper);border:1px solid var(--line);border-radius:14px;padding:14px 16px;margin:10px 0}
+.card.sea{background:var(--seaSoft);border-color:transparent}
+.card.sun{background:var(--sunSoft);border-color:transparent}
+.card.plum{background:var(--plumSoft);border-color:transparent}
+.card.coral{background:var(--coralSoft);border-color:transparent}
+.grid2{display:grid;grid-template-columns:repeat(auto-fit,minmax(290px,1fr));gap:10px}
+.step{font-family:var(--head);font-weight:700;font-size:17px;margin:14px 0 4px;color:var(--sea)}
+.ipa{font-family:"Lucida Sans Unicode","Arial Unicode MS",var(--body);color:var(--sea);font-size:15px}
+.vi-s{font-size:14px;color:var(--muted)}
+.en{font-size:17px}
+.b{border:1.5px solid var(--line);background:var(--paper);border-radius:10px;padding:5px 10px;font-size:14px;font-weight:600;display:inline-flex;gap:5px;align-items:center}
+.b:hover:not(:disabled){border-color:var(--sea)}
+.b:disabled{opacity:.4;cursor:not-allowed}
+.b.rec{border-color:var(--coral);color:var(--coral)}
+.b.rec.on{background:var(--coral);color:#fff;animation:pulse 1.2s infinite}
+@keyframes pulse{50%{box-shadow:0 0 0 6px var(--coralSoft)}}
+@media (prefers-reduced-motion:reduce){.b.rec.on{animation:none}}
+.b.primary{background:var(--sea);border-color:var(--sea);color:#fff}
+.b.big{font-size:17px;padding:9px 18px}
+.row{display:flex;flex-wrap:wrap;gap:8px;align-items:center}
+.pr{margin-top:8px}
+.pr-btns{display:flex;flex-wrap:wrap;gap:6px;align-items:center}
+.timer{font-variant-numeric:tabular-nums;color:var(--coral);font-weight:700;font-size:14px}
+.live{font-size:14px;color:var(--muted)}
+.live:not(:empty){margin-top:6px}
+.res:not(:empty){margin-top:8px;padding:10px 12px;border-radius:10px;background:var(--bg)}
+.score{display:inline-block;font-weight:800;border-radius:999px;padding:1px 10px;margin-right:6px;font-size:14px}
+.score.hi{background:var(--okSoft);color:var(--ok)}
+.score.mid{background:var(--sunSoft);color:#8a5d00}
+.score.lo{background:var(--badSoft);color:var(--bad)}
+:root[data-theme="dark"] .score.mid{color:var(--sun)}
+@media (prefers-color-scheme: dark){:root:not([data-theme="light"]) .score.mid{color:var(--sun)}}
+.w-ok{color:var(--ok)}
+.w-no{color:var(--bad);text-decoration:underline wavy;text-underline-offset:3px;cursor:pointer;background:none;border:0;padding:0;font:inherit;font-weight:700}
+.diff{line-height:1.9}
+.tip{font-size:14px;margin-top:6px}
+.fixlist{display:flex;flex-wrap:wrap;gap:6px;margin-top:6px}
+.fix{border:1px solid var(--bad);background:var(--badSoft);color:var(--bad);border-radius:8px;padding:2px 8px;font-size:14px}
+.sent-ok{color:var(--ok);font-size:13px;font-weight:600}
+.sent-wait{color:var(--muted);font-size:13px}
+.sent-bad{color:var(--bad);font-size:13px}
+textarea{width:100%;min-height:70px;border-radius:10px;border:1.5px solid var(--line);padding:9px 11px;font:inherit;background:var(--paper);color:var(--ink);resize:vertical}
+input[type=text],select.inp{padding:8px 11px;border-radius:10px;border:1.5px solid var(--line);font:inherit;background:var(--paper);color:var(--ink)}
+input[type=text]{min-width:0}
+table{border-collapse:collapse;width:100%;font-size:15px}
+td,th{border-bottom:1px solid var(--line);padding:7px 8px;text-align:left;vertical-align:top}
+th{font-size:14px;color:var(--muted)}
+.tbl{overflow-x:auto}
+.q{background:var(--paper);border:1px solid var(--line);border-radius:14px;padding:12px 16px;margin:10px 0}
+.q .qt{font-weight:600;margin-bottom:6px}
+.q.right{border-color:var(--ok);background:var(--okSoft)}
+.q.wrong{border-color:var(--bad);background:var(--badSoft)}
+.opts{display:flex;flex-wrap:wrap;gap:6px;margin-top:6px}
+.opt{font-size:15px;padding:7px 12px;text-align:left}
+.opt.right{background:var(--okSoft);border-color:var(--ok);color:var(--ok)}
+.opt.wrong{background:var(--badSoft);border-color:var(--bad);color:var(--bad)}
+.fb:not(:empty){margin-top:8px;font-size:14.5px}
+.toast{position:fixed;left:50%;bottom:calc(20px + env(safe-area-inset-bottom,0px));transform:translateX(-50%);background:var(--ink);color:var(--paper);padding:10px 16px;border-radius:12px;font-size:14px;z-index:50;display:none;max-width:90%}
+.warn{background:var(--sunSoft);border-radius:10px;padding:8px 12px;font-size:14px}
+.cloud{position:fixed;right:12px;bottom:calc(12px + env(safe-area-inset-bottom,0px));background:var(--paper);border:1.5px solid var(--line);border-radius:999px;padding:6px 12px;font-size:13px;font-weight:600;z-index:15;box-shadow:0 2px 8px rgba(16,48,74,.12)}
+.gate{position:fixed;inset:0;background:rgba(11,30,40,.55);z-index:40;display:flex;align-items:center;justify-content:center;padding:16px}
+.gate-box{background:var(--paper);border:2px solid var(--ink);border-radius:18px;padding:22px;max-width:400px;width:100%;text-align:center}
+.gate-box input{width:100%;font-size:18px}
+[hidden]{display:none!important}
+.chip{display:inline-block;border:1.5px solid var(--line);background:var(--paper);border-radius:999px;padding:3px 11px;font-size:15px;margin:3px 2px}
+.chip.on{background:var(--sunSoft);border-color:var(--sun)}
+.chip.hit{background:var(--okSoft);border-color:var(--ok);color:var(--ok)}
+.chip.miss{border-color:var(--bad);border-style:dashed;color:var(--bad)}
+.chip.extra{background:var(--bg);color:var(--muted);text-decoration:line-through}
+.src{font-size:13px;color:var(--muted)}
+.tag{display:inline-block;font-size:12.5px;font-weight:700;border-radius:6px;padding:1px 8px;margin-right:4px}
+.tag.tca{background:var(--seaSoft);color:var(--sea)}
+.tag.cta{background:var(--plumSoft);color:var(--plum)}
+.tag.cba{background:var(--sunSoft);color:#8a5d00}
+:root[data-theme="dark"] .tag.cba{color:var(--sun)}
+@media (prefers-color-scheme: dark){:root:not([data-theme="light"]) .tag.cba{color:var(--sun)}}
+.tag.ev{background:var(--coralSoft);color:var(--coral)}
+.ladder{display:grid;grid-template-columns:repeat(3,1fr);gap:8px}
+.ladder > div{border:1px solid var(--line);border-radius:10px;padding:8px 10px;background:var(--paper)}
+.ladder .lv{font-size:12.5px;font-weight:700;color:var(--muted)}
+@media (max-width:640px){.ladder{grid-template-columns:1fr}}
+.essay p{margin:0 0 12px;font-size:16.5px;line-height:1.75}
+.lab{display:inline-block;font-size:12.5px;font-weight:700;background:var(--ink);color:var(--paper);border-radius:6px;padding:0 7px;margin-right:6px;vertical-align:1px}
+details{border:1.5px dashed var(--sea2);border-radius:12px;padding:8px 12px;margin-top:10px}
+details summary{cursor:pointer;font-weight:700;color:var(--sea)}
+.big-n{font-family:var(--head);font-size:34px;font-weight:800;color:var(--sea);font-variant-numeric:tabular-nums}
+
+.vi{color:var(--muted);font-size:14.5px}
+.novi .vi{display:none!important}
+.kwbox{line-height:2.2}
+.journey{display:grid;grid-template-columns:repeat(auto-fit,minmax(150px,1fr));gap:8px;margin-top:12px}
+.jstep{border:1.5px solid var(--line);background:var(--paper);border-radius:12px;padding:8px 10px;text-align:left;font-size:13.5px;line-height:1.35;position:relative}
+.jstep b{display:block;font-size:14.5px}
+.jstep .out{color:var(--muted)}
+.jstep.cur{border-color:var(--ink);box-shadow:0 0 0 2px var(--ink) inset}
+.jstep.done{border-color:var(--ok);background:var(--okSoft)}
+.jstep.done::after{content:"✓";position:absolute;right:8px;top:6px;color:var(--ok);font-weight:800}
+.goal{display:flex;gap:10px;align-items:flex-start;background:var(--seaSoft);border-radius:12px;padding:10px 14px;margin:8px 0 14px;font-size:15px}
+.goal .gi{font-size:22px;line-height:1}
+.nextbar{margin:22px 0 8px;display:flex;justify-content:flex-end}
+.nextbar .b{font-size:16px;padding:10px 16px;text-align:left}
+.pos{cursor:pointer;text-align:left;width:100%;display:block}
+.pos.sel{border-color:var(--sea);box-shadow:0 0 0 2px var(--sea) inset}
+.evc h3{margin-top:4px}
+.evc .story{margin:6px 0}
+.kwt td{padding:5px 6px}
+.lvl{font-size:12.5px;font-weight:700;color:var(--muted);text-transform:uppercase;letter-spacing:.03em}
+.ladder > div{cursor:pointer}
+.ladder > div.sel{border-color:var(--sea);box-shadow:0 0 0 2px var(--sea) inset;background:var(--seaSoft)}
+.ladder .mean{font-size:14px;margin-top:3px}
+.irow{border:1px solid var(--line);border-radius:12px;padding:10px;margin:8px 0;background:var(--paper)}
+.irow input[type=text]{width:100%}
+.irow select{margin:6px 6px 0 0;max-width:100%}
+.flag{font-size:13.5px;margin-top:6px}
+.ok-line{color:var(--ok);font-weight:700}
+.bad-line{color:var(--bad);font-weight:700}
+.wf input{width:150px;margin:0 4px}
+.wf .q{display:block}
+.syl .st{background:var(--sunSoft);color:#8a5d00;border-radius:4px;padding:0 3px}
+:root[data-theme="dark"] .syl .st{color:var(--sun)}
+@media (prefers-color-scheme: dark){:root:not([data-theme="light"]) .syl .st{color:var(--sun)}}
+.map{display:grid;grid-template-columns:repeat(auto-fit,minmax(150px,1fr));gap:8px}
+.map > div{border:1.5px solid var(--line);border-radius:12px;padding:8px 10px;background:var(--paper)}
+.map .slot{display:inline-block;text-decoration:none;border:1.5px solid var(--sea2);color:var(--sea);border-radius:8px;padding:1px 8px;margin:3px 3px 0 0;font-weight:700;font-size:13.5px;background:var(--paper)}
+.map .slot.ok{background:var(--okSoft);border-color:var(--ok);color:var(--ok)}
+.bc .frame{font-family:ui-monospace,Menlo,Consolas,monospace;font-size:14px;background:var(--bg);border-radius:8px;padding:6px 9px;margin:6px 0}
+.bc textarea{min-height:58px}
+.chk{display:flex;flex-wrap:wrap;gap:6px}
+#draft{min-height:340px;line-height:1.7}
+.reclist td{vertical-align:middle}
+.reclist .grp td{background:var(--bg);font-weight:700;font-size:14px}
+.bar{height:10px;background:var(--line);border-radius:999px;overflow:hidden;margin:8px 0}
+.bar > i{display:block;height:100%;background:var(--sea);width:0;transition:width .3s}
+</style>
+</head>
+<body>
+<div class="wrap">
+<header class="hero">
+  <span class="badge">Link 1 · Tự học</span><span class="badge" style="background:var(--sunSoft);color:#8a5d00">khoảng 90 phút · làm theo thứ tự</span>
+  <h1>Writing Task 2: Xem phim hay đi thực tế?</h1>
+  <p class="sub">Mỗi bước tạo ra <b>một phần của bài viết</b>. Đi hết 8 bước, em sẽ có <b>bản nháp hoàn chỉnh</b> của chính mình. Sau đó làm <b>Link 2</b>: viết lại trong 40 phút không nhìn tài liệu.</p>
+  <div class="prompt" id="promptBox"></div>
+  <div class="journey" id="journey"></div>
+</header>
+
+<div class="settings">
+  <label><input type="checkbox" id="viToggle" checked> Hiện tiếng Việt</label>
+  <label>Giọng đọc: <select id="voiceSel"><option>Đang tải giọng…</option></select></label>
+  <label>Tốc độ: <input id="rate" type="range" min="0.6" max="1.15" step="0.05" value="0.92"> <span id="rateV">0.92</span></label>
+  <button class="b" data-say-prompt>🔊 Nghe đề bài</button>
+</div>
+
+<nav class="tabs" role="tablist" id="tabs"></nav>
+
+<!-- ① HIỂU ĐỀ -->
+<section class="panel on" id="p-read">
+  <h2>① Hiểu đề</h2>
+  <div class="goal"><span class="gi">🎯</span><div>Phần lớn bài bị điểm thấp vì <b>trả lời sai hoặc thiếu câu hỏi</b>, không phải vì ngữ pháp. Kết quả của bước này: <b>lập trường</b> của em và <b>bản đồ 4 đoạn</b>.</div></div>
+  <div class="step">1 · Hiểu nghĩa từng cụm trong đề</div>
+  <p class="hint">Bấm 🔊 để nghe. Cột cuối là nghĩa tiếng Việt.</p>
+  <div class="card tbl"><table id="glossTbl" class="kwt"></table></div>
+  <div class="step">2 · Gạch chân từ khoá</div>
+  <p class="hint">Bấm vào những cụm em cho là <b>quyết định nội dung bài</b> (bấm lại để bỏ), rồi bấm “Kiểm tra”.</p>
+  <div class="card kwbox" id="kwBox"></div>
+  <div class="row"><button class="b primary" id="kwCheck">Kiểm tra</button><span id="kwScore"></span></div>
+  <div id="kwExplain"></div>
+  <div class="step">3 · Xác định dạng đề và yêu cầu của từng câu hỏi</div>
+  <div id="typeBox"></div>
+  <div class="step">4 · Tránh 5 cái bẫy</div>
+  <div class="card coral tbl"><table id="trapTbl"></table></div>
+  <div class="step">5 · Chọn lập trường (sẽ được đưa vào bản nháp)</div>
+  <div id="posBox"></div>
+  <div class="step">6 · Bản đồ bài viết: mỗi câu hỏi một đoạn</div>
+  <p class="hint">Các mã <b>C1–C7</b> là 7 câu then chốt em sẽ viết ở bước ⑤; các chữ <b>A–F</b> là thẻ câu chuyện ở bước ②.</p>
+  <div class="card tbl"><table id="planTbl"></table></div>
+  <div class="nextbar" data-next="read"></div>
+</section>
+
+<!-- ② HIỂU CHỦ ĐỀ -->
+<section class="panel" id="p-topic">
+  <h2>② Hiểu chủ đề qua 6 câu chuyện có thật</h2>
+  <div class="goal"><span class="gi">🎯</span><div>Giám khảo đánh giá cao ý có <b>căn cứ</b> hơn ý “tự nghĩ ra”. Đọc 6 câu chuyện ngắn, học 4 từ khoá mỗi câu chuyện, rồi <b>chọn 2–3 thẻ</b> em sẽ dùng trong bài.</div></div>
+  <div class="card sun"><b>Cách đọc mỗi thẻ:</b> ① đọc câu chuyện (tiếng Việt) → ② học 4 từ khoá → ③ nghe và ghi âm câu <b>Band 6</b> → ④ nếu thấy ổn, thử câu <b>Band 7+</b> (cùng ý, diễn đạt sâu hơn).</div>
+  <div id="evBox"></div>
+  <h3>Luyện tập: ý này dựa vào thẻ nào?</h3>
+  <div id="evMatch"></div>
+  <div class="row"><button class="b primary" id="evCheck">Kiểm tra</button><span id="evScore"></span></div>
+  <div class="card sea" id="pickSum"></div>
+  <div class="nextbar" data-next="topic"></div>
+</section>
+
+<!-- ③ LÊN Ý -->
+<section class="panel" id="p-idea">
+  <h2>③ Lên ý cho từng thân bài</h2>
+  <div class="goal"><span class="gi">🎯</span><div>Câu hỏi cốt lõi: <b>học CÁI GÌ?</b> Mỗi loại hiểu biết có một nguồn học tốt hơn. Kết quả của bước này: <b>2 ý cho Thân bài 1</b> và <b>2 ý cho Thân bài 2</b>, ý nào cũng có căn cứ.</div></div>
+  <div class="step">1 · Bảng phân loại hiểu biết</div>
+  <div class="card tbl"><table id="knowTbl"></table></div>
+  <div class="step">2 · 3 câu hỏi giúp nghĩ ra ý (bấm để mở)</div>
+  <div id="thinkBox"></div>
+  <div class="step">3 · Ý của em</div>
+  <p class="hint">Viết bằng tiếng Việt hoặc tiếng Anh. Chọn <b>căn cứ</b> cho mỗi ý. Ý chỉ dựa vào “cảm giác” sẽ bị gắn cờ 🚩.</p>
+  <div class="grid2">
+    <div><h4>Thân bài 1 · Màn ảnh dạy được gì?</h4><div id="ideaA"></div></div>
+    <div><h4>Thân bài 2 · Chỉ đi thực tế mới học được gì?</h4><div id="ideaB"></div></div>
+  </div>
+  <div id="ideaSum" class="card sea"></div>
+  <div class="nextbar" data-next="idea"></div>
+</section>
+
+<!-- ④ TỪ VỰNG -->
+<section class="panel" id="p-vocab">
+  <h2>④ Từ vựng để viết từng đoạn</h2>
+  <div class="goal"><span class="gi">🎯</span><div>Học từ theo <b>đoạn em sắp viết</b>, không học danh sách rời. Phần này có 3 việc, mỗi việc trả lời một câu hỏi: <b>Nói ý này bằng cụm nào?</b> · <b>Viết lại đề mà không chép?</b> · <b>Đọc từ học thuật cho đúng?</b></div></div>
+
+  <h3>A. Một ý, ba bậc diễn đạt</h3>
+  <p class="hint">Bậc càng cao, nghĩa tiếng Việt càng <b>sâu và cụ thể</b>. Bấm chọn bậc em <b>sẽ dùng</b> trong bài (bậc vừa sức, đừng chọn bậc em không hiểu), rồi ghi âm cụm đó. Cụm đã chọn sẽ hiện ở bước ⑥.</p>
+  <div id="vocBox"></div>
+
+  <h3>B. Đổi từ loại để viết lại đề</h3>
+  <div class="card sun" id="wfIntro"></div>
+  <div class="card tbl"><table id="wfDemo"></table></div>
+  <p class="hint">Điền <b>dạng đúng</b> của từ trong ngoặc. Gợi ý từ loại có sẵn.</p>
+  <div id="wfBox" class="wf"></div>
+  <div class="row"><button class="b primary" id="wfCheck">Kiểm tra</button><span id="wfScore"></span></div>
+  <div class="card">
+    <b>✍️ Áp dụng ngay: viết lại câu đầu của đề bằng lời của em</b>
+    <div class="vi">Gợi ý: “Some people say” → <i>It is sometimes argued that…</i>; “by watching television programmes and films” → <i>from documentaries and films / through on-screen portrayals</i>; “by actually visiting it” → <i>than from a visit / than through first-hand experience</i>.</div>
+    <textarea id="para" placeholder="It is sometimes argued that…"></textarea>
+    <div id="paraFb" class="tip"></div>
+    <div class="tip vi">Câu này sẽ thành câu mở đầu trong bản nháp (bước ⑥).</div>
+  </div>
+
+  <h3>C. Trọng âm theo quy tắc</h3>
+  <div class="card sun"><b>Vì sao cần ở bài Writing?</b> Em sẽ ghi âm đọc câu của chính mình, và dùng lại các từ này khi thi Speaking. Đọc sai trọng âm thì người nghe khó hiểu, và chính em cũng khó nhận ra từ khi nghe. Mỗi quy tắc: <b>hiểu → nghe → đọc câu → tự kiểm tra với từ mới</b>.</div>
+  <div id="stressBox"></div>
+  <div class="nextbar" data-next="vocab"></div>
+</section>
+
+<!-- ⑤ CÂU THEN CHỐT -->
+<section class="panel" id="p-build">
+  <h2>⑤ 7 câu then chốt (ngữ pháp gắn với từng vị trí)</h2>
+  <div class="goal"><span class="gi">🎯</span><div>Không học 10 cấu trúc rời rạc. Bài của em có <b>7 vị trí quan trọng</b>; mỗi vị trí cần một <b>cấu trúc phù hợp với nhiệm vụ</b> của câu đó. Viết xong 7 câu là em đã có “khung xương” của bài.</div></div>
+  <div class="map" id="slotMap"></div>
+  <div id="buildBox"></div>
+  <div class="nextbar" data-next="build"></div>
+</section>
+
+<!-- ⑥ GHÉP BÀI -->
+<section class="panel" id="p-draft">
+  <h2>⑥ Ghép thành bài của em</h2>
+  <div class="goal"><span class="gi">🎯</span><div>Bấm <b>Ghép bài</b>: máy đặt câu viết lại đề, lập trường, ý và 7 câu then chốt vào đúng 4 đoạn. Chỗ nào còn <b>[ngoặc vuông]</b> là chỗ em cần tự viết thêm bằng tiếng Anh.</div></div>
+  <div class="row"><button class="b primary" id="assemble">🧩 Ghép bài từ các bước</button><button class="b" id="undo" hidden>↶ Hoàn tác</button><span class="vi-s" id="wcInfo"></span></div>
+  <textarea id="draft" spellcheck="true" placeholder="Bấm “Ghép bài từ các bước”, hoặc tự viết tại đây…"></textarea>
+  <div class="card"><b>Tự kiểm tra bản nháp</b><div class="chk" id="draftChk" style="margin-top:6px"></div><div class="tip" id="draftTip"></div></div>
+  <div class="card"><b>Cụm từ em đã chọn ở bước ④</b> <span class="vi-s">(xanh = đã dùng trong bài)</span><div id="myVocab" style="margin-top:6px"></div></div>
+  <div class="card"><b>🎙 Đọc to mở bài của em</b><div class="vi-s">Đọc chính đoạn đầu trong bản nháp để nghe câu của mình có tự nhiên không.</div><div id="introPr"></div></div>
+  <h3>So sánh với bài mẫu</h3>
+  <p class="hint">Bài mẫu do giáo viên soạn. <b>Đừng học thuộc.</b> Hãy so sánh cách bài mẫu dùng câu then chốt và bằng chứng với bài của em.</p>
+  <div class="row"><button class="b" id="essayPlay">🔊 Nghe cả bài</button><button class="b" id="essayStop">⏸ Dừng</button></div>
+  <div class="card essay" id="essayBox"></div>
+  <div class="nextbar" data-next="draft"></div>
+</section>
+
+<!-- ⑦ KIỂM TRA -->
+<section class="panel" id="p-quiz">
+  <h2>⑦ Kiểm tra nhanh (12 câu)</h2>
+  <p class="hint">Phản hồi ngay sau mỗi lần chọn. Điểm tính theo <b>lần chọn đầu tiên</b>, nhưng em có thể chọn lại để hiểu bài.</p>
+  <div id="quizBox"></div>
+  <div class="card sun" id="quizScore"></div>
+  <div class="nextbar" data-next="quiz"></div>
+</section>
+
+<!-- ⑧ NỘP BÀI -->
+<section class="panel" id="p-send">
+  <h2>⑧ Nộp bài cho thầy/cô</h2>
+  <div class="goal"><span class="gi">📨</span><div>Các bản ghi âm đang được <b>lưu trong máy của em</b>, chưa gửi đi. Em nghe lại, bỏ chọn bản nào chưa ưng (hoặc quay lại ghi lại), rồi bấm <b>Nộp tất cả</b>. Bài viết, câu trả lời và bản ghi sẽ được gửi cùng lúc.</div></div>
+  <div class="card">
+    <div class="row" style="margin-bottom:10px">Tên em: <input type="text" id="stuName" placeholder="Họ và tên" style="min-width:240px"></div>
+    <div class="tbl"><table class="reclist" id="recTbl"></table></div>
+    <div class="row" style="margin-top:10px"><button class="b primary big" id="submitBtn">📨 Nộp tất cả</button><span class="vi-s" id="recCount"></span></div>
+    <div class="bar" id="upBar" hidden><i></i></div>
+    <div id="submitMsg" class="tip"></div>
+  </div>
+  <h3>Em đã làm được</h3>
+  <div class="card tbl"><table id="sumTbl"></table></div>
+  <div class="card sea" id="nextBox"></div>
+</section>
+</div>
+
+<div class="toast" id="toast" role="status"></div>
+<div class="gate" id="gate" hidden><div class="gate-box">
+  <div style="font-size:46px">🎬✈️</div><h2 style="margin:4px 0">Chào em!</h2>
+  <p>Em gõ họ và tên để thầy/cô nhận được bài nhé.</p>
+  <input type="text" id="gateName" placeholder="Họ và tên" autocomplete="name">
+  <button class="b primary big" id="gateGo" style="margin-top:12px">Bắt đầu học ▶</button>
+  <p class="tip" style="color:var(--muted)">🎙 Khi máy hỏi dùng micro, em bấm <b>Cho phép</b> (Allow). Bản ghi được lưu trong máy, em tự nộp ở bước cuối.</p>
+</div></div>
+<div class="warn" id="noUrl" hidden style="position:fixed;top:0;left:0;right:0;z-index:30;border-radius:0;text-align:center">⚙️ Trang chưa có link nhận bài (SCRIPT_URL), nên bài chưa gửi được.</div>
+
+<script>
+/* ===== CÀI ĐẶT ===== */
+const SCRIPT_URL = 'https://script.google.com/macros/s/AKfycbwnf8X3_Xfk9F_8HQtBwSFU_s28sRjxKb0aFaHCA4ybmMJvgaztBAbdvaFzITdbVXBt/exec';
+const LESSON = 'WT2 TV vs Visiting - Tu hoc';
+const LINK2 = '../viet-40-phut/';
+const COLLECT = true; // học sinh tự nộp tất cả bản ghi ở bước ⑧
+const D = {"PROMPT": {"statement": "Some people say that you can learn more about another country by watching television programmes and films about it than by actually visiting it.", "q1": "How true is this statement?", "q2": "Is there anything you can learn about another country by visiting it that you cannot learn by watching programmes and films about it?", "inst": "Give reasons for your answers and include any relevant examples from your own experience.", "source": "Complete IELTS Bands 4–5, Unit 8, tr. 52"}, "PROMPT_VI": {"statement": "Có người cho rằng xem các chương trình truyền hình và phim về một đất nước khác giúp ta hiểu về nước đó nhiều hơn là thực sự đến thăm nước đó.", "q1": "Nhận định này đúng đến mức nào?", "q2": "Có điều gì về một đất nước mà ta học được khi đến thăm, nhưng không thể học được qua chương trình truyền hình và phim không?", "inst": "Hãy đưa ra lý do và ví dụ phù hợp, có thể lấy từ trải nghiệm của chính em."}, "STEPS": [["read", "① Hiểu đề", "Biết đề hỏi gì, trả lời 2 câu hỏi nào", "Lập trường của em"], ["topic", "② Hiểu chủ đề", "Đọc 6 câu chuyện có thật, dễ hiểu", "2–3 bằng chứng cho bài"], ["idea", "③ Lên ý", "Ý cho từng thân bài, có căn cứ", "2 ý cho mỗi thân bài"], ["vocab", "④ Từ vựng", "Từ cho từng đoạn, 3 bậc diễn đạt", "Cụm từ để viết từng đoạn"], ["build", "⑤ Câu then chốt", "Mỗi câu quan trọng gắn với 1 cấu trúc ngữ pháp", "7 câu của chính em"], ["draft", "⑥ Ghép bài", "Ghép câu và ý thành bài 4 đoạn", "Bản nháp hoàn chỉnh"], ["quiz", "⑦ Kiểm tra", "12 câu ôn lại toàn bài", "Điểm kiểm tra"], ["send", "⑧ Nộp bài", "Nghe lại các bản ghi, tự nộp cho thầy/cô", "Bài nộp"]], "GLOSS": [["learn more about", "/lɜːn mɔːr əˈbaʊt/", "hiểu biết thêm, học được nhiều hơn về"], ["another country", "/əˈnʌðə ˈkʌntri/", "một đất nước khác (không phải nước mình)"], ["television programmes", "/ˈtelɪvɪʒn ˈprəʊɡræmz/", "các chương trình truyền hình (tin tức, phim tài liệu, show du lịch…)"], ["films", "/fɪlmz/", "phim (phim điện ảnh, phim truyện)"], ["actually visiting", "/ˈæktʃuəli ˈvɪzɪtɪŋ/", "thực sự đến thăm, đến tận nơi"], ["statement", "/ˈsteɪtmənt/", "nhận định, lời phát biểu"], ["How true…?", "/haʊ truː/", "đúng đến mức nào? (hỏi MỨC ĐỘ)"], ["relevant examples", "/ˈreləvənt ɪɡˈzɑːmplz/", "ví dụ liên quan, đúng trọng tâm"], ["your own experience", "/jɔːr əʊn ɪkˈspɪəriəns/", "trải nghiệm của chính em"]], "KEYS": [["Some people say that", 0, ""], ["you can learn more", 1, "So sánh hơn: bài phải SO SÁNH hai cách học, không chỉ khen hay chê TV."], ["about another country", 1, "Nội dung là hiểu về một đất nước, không phải giải trí nói chung."], ["by watching television programmes and films about it", 1, "Cách học 1: qua màn ảnh."], ["than", 1, "Từ so sánh: luôn có đủ hai vế."], ["by actually visiting it.", 1, "Cách học 2: đến tận nơi; “actually” = trải nghiệm thật."], ["How true is this statement?", 1, "Câu hỏi 1 hỏi MỨC ĐỘ: hoàn toàn đúng, đúng một phần, hay không đúng?"], ["Is there anything you can learn", 1, "Câu hỏi 2: trả lời Yes/No rồi liệt kê cụ thể."], ["about another country by visiting it", 0, ""], ["that you cannot learn", 1, "Chỉ nêu những điều màn ảnh KHÔNG dạy được."], ["by watching programmes and films about it?", 0, ""], ["Give reasons for your answers and include any relevant examples", 0, ""], ["from your own experience.", 1, "Được phép (và nên) dùng ví dụ thật của em."]], "TYPEQ": [{"q": "Đề này thuộc dạng nào?", "o": ["Opinion (Agree/Disagree)", "Discuss both views", "Two-part question: 1 câu hỏi mức độ + 1 câu hỏi trực tiếp", "Advantages/Disadvantages"], "a": 2, "x": "Có 2 câu hỏi riêng. Mỗi câu hỏi nên có 1 thân bài trả lời."}, {"q": "“How true is this statement?” yêu cầu em…", "o": ["kể lợi ích của TV", "nói rõ nhận định đúng đến mức nào và giải thích", "kể một chuyến du lịch", "giới thiệu một bộ phim"], "a": 1, "x": "Giống “To what extent…”. Lập trường phải rõ ngay ở mở bài."}, {"q": "Câu hỏi 2 (“Is there anything…?”) nên trả lời thế nào?", "o": ["Chỉ cần nói “Yes”", "Nói Yes, rồi nêu cụ thể 2–3 điều chỉ đi thực tế mới học được + ví dụ", "Bỏ qua nếu đã trả lời câu 1", "Kể về cách làm phim"], "a": 1, "x": "Câu hỏi trực tiếp cần trả lời trực tiếp và cụ thể. Bỏ sót câu này thì khó qua Band 5."}], "TRAPS": [["Chỉ viết “TV tốt / TV xấu”", "Mỗi ý phải so sánh: màn ảnh SO VỚI đi thực tế."], ["Quên câu hỏi 2", "Dành hẳn thân bài 2 cho câu hỏi 2."], ["Lập trường mơ hồ", "Nói rõ: only partly true / true to a large extent / largely untrue."], ["Viết theo cảm giác", "“Travelling is more fun” là sở thích, không chứng minh được việc HỌC. Hãy dùng bằng chứng ở bước ②."], ["Ví dụ chung chung", "Ví dụ tốt có nơi chốn, tình huống cụ thể."]], "POSITIONS": [{"t": "Hoàn toàn đúng: xem phim học được nhiều hơn", "en": "The statement is entirely true.", "eval": "Rủi ro: câu hỏi 2 hỏi có gì CHỈ đi thực tế mới học được; trả lời “không có gì” rất khó thuyết phục.", "ok": false}, {"t": "Hoàn toàn sai: đi thực tế luôn học được nhiều hơn", "en": "The statement is largely untrue.", "eval": "Viết được, nhưng phải thừa nhận điểm mạnh thật của phim tài liệu, nếu không bài sẽ một chiều.", "ok": false}, {"t": "Đúng một phần: tuỳ học CÁI GÌ (khuyên dùng)", "en": "The statement is only partly true.", "eval": "Cân bằng nhất: màn ảnh hơn về kiến thức, lịch sử; đi thực tế hơn về đời sống, con người, giác quan. Lập trường này dẫn thẳng sang câu hỏi 2.", "ok": true}], "PLAN": [["Mở bài", "Viết lại đề bằng lời của em + lập trường + báo trước ý thân bài 2", "Câu then chốt C1"], ["Thân bài 1", "Trả lời “How true”: màn ảnh dạy được gì (phần đúng) + giới hạn", "C2, C3 · bằng chứng D"], ["Thân bài 2", "Trả lời câu hỏi 2: 2–3 điều chỉ đi thực tế mới học được + ví dụ", "C4, C5, C6 · bằng chứng A, E"], ["Kết bài", "Nhắc lại mức độ: phim là bước chuẩn bị, không thay thế chuyến đi", "C7 · bằng chứng F"]], "EVIDENCE": [{"id": "A", "icon": "🗼", "title": "Paris ngoài đời khác Paris trên phim", "story": "Nhiều người xem phim nghĩ Paris lúc nào cũng lãng mạn, sạch đẹp. Khi đến thật, một số du khách (nhiều nhất là du khách Nhật) bị sốc vì thành phố đông đúc, ồn ào, có rác. Bác sĩ tâm thần Hiroaki Ota đặt tên cho cú sốc này là “Paris syndrome” (hội chứng Paris).", "lesson": "Phim có thể “tô hồng” một nơi → phải đến tận nơi mới biết thật. Dùng cho Thân bài 2.", "kw": [["culture shock", "/ˈkʌltʃə ʃɒk/", "cú sốc văn hóa"], ["expectation", "/ˌekspekˈteɪʃn/", "sự kỳ vọng, điều mong đợi"], ["idealised image", "/aɪˈdɪəlaɪzd ˈɪmɪdʒ/", "hình ảnh được lý tưởng hóa, tô hồng"], ["reality", "/riˈæləti/", "thực tế"]], "en6": "Films can make a city look more beautiful than it really is, so some tourists feel shocked when they visit.", "vi6": "Phim có thể làm một thành phố trông đẹp hơn thực tế, nên một số du khách bị sốc khi đến thăm.", "en7": "The so-called Paris syndrome shows how far the idealised on-screen image of a city can differ from reality.", "vi7": "Cái gọi là “hội chứng Paris” cho thấy hình ảnh lý tưởng hóa của một thành phố trên màn ảnh có thể khác xa thực tế đến mức nào.", "links": [["Wikipedia – Paris syndrome", "https://en.wikipedia.org/wiki/Paris_syndrome"]]}, {"id": "B", "icon": "📺", "title": "Xem TV nhiều → nghĩ thế giới giống trên TV", "story": "Nhà nghiên cứu truyền thông George Gerbner phát hiện: người xem TV rất nhiều thường nghĩ thế giới thật giống như trên TV, ví dụ nghĩ xã hội nguy hiểm hơn thực tế. Các nghiên cứu sau cho thấy ảnh hưởng này có thật nhưng không lớn.", "lesson": "Chỉ dựa vào màn ảnh dễ hiểu sai về thế giới. Dùng cho Thân bài 2 (giới hạn của màn ảnh).", "kw": [["heavy viewer", "/ˈhevi ˈvjuːə/", "người xem (TV) nhiều"], ["perception", "/pəˈsepʃn/", "nhận thức, cách nhìn"], ["distorted", "/dɪˈstɔːtɪd/", "bị bóp méo, sai lệch"], ["portray", "/pɔːˈtreɪ/", "khắc họa, miêu tả"]], "en6": "People who watch a lot of TV may see the world as it is shown on screen, not as it really is.", "vi6": "Người xem TV nhiều có thể nhìn thế giới theo cách màn ảnh thể hiện, chứ không như nó thực sự là.", "en7": "Research suggests that heavy television viewers tend to form a distorted perception of reality, although the effect is relatively small.", "vi7": "Nghiên cứu cho thấy người xem truyền hình nhiều có xu hướng hình thành nhận thức sai lệch về thực tế, dù ảnh hưởng này tương đối nhỏ.", "links": [["Wikipedia – Cultivation theory", "https://en.wikipedia.org/wiki/Cultivation_theory"]]}, {"id": "C", "icon": "📖", "title": "Chỉ biết “một câu chuyện” về một nước", "story": "Nhà văn Nigeria Chimamanda Ngozi Adichie kể trong bài nói TED (2009): khi sang Mỹ học, bạn cùng phòng ngạc nhiên vì cô nói tiếng Anh giỏi và nghe nhạc pop. Bạn ấy chỉ biết về châu Phi qua một kiểu câu chuyện: nghèo đói, khó khăn.", "lesson": "Màn ảnh thường kể một kiểu chuyện về một nước → dễ sinh định kiến. Dùng cho Thân bài 2.", "kw": [["stereotype", "/ˈsteriətaɪp/", "định kiến, khuôn mẫu"], ["one-sided", "/ˌwʌnˈsaɪdɪd/", "một chiều, phiến diện"], ["misunderstanding", "/ˌmɪsʌndəˈstændɪŋ/", "sự hiểu lầm"], ["incomplete", "/ˌɪnkəmˈpliːt/", "không đầy đủ"]], "en6": "If we only see one kind of story about a country on TV, we may have the wrong idea about its people.", "vi6": "Nếu chỉ xem một kiểu câu chuyện về một nước trên TV, ta có thể hiểu sai về con người ở đó.", "en7": "As the writer Chimamanda Ngozi Adichie argues, a single story about a country creates stereotypes that are incomplete rather than untrue.", "vi7": "Như nhà văn Chimamanda Ngozi Adichie lập luận, chỉ một câu chuyện về một đất nước sẽ tạo ra những định kiến không hẳn sai, mà là thiếu sót.", "links": [["TED – The danger of a single story", "https://www.ted.com/talks/chimamanda_ngozi_adichie_the_danger_of_a_single_story"]]}, {"id": "D", "icon": "🎭", "title": "Văn hóa “dàn dựng” cho du khách", "story": "Ở nhiều điểm du lịch, những gì du khách xem (múa truyền thống, “làng nghề”, chợ đêm) được sắp đặt để phục vụ khách. Nhà xã hội học Dean MacCannell (1973) gọi đây là “staged authenticity”, tức sự chân thật được dàn dựng. Đi theo tour ngắn ngày chưa chắc thấy được đời sống thật.", "lesson": "Đi thực tế KHÔNG tự động là “thật”. Một chuyến đi ngắn có thể học được ít hơn một phim tài liệu tốt. Dùng cho Thân bài 1 (phần thừa nhận).", "kw": [["staged", "/steɪdʒd/", "được dàn dựng"], ["authentic", "/ɔːˈθentɪk/", "chân thật, đích thực"], ["package tour", "/ˈpækɪdʒ tʊə/", "tour trọn gói"], ["tourist trap", "/ˈtʊərɪst træp/", "nơi “bẫy” du khách, chỉ để thu tiền khách"]], "en6": "Many tourist places are prepared for visitors, so a short trip does not always show real local life.", "vi6": "Nhiều điểm du lịch được chuẩn bị sẵn cho du khách, nên một chuyến đi ngắn không phải lúc nào cũng cho thấy đời sống thật.", "en7": "Since many attractions are staged for visitors, a short package holiday does not guarantee an authentic experience.", "vi7": "Vì nhiều điểm tham quan được dàn dựng cho du khách, một kỳ nghỉ trọn gói ngắn ngày không đảm bảo mang lại trải nghiệm chân thật.", "links": [["MacCannell (1973) – Staged Authenticity", "https://www.journals.uchicago.edu/doi/10.1086/225585"]]}, {"id": "E", "icon": "🤝", "title": "Gặp người thật thay đổi cách nghĩ", "story": "Từ năm 1954, nhà tâm lý học Gordon Allport cho rằng gặp gỡ, trò chuyện trực tiếp giúp con người bớt thành kiến với nhóm người khác. Năm 2006, hai nhà nghiên cứu tổng hợp 515 nghiên cứu và thấy điều này đúng. Xem người khác trên phim cũng có tác dụng, nhưng ít bằng chứng hơn.", "lesson": "Gặp, nói chuyện với người dân thay đổi hiểu biết mạnh hơn xem họ trên màn hình. Dùng cho Thân bài 2.", "kw": [["face-to-face", "/ˌfeɪs tə ˈfeɪs/", "trực tiếp, mặt đối mặt"], ["prejudice", "/ˈpredʒudɪs/", "thành kiến"], ["interact with", "/ˌɪntərˈækt wɪð/", "giao lưu, tương tác với"], ["attitude", "/ˈætɪtjuːd/", "thái độ"]], "en6": "Talking to local people face to face can change our opinions more than watching them on TV.", "vi6": "Trò chuyện trực tiếp với người dân có thể thay đổi suy nghĩ của ta nhiều hơn là xem họ trên TV.", "en7": "A review of more than 500 studies found that face-to-face contact between groups consistently reduces prejudice.", "vi7": "Một tổng hợp hơn 500 nghiên cứu cho thấy tiếp xúc trực tiếp giữa các nhóm người luôn giúp giảm thành kiến.", "links": [["Wikipedia – Contact hypothesis", "https://en.wikipedia.org/wiki/Contact_hypothesis"]]}, {"id": "F", "icon": "🎬", "title": "Xem phim xong lại muốn đi", "story": "Sau loạt phim “Chúa tể những chiếc nhẫn” quay ở New Zealand, lượng khách quốc tế đến nước này tăng từ 1,7 triệu (2000) lên 2,4 triệu (2006), và một phần du khách nói bộ phim là lý do họ đến. Dubrovnik (Croatia), nơi quay “Game of Thrones”, cũng đông khách đến mức phải tính cách hạn chế.", "lesson": "Phim thường KHƠI GỢI mong muốn đi, chứ không thay thế chuyến đi. Dùng cho Kết bài.", "kw": [["inspire", "/ɪnˈspaɪə/", "truyền cảm hứng, khơi gợi"], ["destination", "/ˌdestɪˈneɪʃn/", "điểm đến"], ["substitute (for)", "/ˈsʌbstɪtjuːt/", "sự thay thế (cho)"], ["complement", "/ˈkɒmplɪment/", "bổ sung, bổ trợ"]], "en6": "Films often make people want to visit a place; they do not replace the visit.", "vi6": "Phim thường khiến người ta muốn đến một nơi; phim không thay thế chuyến đi.", "en7": "Rather than replacing travel, films often inspire it: international arrivals in New Zealand rose sharply after The Lord of the Rings.", "vi7": "Thay vì thay thế việc đi du lịch, phim thường khơi gợi nó: lượng khách quốc tế đến New Zealand tăng mạnh sau “Chúa tể những chiếc nhẫn”.", "links": [["Wikipedia – Tolkien tourism", "https://en.wikipedia.org/wiki/Tolkien_tourism"]]}], "EVMATCH": [{"q": "Phim có thể làm một nơi trông đẹp hơn thực tế.", "a": "A"}, {"q": "Đi tour ngắn ngày chưa chắc thấy đời sống thật.", "a": "D"}, {"q": "Nói chuyện trực tiếp với người dân thay đổi cách ta nghĩ.", "a": "E"}, {"q": "Phim không thay thế, mà còn khiến người ta muốn đi.", "a": "F"}, {"q": "Chỉ biết một kiểu câu chuyện về một nước dễ sinh định kiến.", "a": "C"}, {"q": "Xem TV quá nhiều có thể khiến ta nhìn thế giới sai lệch.", "a": "B"}], "KNOW": [["Lịch sử, địa lý, sự kiện lớn", "📺 Màn ảnh", "Phim tài liệu có chuyên gia, tư liệu; du khách ít tìm hiểu sâu như vậy."], ["Danh thắng, phong cảnh", "⚖️ Ngang nhau", "Phim quay đẹp hơn; đi thật thì thấy được quy mô, thời tiết, đám đông."], ["Nhịp sống, âm thanh, mùi vị", "✈️ Đi thực tế", "Cảm nhận bằng giác quan, không bị cắt dựng."], ["Thái độ, cách cư xử của người dân", "✈️ Đi thực tế*", "Giao tiếp thật. *Nhưng phải ra khỏi khu du lịch (thẻ D)."], ["Quy tắc ngầm (xếp hàng, chào hỏi, tiền tip)", "✈️ Đi thực tế", "Thường học được qua chính những lần làm sai."]], "THINK": [{"tag": "TCA", "name": "So sánh xưa và nay", "q": "Trước đây người ta tìm hiểu nước khác bằng cách nào? Bây giờ màn ảnh đã thay đổi điều gì?", "en": "A generation ago, people learned about foreign countries mainly from books; today, documentaries and travel vlogs show almost every city on earth.", "vi": "Một thế hệ trước, người ta tìm hiểu nước ngoài chủ yếu qua sách; ngày nay, phim tài liệu và vlog du lịch cho thấy gần như mọi thành phố trên thế giới."}, {"tag": "CTA", "name": "Nghĩ về bản chất", "q": "Phim được làm ra để làm gì? Vì vậy phim thường chọn cảnh nào và bỏ cảnh nào?", "en": "Television programmes are made to entertain, so they show the most beautiful scenes and leave out ordinary daily life.", "vi": "Chương trình truyền hình được làm ra để giải trí, nên chúng chọn cảnh đẹp nhất và bỏ qua đời sống thường ngày."}, {"tag": "CBA", "name": "Đặt vào bối cảnh hiện nay", "q": "Du lịch bây giờ diễn ra thế nào (tour trọn gói, đông khách, dàn dựng)? Điều đó ảnh hưởng gì?", "en": "In an age of mass tourism, a three-day package tour may show tourists little more than a staged version of local culture.", "vi": "Trong thời du lịch đại trà, một tour trọn gói 3 ngày có thể chỉ cho du khách thấy phiên bản văn hóa đã được dàn dựng."}], "BASIS": ["Bằng chứng (thẻ A–F)", "Trải nghiệm thật của em / người thân", "Suy luận logic (vì A nên B)", "Cảm giác / sở thích"], "VOCAB": [{"part": "Mở bài", "use": "Viết lại đề bằng lời của em (paraphrase) + nêu lập trường", "items": [{"k": "học về một nước", "lv": [["learn about a country", "/lɜːn əˈbaʊt ə ˈkʌntri/", "tìm hiểu về một đất nước"], ["gain an insight into a country", "/ɡeɪn ən ˈɪnsaɪt ˈɪntuː/", "có cái nhìn sâu hơn, thấu đáo hơn về một đất nước"], ["develop a nuanced understanding of a culture", "/ˈnjuːɑːnst ˌʌndəˈstændɪŋ/", "hiểu được những sắc thái tinh tế, nhiều tầng lớp của một nền văn hóa"]]}, {"k": "xem TV và phim", "lv": [["watch TV programmes and films", "/wɒtʃ ˌtiːˈviː ˈprəʊɡræmz/", "xem chương trình TV và phim"], ["watch documentaries and travel shows", "/ˌdɒkjuˈmentriz/", "xem phim tài liệu và chương trình du lịch"], ["rely on on-screen portrayals", "/rɪˈlaɪ ɒn ˌɒnˈskriːn pɔːˈtreɪəlz/", "dựa vào cách màn ảnh khắc họa một nơi (tức là hiểu biết qua lăng kính của người làm phim)"]]}, {"k": "đến tận nơi", "lv": [["visit the country", "/ˈvɪzɪt ðə ˈkʌntri/", "đến thăm đất nước đó"], ["travel there in person", "/ˈtrævl ðeər ɪn ˈpɜːsn/", "đích thân đi đến đó"], ["gain first-hand experience", "/ˌfɜːstˈhænd ɪkˈspɪəriəns/", "có trải nghiệm tận mắt, tận tay, không qua trung gian"]]}, {"k": "đúng một phần", "lv": [["it is partly true", "/ˈpɑːtli truː/", "đúng một phần"], ["this is true to some extent", "/tə sʌm ɪkˈstent/", "đúng ở một mức độ nào đó"], ["there is some truth in this claim, but only up to a point", "/ʌp tʊ ə pɔɪnt/", "nhận định có phần đúng, nhưng chỉ đúng đến một giới hạn nhất định"]]}]}, {"part": "Thân bài 1", "use": "Thừa nhận: màn ảnh dạy được gì (có khi hơn đi thực tế)", "items": [{"k": "phim tài liệu nhiều thông tin", "lv": [["documentaries give a lot of information", "/ˌdɒkjuˈmentriz ɡɪv/", "phim tài liệu cho nhiều thông tin"], ["well-researched documentaries are highly informative", "/ˌwel rɪˈsɜːtʃt … ɪnˈfɔːmətɪv/", "phim tài liệu được nghiên cứu kỹ thì rất giàu thông tin"], ["documentaries can condense centuries of history into an hour", "/kənˈdens ˈsentʃəriz/", "phim tài liệu có thể cô đọng hàng thế kỷ lịch sử vào một giờ, điều mà chuyến đi không làm được"]]}, {"k": "chuyến đi ngắn", "lv": [["a short trip", "/ʃɔːt trɪp/", "một chuyến đi ngắn"], ["a brief package holiday", "/briːf ˈpækɪdʒ ˈhɒlədeɪ/", "một kỳ nghỉ trọn gói ngắn ngày"], ["a superficial, tightly scheduled tour", "/ˌsuːpəˈfɪʃl ˈtaɪtli ˈʃedjuːld/", "một chuyến tham quan hời hợt, lịch trình dày đặc, chỉ lướt qua bề mặt"]]}]}, {"part": "Thân bài 2", "use": "Trả lời câu hỏi 2: những điều chỉ đi thực tế mới học được", "items": [{"k": "TV không thật", "lv": [["TV is not real", "/ˌtiːˈviː ɪz nɒt rɪəl/", "TV không thật"], ["programmes are edited and selective", "/ˈedɪtɪd ənd sɪˈlektɪv/", "chương trình được cắt dựng và chọn lọc"], ["screen media present a curated, often idealised image", "/kjʊəˈreɪtɪd … aɪˈdɪəlaɪzd/", "màn ảnh đưa ra một hình ảnh đã được tuyển chọn, thường bị tô hồng"]]}, {"k": "gặp người dân", "lv": [["meet local people", "/miːt ˈləʊkl ˈpiːpl/", "gặp người dân địa phương"], ["interact with locals", "/ˌɪntərˈækt wɪð ˈləʊklz/", "giao lưu, tương tác với người bản xứ"], ["engage in spontaneous, unscripted interactions", "/spɒnˈteɪniəs ʌnˈskrɪptɪd/", "tham gia những cuộc giao tiếp tự nhiên, bất ngờ, không theo kịch bản nào"]]}, {"k": "cảm nhận bằng giác quan", "lv": [["see, hear and smell things", "/siː hɪər ənd smel/", "nhìn, nghe, ngửi"], ["experience the sights, sounds and smells", "/saɪts saʊndz ənd smelz/", "trải nghiệm cảnh vật, âm thanh và mùi vị"], ["absorb the sensory atmosphere of daily life", "/əbˈzɔːb ðə ˈsensəri ˈætməsfɪə/", "thấm vào bầu không khí đời thường bằng mọi giác quan"]]}]}, {"part": "Kết bài", "use": "Nhắc lại mức độ + vai trò của màn ảnh", "items": [{"k": "phim là bước chuẩn bị", "lv": [["films help us prepare for a trip", "/prɪˈpeə fər ə trɪp/", "phim giúp ta chuẩn bị cho chuyến đi"], ["films are a useful introduction, not a replacement", "/ˌɪntrəˈdʌkʃn … rɪˈpleɪsmənt/", "phim là bước làm quen hữu ích, không phải sự thay thế"], ["screen media complement travel rather than substitute for it", "/ˈkɒmplɪment … ˈsʌbstɪtjuːt/", "màn ảnh bổ trợ cho việc đi thực tế chứ không thể thay thế nó"]]}]}], "WF_INTRO": "Giám khảo chấm từ vựng (Lexical Resource) dựa một phần vào việc em **dùng đúng dạng từ** khi diễn đạt lại. Đổi từ loại giúp em viết lại đề mà không chép nguyên văn, và tránh lặp từ giữa các đoạn.", "WF_DEMO": [["you can learn more … by watching television programmes", "→", "**Viewers** can gain more **knowledge** from television"], ["… than by actually visiting it", "→", "… than from a **visit** to the country"], ["films are not real", "→", "films lack **authenticity**"]], "WF": [{"s": "Well-researched documentaries can be highly ___.", "base": "inform", "a": ["informative"], "pos": "tính từ", "vi": "Phim tài liệu được nghiên cứu kỹ có thể rất giàu thông tin."}, {"s": "Many tourist shows lack ___.", "base": "authentic", "a": ["authenticity"], "pos": "danh từ", "vi": "Nhiều chương trình du lịch thiếu sự chân thật."}, {"s": "Our ___ of a country is often shaped by films.", "base": "perceive", "a": ["perception"], "pos": "danh từ", "vi": "Cách ta nhìn nhận một đất nước thường bị phim định hình."}, {"s": "Some films give an unfair ___ of local people.", "base": "represent", "a": ["representation"], "pos": "danh từ", "vi": "Một số phim khắc họa người dân địa phương không công bằng."}, {"s": "Living abroad offers complete ___ in a new culture.", "base": "immerse", "a": ["immersion"], "pos": "danh từ", "vi": "Sống ở nước ngoài giúp ta hòa mình hoàn toàn vào một nền văn hóa mới."}, {"s": "___ may believe everything they see on screen.", "base": "view", "a": ["viewers"], "pos": "danh từ chỉ người, số nhiều", "vi": "Người xem có thể tin mọi thứ họ thấy trên màn ảnh."}, {"s": "Romantic films often ___ foreign cities.", "base": "ideal", "a": ["idealise", "idealize"], "pos": "động từ", "vi": "Phim lãng mạn thường lý tưởng hóa các thành phố nước ngoài."}, {"s": "A short ___ to Paris can be disappointing.", "base": "visit", "a": ["visit"], "pos": "danh từ", "vi": "Một chuyến ghé thăm Paris ngắn ngày có thể gây thất vọng."}], "STRESS_RULES": [{"name": "Quy tắc 1 · Đuôi -tion, -sion, -ic, -ity: nhấn ngay TRƯỚC đuôi", "why": "Đây là những đuôi rất hay gặp trong từ học thuật của Writing và Speaking. Nhớ 1 quy tắc là đọc đúng hàng trăm từ.", "words": [["perception", "per·CEP·tion", "/pəˈsepʃn/"], ["immersion", "im·MER·sion", "/ɪˈmɜːʃn/"], ["authentic", "au·THEN·tic", "/ɔːˈθentɪk/"], ["hospitality", "hos·pi·TA·li·ty", "/ˌhɒspɪˈtæləti/"], ["misconception", "mis·con·CEP·tion", "/ˌmɪskənˈsepʃn/"]], "sent": "Our perception of hospitality can change after complete immersion in an authentic culture.", "test": [{"w": "destination", "o": ["DES·ti·na·tion", "des·TI·na·tion", "des·ti·NA·tion"], "a": 2}, {"w": "economic", "o": ["E·co·no·mic", "e·co·NO·mic", "e·CO·no·mic"], "a": 1}]}, {"name": "Quy tắc 2 · Từ 2 âm tiết: danh từ/tính từ nhấn âm 1, động từ nhấn âm 2", "why": "Giúp em đọc đúng các từ ngắn hay dùng, và phân biệt từ loại khi nghe.", "words": [["customs (n)", "CUS·toms", "/ˈkʌstəmz/"], ["tourist (n)", "TOU·rist", "/ˈtʊərɪst/"], ["convey (v)", "con·VEY", "/kənˈveɪ/"], ["portray (v)", "por·TRAY", "/pɔːˈtreɪ/"], ["inform (v)", "in·FORM", "/ɪnˈfɔːm/"]], "sent": "Tourists see local customs, but films can only portray them.", "test": [{"w": "record (danh từ: bản ghi)", "o": ["RE·cord", "re·CORD"], "a": 0}, {"w": "record (động từ: ghi lại)", "o": ["RE·cord", "re·CORD"], "a": 1}]}, {"name": "Quy tắc 3 · Trọng âm DỊCH CHUYỂN khi thêm đuôi", "why": "Lỗi phổ biến: đọc “authenticity” theo trọng âm của “authentic”. Khi thêm đuôi ở Quy tắc 1, trọng âm nhảy đến âm tiết ngay trước đuôi mới.", "words": [["authentic → authenticity", "au·THEN·tic → au·then·TI·ci·ty", "/ɔːˈθentɪk/ → /ˌɔːθenˈtɪsəti/"], ["inform → information", "in·FORM → in·for·MA·tion", "/ɪnˈfɔːm/ → /ˌɪnfəˈmeɪʃn/"], ["represent → representation", "re·pre·SENT → re·pre·sen·TA·tion", "/ˌreprɪˈzent/ → /ˌreprɪzenˈteɪʃn/"]], "sent": "Films offer information, but not always an authentic representation of a culture.", "test": [{"w": "personal → personality", "o": ["PER·so·NA·li·ty", "per·so·NA·li·ty", "per·SO·na·li·ty"], "a": 1}]}], "BUILD": [{"id": "c1", "slot": "Mở bài · câu luận đề", "role": "Nêu lập trường và trả lời gọn cả 2 câu hỏi.", "gram": "Nhượng bộ: While / Although + mệnh đề 1, mệnh đề 2", "why": "Một câu vừa thừa nhận phía bên kia vừa nêu ý mình, đúng tinh thần câu hỏi “How true”.", "frame": "While [màn ảnh làm được gì], I believe the statement is only partly true because [điều chỉ đi thực tế mới có].", "model": "While films can offer broader factual knowledge than a short trip, I believe the statement is only partly true, because some things can only be understood in person.", "vi": "Dù phim có thể cung cấp kiến thức rộng hơn một chuyến đi ngắn, tôi cho rằng nhận định này chỉ đúng một phần, vì có những điều chỉ hiểu được khi đến tận nơi.", "rx": "^(while|although|whilst|though)\\b.+,.+", "need": "Bắt đầu bằng While/Although, có dấu phẩy nối 2 vế"}, {"id": "c2", "slot": "Thân bài 1 · câu chủ đề", "role": "Thừa nhận phần đúng: màn ảnh có thể dạy nhiều hơn.", "gram": "So sánh có từ bổ nghĩa: far / much / considerably + more … than", "why": "Đề có “learn more … than”: so sánh có mức độ cho thấy em hiểu đúng trọng tâm đề.", "frame": "Admittedly, [phim tài liệu…] can be far more [tính từ] than [chuyến đi ngắn…].", "model": "Admittedly, a well-researched documentary can be far more informative than a three-day package tour.", "vi": "Phải thừa nhận rằng một bộ phim tài liệu được nghiên cứu kỹ có thể giàu thông tin hơn nhiều so với một tour trọn gói 3 ngày.", "rx": "\\b(far|much|considerably|significantly|a lot|substantially) (more|less)\\b.+\\bthan\\b", "need": "Có far/much/considerably + more/less … than"}, {"id": "c3", "slot": "Thân bài 1 · dẫn bằng chứng", "role": "Đưa bằng chứng (thẻ D) để giải thích vì sao chuyến đi ngắn chưa chắc hơn.", "gram": "Câu tường thuật khách quan: It is widely known that… / Research suggests that…", "why": "Giới thiệu thông tin một cách khách quan, không cần “some people say”.", "frame": "It is widely known that [bằng chứng], so [hệ quả].", "model": "It is widely known that many tourist attractions are staged for visitors, so travellers may only see a polished version of a place.", "vi": "Ai cũng biết rằng nhiều điểm tham quan được dàn dựng cho du khách, nên người đi du lịch có thể chỉ thấy phiên bản “đẹp đẽ” của một nơi.", "rx": "^(it is (often |widely |commonly |generally )?(argued|believed|said|thought|known|accepted)|research (suggests|shows|has shown|indicates)|studies (suggest|show|have shown))\\b", "need": "Bắt đầu bằng It is widely known/argued that… hoặc Research suggests that…"}, {"id": "c4", "slot": "Thân bài 2 · câu chủ đề", "role": "Chuyển ý và trả lời thẳng câu hỏi 2.", "gram": "Câu chẻ: What + S + V + is + điều quan trọng", "why": "Đưa ý quan trọng nhất ra cuối câu để nhấn mạnh; câu chủ đề rất rõ và ấn tượng.", "frame": "However, what no programme can convey is [điều chỉ đi thực tế mới có].", "model": "However, what no programme can convey is the reality of everyday life.", "vi": "Tuy nhiên, điều mà không chương trình nào truyền tải được là hiện thực của đời sống thường ngày.", "rx": "^(however,?\\s*)?what\\b.+\\b(is|are|was)\\b", "need": "Có cấu trúc What … is/are …"}, {"id": "c5", "slot": "Thân bài 2 · nhấn mạnh", "role": "Liệt kê những điều chỉ đi thực tế mới học được.", "gram": "Đảo ngữ: Only by + V-ing + can + S + V", "why": "Đảo ngữ là dấu hiệu Band 7+ của tiêu chí ngữ pháp, nhấn mạnh “chỉ có cách này”.", "frame": "Only by [V-ing] can we [điều học được].", "model": "Only by visiting a country can we experience its sounds, smells and unwritten rules.", "vi": "Chỉ khi đến thăm một đất nước, ta mới trải nghiệm được âm thanh, mùi vị và những quy tắc ngầm của nơi đó.", "rx": "^only by \\w+ing\\b.+\\b(can|could|will|do|does|did|would|may|might) (we|you|one|people|i|tourists|travellers|travelers|visitors|they)\\b", "need": "Only by + V-ing … + can/could + chủ ngữ (đảo ngữ)"}, {"id": "c6", "slot": "Thân bài 2 · ví dụ trải nghiệm", "role": "Ví dụ thật của em (đề yêu cầu “your own experience”).", "gram": "Câu điều kiện loại 3: If I had + V3, I would (not) have + V3", "why": "Kể trải nghiệm và suy ngẫm về nó trong cùng một câu.", "frame": "If I had only [xem phim về…], I would never have [nhận ra điều gì khi đến nơi].", "model": "If I had only watched films about Da Lat, I would never have realised how cold and foggy the early mornings are.", "vi": "Nếu tôi chỉ xem phim về Đà Lạt, tôi sẽ không bao giờ nhận ra những buổi sáng sớm ở đó lạnh và nhiều sương đến thế nào.", "rx": "^if i had\\b.+\\bwould (not |never )?have \\w+", "need": "If I had + V3 …, I would (never/not) have + V3"}, {"id": "c7", "slot": "Kết bài", "role": "Nhắc lại mức độ và vai trò thật của màn ảnh.", "gram": "Đối lập gọn: A rather than B", "why": "Kết luận cân bằng, không thêm ý mới, dùng lại ý từ thẻ F.", "frame": "In conclusion, screen media are best seen as [vai trò] rather than [điều nó không phải].", "model": "In conclusion, screen media are best seen as preparation for travel rather than a substitute for it.", "vi": "Tóm lại, màn ảnh nên được xem là bước chuẩn bị cho chuyến đi hơn là sự thay thế cho nó.", "rx": "\\b(rather than|instead of|not a substitute|not a replacement)\\b", "need": "Có rather than / instead of"}], "ESSAY": [["Mở bài", "With streaming platforms offering high-quality documentaries about almost every corner of the globe, some argue that watching a country on screen is more educational than actually travelling there. I believe this claim is only partly true: while films and programmes can provide broader factual knowledge than a short trip, there are aspects of a country that can only be understood by experiencing them first-hand."], ["Thân bài 1", "Admittedly, screen media have clear advantages as a source of knowledge. A well-researched documentary can cover centuries of history, explain the geography of an entire nation and interview leading experts in under an hour, whereas a typical tourist spends a week moving between hotels and famous landmarks. Indeed, sociologists have long observed that many tourist sites are staged for visitors, so travellers may see only a polished version of a place. In terms of factual breadth, therefore, a viewer at home may well learn more than a holidaymaker."], ["Thân bài 2", "However, what no programme can convey is the reality of everyday life. Films are edited to entertain, which means they tend to tell a single, often idealised, story; the well-documented Paris syndrome, in which some visitors are shocked by the gap between the romantic Paris of films and the crowded city they find, illustrates this clearly. Only by visiting can one experience the noise of a street market, the pace at which people live or the unwritten rules of politeness. A foreign visitor to Hanoi, for instance, quickly learns that crossing the road means walking slowly and steadily through the traffic, a skill no documentary can really teach. Moreover, research on intergroup contact suggests that face-to-face interaction is one of the most reliable ways to reduce prejudice."], ["Kết bài", "In conclusion, television and films can offer more comprehensive factual knowledge than a brief visit, so the statement is true to a limited extent. Nevertheless, the sensory, social and unscripted side of a culture can only be learned by being there, which is why screen media are best seen as preparation for travel rather than a substitute for it."]], "ESSAY_VI": ["Khi các nền tảng phát trực tuyến cung cấp phim tài liệu chất lượng cao về gần như mọi nơi trên thế giới, có người cho rằng xem một đất nước trên màn ảnh mang tính giáo dục hơn là thực sự đi đến đó. Tôi cho rằng nhận định này chỉ đúng một phần: dù phim và chương trình truyền hình có thể cung cấp kiến thức rộng hơn một chuyến đi ngắn, vẫn có những khía cạnh của một đất nước chỉ có thể hiểu được khi trải nghiệm tận nơi.", "Phải thừa nhận rằng màn ảnh có những ưu điểm rõ ràng như một nguồn kiến thức. Một bộ phim tài liệu được nghiên cứu kỹ có thể trình bày hàng thế kỷ lịch sử, giải thích địa lý của cả một quốc gia và phỏng vấn các chuyên gia hàng đầu trong chưa đầy một giờ, trong khi một du khách bình thường dành cả tuần di chuyển giữa khách sạn và các danh thắng nổi tiếng. Thực tế, các nhà xã hội học từ lâu đã nhận thấy nhiều điểm du lịch được dàn dựng cho du khách, nên người đi du lịch có thể chỉ thấy phiên bản được “đánh bóng” của một nơi. Vì vậy, xét về độ rộng của kiến thức, người xem ở nhà hoàn toàn có thể học được nhiều hơn người đi nghỉ.", "Tuy nhiên, điều mà không chương trình nào truyền tải được là hiện thực của đời sống thường ngày. Phim được cắt dựng để giải trí, nên chúng thường kể một câu chuyện duy nhất, thường được tô hồng; “hội chứng Paris”, khi một số du khách bị sốc vì Paris lãng mạn trên phim khác xa thành phố đông đúc họ gặp, minh họa rõ điều này. Chỉ khi đến tận nơi, ta mới trải nghiệm được tiếng ồn của một khu chợ, nhịp sống của người dân hay những quy tắc lịch sự ngầm. Chẳng hạn, một du khách nước ngoài đến Hà Nội sẽ nhanh chóng học được rằng sang đường nghĩa là đi chậm và đều giữa dòng xe, một kỹ năng mà không bộ phim tài liệu nào thực sự dạy được. Hơn nữa, nghiên cứu về tiếp xúc giữa các nhóm người cho thấy giao tiếp trực tiếp là một trong những cách đáng tin cậy nhất để giảm thành kiến.", "Tóm lại, truyền hình và phim có thể mang lại kiến thức toàn diện hơn một chuyến đi ngắn, nên nhận định này đúng ở mức độ hạn chế. Tuy vậy, khía cạnh giác quan, xã hội và tự nhiên (không kịch bản) của một nền văn hóa chỉ có thể học được khi có mặt ở đó, vì vậy màn ảnh nên được xem là bước chuẩn bị cho chuyến đi hơn là sự thay thế cho nó."], "QUIZ": [{"q": "Đề này có mấy câu hỏi cần trả lời?", "o": ["1", "2", "3", "Không có câu hỏi"], "a": 1, "x": "“How true…?” và “Is there anything…?”."}, {"q": "Lập trường nào an toàn và cân bằng nhất?", "o": ["Hoàn toàn đúng", "Đúng một phần, tuỳ loại kiến thức", "Không nêu lập trường", "Hoàn toàn sai, không nhắc đến phim tài liệu"], "a": 1, "x": "Lập trường này cho phép thừa nhận điểm mạnh của phim và dẫn sang câu hỏi 2."}, {"q": "Thẻ bằng chứng nào cho thấy “đi tour ngắn chưa chắc đã thấy đời sống thật”?", "o": ["A – Paris syndrome", "D – Văn hóa dàn dựng", "E – Gặp người thật", "F – Xem phim xong muốn đi"], "a": 1, "x": "Nhiều điểm du lịch được dàn dựng cho du khách."}, {"q": "Câu nào là ý “cảm tính” cần tránh?", "o": ["Talking to locals can reduce prejudice.", "Travelling is more fun than watching TV.", "Many attractions are staged for visitors.", "Documentaries can condense centuries of history."], "a": 1, "x": "“More fun” là sở thích, không chứng minh được việc HỌC nhiều hơn."}, {"q": "“Gain first-hand experience” nghĩa là:", "o": ["có trải nghiệm tận mắt, trực tiếp", "xem phim đầu tiên", "đi du lịch bằng tay", "kinh nghiệm làm việc"], "a": 0, "x": "first-hand = trực tiếp, không qua trung gian."}, {"q": "Bậc diễn đạt nào sâu nhất cho ý “TV không thật”?", "o": ["TV is not real", "programmes are edited and selective", "screen media present a curated, often idealised image", "TV is bad"], "a": 2, "x": "Bậc 3 nêu rõ cơ chế: tuyển chọn, tô hồng."}, {"q": "Điền dạng đúng: “Many tourist shows lack ___ (authentic).”", "o": ["authentic", "authentically", "authenticity", "authenticate"], "a": 2, "x": "Sau lack cần danh từ: authenticity."}, {"q": "Trọng âm của “authenticity” rơi vào âm tiết nào?", "o": ["AU", "THEN", "TI", "CI"], "a": 2, "x": "Quy tắc 1 và 3: đuôi -ity → nhấn ngay trước đuôi: au·then·TI·ci·ty."}, {"q": "Trọng âm của “destination”?", "o": ["DES·ti·na·tion", "des·TI·na·tion", "des·ti·NA·tion"], "a": 2, "x": "Đuôi -tion → nhấn ngay trước: -NA-."}, {"q": "Câu nào ĐÚNG ngữ pháp?", "o": ["Only by visiting a country we can understand it.", "Only by visiting a country can we understand it.", "Only by visit a country can we understand it.", "Only visiting a country can we understand it."], "a": 1, "x": "Only by + V-ing + can + chủ ngữ (đảo ngữ)."}, {"q": "Câu chủ đề nào phù hợp cho Thân bài 2?", "o": ["Admittedly, documentaries are informative.", "However, what no programme can convey is the reality of everyday life.", "In conclusion, films are useful.", "Some people say films are good."], "a": 1, "x": "Câu chẻ What… is… trả lời thẳng câu hỏi 2."}, {"q": "Kết bài tốt nên…", "o": ["thêm một ý mới thật hay", "nhắc lại mức độ và vai trò của màn ảnh, không thêm ý mới", "kể thêm một ví dụ", "chép lại câu mở bài"], "a": 1, "x": "Kết bài tóm lại lập trường, không thêm ý mới."}], "IPA": {"documentary": "/ˌdɒkjuˈmentri/", "documentaries": "/ˌdɒkjuˈmentriz/", "authentic": "/ɔːˈθentɪk/", "authenticity": "/ˌɔːθenˈtɪsəti/", "portrayal": "/pɔːˈtreɪəl/", "portrayals": "/pɔːˈtreɪəlz/", "idealised": "/aɪˈdɪəlaɪzd/", "curated": "/kjʊəˈreɪtɪd/", "spontaneous": "/spɒnˈteɪniəs/", "unscripted": "/ʌnˈskrɪptɪd/", "nuanced": "/ˈnjuːɑːnst/", "insight": "/ˈɪnsaɪt/", "first-hand": "/ˌfɜːstˈhænd/", "prejudice": "/ˈpredʒudɪs/", "staged": "/steɪdʒd/", "streaming": "/ˈstriːmɪŋ/", "convey": "/kənˈveɪ/", "polished": "/ˈpɒlɪʃt/", "admittedly": "/ədˈmɪtɪdli/", "comprehensive": "/ˌkɒmprɪˈhensɪv/", "substitute": "/ˈsʌbstɪtjuːt/", "unwritten": "/ʌnˈrɪtn/", "politeness": "/pəˈlaɪtnəs/", "glamorised": "/ˈɡlæməraɪzd/", "stereotypes": "/ˈsteriətaɪps/", "atmosphere": "/ˈætməsfɪə/", "horizons": "/həˈraɪznz/", "sanitised": "/ˈsænɪtaɪzd/", "impression": "/ɪmˈpreʃn/", "experience": "/ɪkˈspɪəriəns/", "customs": "/ˈkʌstəmz/", "informative": "/ɪnˈfɔːmətɪv/", "considerably": "/kənˈsɪdərəbli/", "edited": "/ˈedɪtɪd/", "documented": "/ˈdɒkjumentɪd/", "perception": "/pəˈsepʃn/", "immersion": "/ɪˈmɜːʃn/", "hospitality": "/ˌhɒspɪˈtæləti/", "representation": "/ˌreprɪzenˈteɪʃn/", "information": "/ˌɪnfəˈmeɪʃn/", "tourists": "/ˈtʊərɪsts/", "portray": "/pɔːˈtreɪ/", "foggy": "/ˈfɒɡi/", "realised": "/ˈrɪəlaɪzd/", "preparation": "/ˌprepəˈreɪʃn/", "smells": "/smelz/", "sounds": "/saʊndz/", "rules": "/ruːlz/"}};
+const IPA = D.IPA;
+/* ================= CORE: helpers · giọng đọc · ghi âm · chấm phát âm · gửi bài ================= */
+const $=s=>document.querySelector(s);
+const $$=s=>[...document.querySelectorAll(s)];
+function h(tag,attrs={},html){const e=document.createElement(tag);for(const k in attrs){if(k==='class')e.className=attrs[k];else e.setAttribute(k,attrs[k]);}if(html!=null)e.innerHTML=html;return e;}
+function esc(s){return String(s==null?'':s).replace(/[&<>"]/g,c=>({"&":"&amp;","<":"&lt;",">":"&gt;",'"':"&quot;"}[c]));}
+function md(s){return esc(s).replace(/\*\*([^*]+)\*\*/g,'<b>$1</b>').replace(/\*([^*]+)\*/g,'<i>$1</i>');}
+function toast(msg,ms=3500){const t=$('#toast');t.textContent=msg;t.style.display='block';clearTimeout(toast._t);toast._t=setTimeout(()=>t.style.display='none',ms);}
+function store(k,v){try{localStorage.setItem('wt2-'+LESSON+':'+k,JSON.stringify(v));}catch(e){}}
+function load(k,d){try{const v=localStorage.getItem('wt2-'+LESSON+':'+k);return v?JSON.parse(v):d;}catch(e){return d;}}
+function wc(t){return (String(t||'').match(/[A-Za-z0-9][A-Za-z0-9'’-]*/g)||[]).length;}
+
+/* ---- so sánh lời nói với câu mẫu ---- */
+const CONTR={"i'd":"i would","i'm":"i am","it's":"it is","can't":"cannot","don't":"do not","didn't":"did not","isn't":"is not","aren't":"are not","wasn't":"was not","i've":"i have","that's":"that is","there's":"there is","won't":"will not","doesn't":"does not","they're":"they are","we're":"we are","you're":"you are"};
+const NUM={"1":"one","2":"two","3":"three","4":"four","5":"five","6":"six","7":"seven","8":"eight","9":"nine","10":"ten"};
+const ALIAS={favourite:"favorite",colour:"color",idealised:"idealized",idealise:"idealize",organisations:"organizations",realised:"realized",realise:"realize",glamorised:"glamorized",recognise:"recognize",travellers:"travelers",traveller:"traveler",programmes:"programs",programme:"program",centre:"center",nuanced:"nuanced",okay:"ok"};
+function normWord(w){
+  w=w.toLowerCase().replace(/[’`]/g,"'").replace(/[^a-z0-9']/g,'');
+  if(!w)return[];if(CONTR[w])return CONTR[w].split(' ');if(NUM[w])return[NUM[w]];
+  w=w.replace(/'s$/,'').replace(/'/g,'');if(ALIAS[w])return ALIAS[w].split(' ');return w?[w]:[];
+}
+function tokenize(text){const disp=text.replace(/—/g,' — ').split(/\s+/).filter(Boolean);const toks=[];disp.forEach((d,i)=>{d.split(/[-—\/]/).forEach(p=>normWord(p).forEach(t=>toks.push({t,i})));});return {disp,toks};}
+function spokenTokens(text){const out=[];String(text||'').replace(/[-—\/]/g,' ').split(/\s+/).forEach(w=>normWord(w).forEach(t=>out.push(t)));return out;}
+function compare(target,spoken){
+  const {disp,toks}=tokenize(target);const sp=spokenTokens(spoken);const n=toks.length,m=sp.length;
+  const L=Array.from({length:n+1},()=>new Uint16Array(m+1));
+  for(let i=n-1;i>=0;i--)for(let j=m-1;j>=0;j--)L[i][j]=toks[i].t===sp[j]?L[i+1][j+1]+1:Math.max(L[i+1][j],L[i][j+1]);
+  const matched=new Array(n).fill(false);let i=0,j=0;
+  while(i<n&&j<m){if(toks[i].t===sp[j]){matched[i]=true;i++;j++;}else if(L[i+1][j]>=L[i][j+1])i++;else j++;}
+  const dispOk=disp.map(()=>true),dispHas=disp.map(()=>false);
+  toks.forEach((tk,k)=>{dispHas[tk.i]=true;if(!matched[k])dispOk[tk.i]=false;});
+  const got=m?matched.filter(Boolean).length:0;const score=n?Math.round(got/n*100):0;const missed=[];
+  const html=disp.map((d,k)=>{if(!dispHas[k])return esc(d);if(dispOk[k])return `<span class="w-ok">${esc(d)}</span>`;
+    const clean=d.replace(/[^A-Za-z'’-]/g,'');missed.push(clean);return `<button class="w-no" data-say="${esc(clean)}" title="Bấm để nghe">${esc(d)}</button>`;}).join(' ');
+  return {score,html,missed:[...new Set(missed.map(x=>x.toLowerCase()))]};
+}
+
+/* ---- giọng đọc của trình duyệt ---- */
+let EN_VOICE=null;const synth=window.speechSynthesis;
+function rankVoice(v){if(!/^en/i.test(v.lang))return -1;let s=0;const n=v.name;
+  if(/en[-_]GB/i.test(v.lang))s+=12;else if(/en[-_]US/i.test(v.lang))s+=10;
+  if(/Natural|Neural|Online|Premium|Enhanced/i.test(n))s+=30;if(/Google/i.test(n))s+=18;
+  if(/Samantha|Ava|Allison|Serena|Daniel|Karen|Moira|Aria|Jenny|Guy|Libby|Sonia|Emma|Brian|Ryan|Arthur|Martha/i.test(n))s+=15;
+  if(/Fred|Albert|Bad News|Bells|Boing|Bubbles|Cellos|Jester|Organ|Trinoids|Whisper|Zarvox|Wobble|Superstar|Junior|Ralph|Kathy|Grandma|Grandpa|Rocko|Shelley|Flo|Eddy|Reed|Sandy/i.test(n))s-=40;return s;}
+function loadVoices(){if(!synth)return;const all=synth.getVoices();const en=all.filter(v=>rankVoice(v)>=0).sort((a,b)=>rankVoice(b)-rankVoice(a));
+  const sel=$('#voiceSel');if(!sel)return;const saved=load('voice',null);
+  if(!en.length){sel.innerHTML='<option>Không có giọng tiếng Anh</option>';return;}
+  sel.innerHTML=en.map((v,i)=>`<option value="${i}">${esc(v.name)} (${v.lang})</option>`).join('');
+  let idx=0;if(saved){const k=en.findIndex(v=>v.name===saved);if(k>=0)idx=k;}sel.value=idx;EN_VOICE=en[idx];
+  sel.onchange=()=>{EN_VOICE=en[+sel.value];store('voice',EN_VOICE.name);speak('Hello! This is how I sound.');};}
+if(synth){loadVoices();synth.onvoiceschanged=loadVoices;}
+function rate(){const r=$('#rate');return r?+r.value:0.92;}
+(function(){const r=$('#rate');if(!r)return;r.value=load('rate',0.92);$('#rateV').textContent=r.value;r.oninput=e=>{$('#rateV').textContent=e.target.value;store('rate',+e.target.value);};})();
+function speak(text,{slow=false,onend}={}){
+  if(!synth){toast('Trình duyệt này không đọc được. Hãy dùng Chrome hoặc Safari.');return;}
+  synth.cancel();const u=new SpeechSynthesisUtterance(text);u.lang=EN_VOICE?EN_VOICE.lang:'en-GB';if(EN_VOICE)u.voice=EN_VOICE;
+  u.rate=slow?Math.max(0.5,rate()*0.7):rate();if(onend)u.onend=onend;setTimeout(()=>synth.speak(u),40);}
+function stopSpeak(){synth&&synth.cancel();}
+document.addEventListener('click',e=>{const b=e.target.closest('[data-say]');if(b&&!b.closest('.pr-btns')){speak(b.dataset.say,{slow:b.classList.contains('w-no')||b.classList.contains('fix')});}});
+
+/* ---- ghi âm + chấm phát âm ---- */
+const SR=window.SpeechRecognition||window.webkitSpeechRecognition;
+const RESULTS=load('results',{});const BLOBS={};let STREAM=null,ACTIVE=null;
+/* COLLECT mode: bản ghi lưu trong máy (IndexedDB), học sinh tự nộp tất cả ở bước cuối */
+const COLLECT_MODE=typeof COLLECT!=='undefined'&&!!COLLECT;
+function idbOpen(){return new Promise((res,rej)=>{try{const r=indexedDB.open('wt2-'+LESSON,1);r.onupgradeneeded=()=>r.result.createObjectStore('rec');r.onsuccess=()=>res(r.result);r.onerror=()=>rej(r.error);}catch(e){rej(e);}});}
+async function idbPut(k,v){const db=await idbOpen();return new Promise((res,rej)=>{const tx=db.transaction('rec','readwrite');tx.objectStore('rec').put(v,k);tx.oncomplete=()=>res();tx.onerror=()=>rej(tx.error);});}
+async function idbAll(){const db=await idbOpen();return new Promise((res,rej)=>{const tx=db.transaction('rec','readonly');const st=tx.objectStore('rec');const out={};const rq=st.openCursor();rq.onsuccess=()=>{const c=rq.result;if(c){out[c.key]=c.value;c.continue();}else res(out);};rq.onerror=()=>rej(rq.error);});}
+const IDB_READY=COLLECT_MODE&&window.indexedDB?idbAll().then(m=>{for(const k in m)if(RESULTS[k]&&!BLOBS[k])BLOBS[k]=m[k];}).catch(()=>{}):Promise.resolve();
+async function getStream(){if(STREAM&&STREAM.active)return STREAM;STREAM=await navigator.mediaDevices.getUserMedia({audio:{echoCancellation:true,noiseSuppression:true}});return STREAM;}
+function pickMime(){if(!window.MediaRecorder)return'';for(const m of['audio/webm;codecs=opus','audio/mp4','audio/webm','audio/ogg'])if(MediaRecorder.isTypeSupported&&MediaRecorder.isTypeSupported(m))return m;return'';}
+async function startRec(ctx){
+  if(!ACTIVE&&!String(ctx.target||'').trim()){ctx.ui.msg('Em hãy viết câu của em trước rồi mới ghi âm nhé.');return;}
+  if(ACTIVE){const same=ACTIVE.ctx===ctx;stopRec();if(same)return;}
+  stopSpeak();
+  if(!navigator.mediaDevices||!window.MediaRecorder){ctx.ui.msg('Trình duyệt này chưa ghi âm được. Hãy mở bằng Chrome (máy tính/Android) hoặc Safari (iPhone).');return;}
+  let s;try{s=await getStream();}catch(e){ctx.ui.msg('Chưa mở được micro. Bấm biểu tượng 🔒 cạnh địa chỉ trang → cho phép Micro rồi thử lại.');return;}
+  const mime=pickMime();let mr;try{const o={audioBitsPerSecond:48000};if(mime)o.mimeType=mime;mr=new MediaRecorder(s,o);}catch(e){mr=new MediaRecorder(s);}
+  const st={ctx,mr,chunks:[],finals:[],interim:'',t0:Date.now(),stopping:false,mrDone:false,recDone:!SR};
+  mr.ondataavailable=e=>{if(e.data&&e.data.size)st.chunks.push(e.data);};
+  mr.onstop=()=>{st.blob=new Blob(st.chunks,{type:mr.mimeType||'audio/webm'});st.mrDone=true;finish(st);};
+  if(SR){const r=new SR();r.lang='en-GB';r.continuous=true;r.interimResults=true;
+    r.onresult=e=>{let inter='';for(let i=e.resultIndex;i<e.results.length;i++){const res=e.results[i];if(res.isFinal)st.finals.push(res[0].transcript);else inter+=res[0].transcript;}st.interim=inter;ctx.ui.live((st.finals.join(' ')+' '+inter).trim());};
+    r.onerror=e=>{if(['not-allowed','service-not-allowed','network','audio-capture','language-not-supported'].includes(e.error))st.srFail=true;};
+    r.onend=()=>{if(!st.stopping&&!st.srFail){try{r.start();}catch(_){}}else{st.recDone=true;finish(st);}};
+    st.r=r;try{r.start();}catch(_){st.srFail=true;st.recDone=true;}}
+  mr.start();ACTIVE=st;ctx.ui.setRec(true);
+  st.tick=setInterval(()=>{const sec=(Date.now()-st.t0)/1000;ctx.ui.tick(sec);if(sec>=ctx.maxSec)stopRec();},250);
+}
+function stopRec(){const st=ACTIVE;if(!st)return;ACTIVE=null;st.stopping=true;clearInterval(st.tick);st.dur=(Date.now()-st.t0)/1000;
+  st.ctx.ui.setRec(false);st.ctx.ui.live('Đang chấm…');try{st.mr.stop();}catch(_){}
+  if(st.r&&!st.recDone){try{st.r.stop();}catch(_){}setTimeout(()=>{st.recDone=true;finish(st);},2500);}}
+function finish(st){if(st.done||!st.mrDone||!st.recDone)return;st.done=true;const c=st.ctx;
+  const transcript=(st.finals.join(' ')+' '+(st.interim||'')).trim();BLOBS[c.key]=st.blob;const useSR=SR&&!st.srFail;
+  const r={label:c.label,target:c.target,transcript,dur:Math.round(st.dur*10)/10,score:null,t:Date.now(),file:c.file};if(COLLECT_MODE&&window.indexedDB)idbPut(c.key,st.blob).catch(()=>{});
+  if(useSR)r.score=compare(c.target,transcript).score;RESULTS[c.key]=r;store('results',RESULTS);c.ui.done(r,useSR);if(window.onRecSaved)onRecSaved(c.key);}
+
+/* practice({key,label,target|targetFn,maxSec,file,own}) – nghe mẫu · ghi âm · nghe lại · gửi */
+function practice({key,label,target,targetFn,maxSec=25,file,own=false}){
+  const el=h('div',{class:'pr'});
+  el.innerHTML=`<div class="pr-btns">
+    <button class="b" data-a="model">🔊 ${own?'Máy đọc câu của em':'Nghe'}</button>
+    ${own?'':'<button class="b" data-a="slow">🐢 Chậm</button>'}
+    <button class="b rec" data-a="rec">🎙 Ghi âm</button>
+    <button class="b" data-a="play" disabled>▶ Nghe lại</button>
+    <button class="b primary" data-a="send" hidden>📤 Gửi bản ghi này</button>
+    <span class="timer"></span><span class="cl"></span></div><div class="live"></div><div class="res"></div>`;
+  const q=s=>el.querySelector(s);const recB=q('[data-a=rec]'),playB=q('[data-a=play]'),sendB=q('[data-a=send]'),timer=q('.timer'),live=q('.live'),res=q('.res'),cl=q('.cl');
+  let audio=null;
+  const ctx={key,label,get target(){return targetFn?targetFn():target;},maxSec,file:file||key,ui:{
+    setRec(on){recB.classList.toggle('on',on);recB.innerHTML=on?'■ Dừng':'🎙 Ghi âm';if(on){res.innerHTML='';live.textContent=SR?'Đang nghe em đọc…':'Đang ghi âm…';}else timer.textContent='';},
+    tick(sec){timer.textContent=Math.floor(sec)+'s / '+maxSec+'s';},live(t){live.textContent=t;},
+    msg(t){live.textContent='';res.innerHTML=`<div class="tip">⚠️ ${esc(t)}</div>`;},
+    done(r,useSR){live.textContent='';show(r,useSR);const has=!!BLOBS[key];playB.disabled=!has;
+      if(COLLECT_MODE){sendB.hidden=true;if(has){cl.className='cl sent-ok';cl.textContent='💾 Đã lưu. Chưa ổn thì ghi lại; nộp tất cả ở bước ⑧.';}}
+      else{sendB.hidden=!has||!HAS_URL;if(has){cl.className='cl sent-wait';cl.textContent='Nghe lại – ổn thì bấm 📤 Gửi; chưa ổn thì ghi âm lại.';}}},
+    cloud(state){cl.className='cl '+(state==='ok'?'sent-ok':state==='bad'?'sent-bad':'sent-wait');cl.textContent=state==='ok'?'✅ Đã gửi thầy/cô':state==='bad'?'⚠️ Chưa gửi được, đang thử lại…':'☁️ Đang gửi…';if(state==='ok')sendB.hidden=true;}}};
+  function show(r,useSR){
+    if(useSR&&r.score!=null){const c=compare(ctx.target,r.transcript);const cls=c.score>=85?'hi':c.score>=60?'mid':'lo';
+      const msg=c.score>=85?'Rất tốt! Nghe lại bản của em để kiểm tra nhấn âm và ngữ điệu.':c.score>=60?'Khá rồi. Bấm các từ đỏ để nghe lại, rồi đọc lại cả câu.':'Nghe mẫu chậm 🐢 2–3 lần, đọc theo từng cụm rồi ghi âm lại.';
+      let fx='';if(c.missed.length){fx='<div class="fixlist">'+c.missed.slice(0,8).map(w=>`<button class="fix" data-say="${esc(w)}">🔊 ${esc(w)}${IPA[w]?' <span class="ipa">'+IPA[w]+'</span>':''}</button>`).join('')+'</div>';
+        if(c.missed.some(w=>/(s|ed|t|d|k|p|z)$/.test(w)))fx+='<div class="tip">💡 Đọc rõ <b>âm cuối</b> (/s/ /z/ /t/ /d/ /k/): người Việt hay nuốt âm này nên máy không nghe ra.</div>';}
+      if(!r.transcript)fx='<div class="tip">Máy chưa nghe được. Em nói to, rõ và gần micro hơn nhé.</div>';
+      res.innerHTML=`<span class="score ${cls}">${c.score}%</span>${msg}<div class="diff">${c.html}</div>${fx}`;
+    }else res.innerHTML=`<div class="tip">Đã ghi âm (${r.dur}s). Nghe mẫu rồi nghe bản của em để tự so sánh.</div>`;}
+  el.addEventListener('click',e=>{const b=e.target.closest('[data-a]');if(!b)return;const a=b.dataset.a;
+    if(a==='model')speak(ctx.target);if(a==='slow')speak(ctx.target,{slow:true});if(a==='rec')startRec(ctx);
+    if(a==='play'){if(!BLOBS[key])return;if(!audio||audio._b!==BLOBS[key]){audio=new Audio(URL.createObjectURL(BLOBS[key]));audio._b=BLOBS[key];}stopSpeak();audio.currentTime=0;audio.play();}
+    if(a==='send'){if(!stuName()){toast('Em ghi tên trước nhé (tab Nộp bài).');return;}enqueueUpload(key,BLOBS[key],RESULTS[key],ctx.ui.cloud,ctx.file);}});
+  if(RESULTS[key]&&RESULTS[key].score!=null&&SR)show(RESULTS[key],true);
+  if(COLLECT_MODE&&RESULTS[key])IDB_READY.then(()=>{if(BLOBS[key]){playB.disabled=false;cl.className='cl sent-ok';cl.textContent=RESULTS[key].sent?'✅ Đã nộp bản này':'💾 Đã lưu – nộp ở bước ⑧';}});
+  return el;
+}
+
+/* ---- gửi bài về Google Drive / Sheet của giáo viên ---- */
+const HAS_URL=/^https:\/\/script\.google(usercontent)?\.com\//.test(SCRIPT_URL);
+function stuName(){const el=$('#stuName');return ((el&&el.value)||load('name','')).trim();}
+async function toMp3(blob){if(!window.lamejs)return null;const AC=window.AudioContext||window.webkitAudioContext;if(!AC)return null;const ac=new AC();
+  try{const buf=await new Promise((res,rej)=>{blob.arrayBuffer().then(ab=>ac.decodeAudioData(ab,res,rej)).catch(rej);});
+    const sr=22050,len=Math.ceil(buf.duration*sr);const off=new OfflineAudioContext(1,len,sr);const src=off.createBufferSource();src.buffer=buf;src.connect(off.destination);src.start();
+    const out=await off.startRendering();const f=out.getChannelData(0);const pcm=new Int16Array(f.length);
+    for(let i=0;i<f.length;i++){const v=Math.max(-1,Math.min(1,f[i]));pcm[i]=v<0?v*0x8000:v*0x7FFF;}
+    const enc=new lamejs.Mp3Encoder(1,sr,48);const parts=[];for(let i=0;i<pcm.length;i+=1152){const b=enc.encodeBuffer(pcm.subarray(i,i+1152));if(b.length)parts.push(new Uint8Array(b));}
+    const e=enc.flush();if(e.length)parts.push(new Uint8Array(e));return new Blob(parts,{type:'audio/mpeg'});
+  }catch(err){return null;}finally{try{ac.close();}catch(_){}}}
+function b64(blob){return new Promise((res,rej)=>{const r=new FileReader();r.onload=()=>res(String(r.result).split(',')[1]);r.onerror=rej;r.readAsDataURL(blob);});}
+async function postJSON(obj){const body=JSON.stringify(obj);
+  try{const r=await fetch(SCRIPT_URL,{method:'POST',body,headers:{'Content-Type':'text/plain;charset=utf-8'},redirect:'follow'});const j=await r.json();if(!j.ok)throw new Error(j.error||'fail');return j;}
+  catch(err){if(err instanceof TypeError){await fetch(SCRIPT_URL,{method:'POST',body,mode:'no-cors',headers:{'Content-Type':'text/plain;charset=utf-8'}});return {ok:true};}throw err;}}
+const QUEUE=[];let BUSY=false;const UI_CB={};
+function updateCloud(){const el=$('#cloud');if(!el)return;const n=QUEUE.length+(BUSY?1:0);
+  if(n){el.hidden=false;el.textContent='☁️ Đang gửi '+n+' bản ghi âm…';}else if(updateCloud.sent){el.hidden=false;el.textContent='✅ Đã gửi '+updateCloud.sent+' bản ghi âm';}else el.hidden=true;}
+updateCloud.sent=0;
+function enqueueUpload(key,blob,r,cb,file){if(!HAS_URL||!blob)return;UI_CB[key]=cb;cb&&cb('wait');
+  const i=QUEUE.findIndex(q=>q.key===key);const job={key,blob,r,tries:0,file:file||key};if(i>=0)QUEUE[i]=job;else QUEUE.push(job);updateCloud();runQueue();}
+async function runQueue(){if(BUSY||!QUEUE.length)return;BUSY=true;const job=QUEUE.shift();updateCloud();const cb=UI_CB[job.key];
+  try{let blob=await toMp3(job.blob),ext='mp3',mime='audio/mpeg';
+    if(!blob){blob=job.blob;mime=(blob.type||'audio/webm').split(';')[0];ext=mime.includes('mp4')?'m4a':mime.includes('ogg')?'ogg':'webm';}
+    await postJSON({type:'audio',name:stuName()||'Không tên',lesson:LESSON,file:job.file+'.'+ext,mime,label:job.r.label,target:job.r.target,transcript:job.r.transcript,score:job.r.score,dur:job.r.dur,audio:await b64(blob)});
+    RESULTS[job.key].sent=true;store('results',RESULTS);updateCloud.sent++;cb&&cb('ok');
+  }catch(err){job.tries++;cb&&cb('bad');if(job.tries<6)setTimeout(()=>{if(!QUEUE.some(q=>q.key===job.key))QUEUE.push(job);updateCloud();runQueue();},Math.min(30000,2000*2**job.tries));}
+  finally{BUSY=false;updateCloud();runQueue();}}
+async function uploadRec(key){const blob=BLOBS[key],r=RESULTS[key];if(!blob||!r)throw new Error('missing');
+  let b=await toMp3(blob),ext='mp3',mime='audio/mpeg';
+  if(!b){b=blob;mime=(blob.type||'audio/webm').split(';')[0];ext=mime.includes('mp4')?'m4a':mime.includes('ogg')?'ogg':'webm';}
+  let err;for(let t=0;t<3;t++){try{await postJSON({type:'audio',name:stuName()||'Không tên',lesson:LESSON,file:(r.file||key)+'.'+ext,mime,label:r.label,target:r.target,transcript:r.transcript,score:r.score,dur:r.dur,audio:await b64(b)});
+      r.sent=true;store('results',RESULTS);return;}catch(e){err=e;await new Promise(z=>setTimeout(z,1500*(t+1)));}}throw err;}
+function recSummary(){const v=Object.values(RESULTS);const sc=v.filter(r=>r.score!=null).map(r=>r.score);
+  return {n:v.filter(r=>r.sent).length,avg:sc.length?Math.round(sc.reduce((a,b)=>a+b,0)/sc.length):null};}
+
+/* ---- tab ---- */
+function initTabs(onShow){$$('.tab').forEach(t=>t.onclick=()=>{$$('.tab').forEach(x=>x.setAttribute('aria-selected',x===t));$$('.panel').forEach(p=>p.classList.toggle('on',p.id==='p-'+t.dataset.p));
+  store('tab',t.dataset.p);stopSpeak();window.scrollTo({top:$('.tabs').offsetTop-4,behavior:'smooth'});onShow&&onShow(t.dataset.p);});
+  const saved=load('tab',null);const t=saved&&$(`.tab[data-p="${saved}"]`);if(t)t.click();}
+function gotoTab(p){const t=$(`.tab[data-p="${p}"]`);t&&t.click();}
+
+/* ---- hỏi tên ---- */
+function initGate(){const g=$('#gate'),inp=$('#gateName');const sn=$('#stuName');if(sn)sn.value=load('name','');
+  if(!load('name',''))g.hidden=false;
+  const go=()=>{const v=inp.value.trim();if(!v){inp.focus();return;}store('name',v);if(sn)sn.value=v;g.hidden=true;};
+  $('#gateGo').onclick=go;inp.onkeydown=e=>{if(e.key==='Enter')go();};
+  if(sn)sn.addEventListener('change',()=>{const v=sn.value.trim();if(v)store('name',v);else sn.value=load('name','');});
+  if(!HAS_URL)$('#noUrl').hidden=false;
+  window.addEventListener('beforeunload',e=>{if(QUEUE.length||BUSY||ACTIVE||window.UPLOADING){e.preventDefault();e.returnValue='';}});}
+
+
+const ST=Object.assign({kw:[],kwDone:false,typ:{},pos:null,evm:{},evDone:false,pick:[],ideas:{A:[{},{}],B:[{},{}]},lv:{},wf:{},wfDone:false,para:'',stress:{},build:{},draft:'',quiz:{},submitted:false},load('st2',{}));
+function save(){store('st2',ST);refreshDone();}
+const say=(t,pad='1px 7px')=>`<button class="b" data-say="${esc(t)}" style="padding:${pad}" title="Nghe">🔊</button>`;
+const syl=s=>esc(s).split('·').map(p=>/^[A-Z]+$/.test(p.trim())?`<span class="st">${p}</span>`:p).join('·');
+function normS(s){return String(s||'').toLowerCase().replace(/[’‘]/g,"'").replace(/[“”"]/g,'').replace(/\s+/g,' ').trim();}
+
+/* ===== ĐỀ BÀI + HÀNH TRÌNH ===== */
+const P=D.PROMPT,PV=D.PROMPT_VI;
+$('#promptBox').innerHTML=`<p>${esc(P.statement)}</p><p class="vi">${esc(PV.statement)}</p><p class="pq">${esc(P.q1)} <span class="vi" style="font-weight:400">· ${esc(PV.q1)}</span></p><p class="pq">${esc(P.q2)}</p><p class="vi">${esc(PV.q2)}</p><p class="vi-s">${esc(P.inst)} <span class="vi">· ${esc(PV.inst)}</span></p>`;
+$('[data-say-prompt]').onclick=()=>speak(P.statement+' '+P.q1+' '+P.q2);
+const vt=$('#viToggle');vt.checked=load('vi',true);document.body.classList.toggle('novi',!vt.checked);vt.onchange=()=>{document.body.classList.toggle('novi',!vt.checked);store('vi',vt.checked);};
+$('#tabs').innerHTML=D.STEPS.map((s,i)=>`<button class="tab" role="tab" data-p="${s[0]}" aria-selected="${i?'false':'true'}">${esc(s[1])}</button>`).join('');
+$('#journey').innerHTML=D.STEPS.map(s=>`<button class="jstep" data-go="${s[0]}"><b>${esc(s[1])}</b><span>${esc(s[2])}</span><div class="out">→ ${esc(s[3])}</div></button>`).join('');
+$('#journey').onclick=e=>{const b=e.target.closest('[data-go]');if(b)gotoTab(b.dataset.go);};
+$$('[data-next]').forEach(el=>{const i=D.STEPS.findIndex(s=>s[0]===el.dataset.next);const n=D.STEPS[i+1];if(!n)return;
+  el.innerHTML=`<button class="b primary" data-go="${n[0]}">Tiếp: ${esc(n[1])} →<br><span style="font-weight:400;font-size:13.5px">${esc(n[2])}</span></button>`;el.onclick=()=>gotoTab(n[0]);});
+
+/* ---- bộ câu hỏi chọn đáp án ---- */
+function choiceSet(box,items,stObj,opt={}){
+  items.forEach((it,i)=>{const d=h('div',{class:'q'});
+    d.innerHTML=`<div class="qt">${opt.noNum?'':(i+1)+'. '}${md(it.q)}</div><div class="opts">${it.o.map((o,k)=>`<button class="b opt" data-k="${k}">${esc(o)}</button>`).join('')}</div><div class="fb"></div>`;
+    const paint=()=>{const s=stObj[i];d.classList.remove('right','wrong');d.querySelectorAll('.opt').forEach(b=>b.classList.remove('right','wrong'));if(!s)return;const k=s.last;
+      d.classList.add(k===it.a?'right':'wrong');d.querySelectorAll('.opt').forEach(b=>{if(+b.dataset.k===k)b.classList.add(k===it.a?'right':'wrong');});
+      d.querySelector('.fb').innerHTML=(k===it.a?'✅ <b>Đúng.</b> ':'❌ <b>Chưa đúng.</b> Thử lại nhé. ')+(k===it.a&&it.x?esc(it.x):'');};
+    d.querySelector('.opts').onclick=e=>{const b=e.target.closest('.opt');if(!b)return;const k=+b.dataset.k;if(!stObj[i])stObj[i]={first:k};stObj[i].last=k;save();paint();if(k===it.a&&opt.sayOk)speak(opt.sayOk(it));};
+    paint();box.appendChild(d);});}
+function firstScore(items,stObj){return items.reduce((s,it,i)=>s+(stObj[i]&&stObj[i].first===it.a?1:0),0);}
+
+/* ===== ① HIỂU ĐỀ ===== */
+$('#glossTbl').innerHTML='<tr><th>Cụm trong đề</th><th>Phát âm</th><th>Nghĩa</th></tr>'+D.GLOSS.map(g=>`<tr><td>${say(g[0].replace('…',''))} <b>${esc(g[0])}</b></td><td class="ipa">${esc(g[1])}</td><td>${esc(g[2])}</td></tr>`).join('');
+function renderKW(){$('#kwBox').innerHTML=D.KEYS.map((k,i)=>{let c='chip';if(ST.kwDone){const on=ST.kw.includes(i);c+=k[1]?(on?' hit':' miss'):(on?' extra':'');}else if(ST.kw.includes(i))c+=' on';return `<button class="${c}" data-k="${i}">${esc(k[0])}</button>`;}).join(' ');
+  if(ST.kwDone){const keys=D.KEYS.filter(k=>k[1]);const hit=D.KEYS.filter((k,i)=>k[1]&&ST.kw.includes(i)).length;const extra=ST.kw.filter(i=>!D.KEYS[i][1]).length;
+    $('#kwScore').innerHTML=`<span class="score ${hit>=7?'hi':hit>=5?'mid':'lo'}">${hit}/${keys.length}</span> từ khoá đúng${extra?' · '+extra+' cụm không cần':''} <button class="b" id="kwRedo">↺ Làm lại</button>`;
+    $('#kwExplain').innerHTML='<div class="card">'+keys.map(k=>`<div class="tip">🔑 <b>${esc(k[0])}</b>: ${esc(k[2])}</div>`).join('')+'<div class="tip">Chú thích: <span class="chip hit">chọn đúng</span> <span class="chip miss">bỏ sót</span> <span class="chip extra">không cần</span></div></div>';
+    $('#kwRedo').onclick=()=>{ST.kw=[];ST.kwDone=false;save();$('#kwScore').innerHTML='';$('#kwExplain').innerHTML='';renderKW();};}}
+$('#kwBox').onclick=e=>{const b=e.target.closest('[data-k]');if(!b||ST.kwDone)return;const i=+b.dataset.k;ST.kw=ST.kw.includes(i)?ST.kw.filter(x=>x!==i):[...ST.kw,i];save();renderKW();};
+$('#kwCheck').onclick=()=>{if(!ST.kw.length){toast('Em hãy chọn vài cụm trước đã.');return;}ST.kwFirst=ST.kwFirst||ST.kw.slice();ST.kwDone=true;save();renderKW();};
+renderKW();
+choiceSet($('#typeBox'),D.TYPEQ,ST.typ);
+$('#trapTbl').innerHTML='<tr><th>Bẫy</th><th>Cách tránh</th></tr>'+D.TRAPS.map(t=>`<tr><td><b>❌ ${esc(t[0])}</b></td><td>${esc(t[1])}</td></tr>`).join('');
+function renderPos(){$('#posBox').innerHTML=D.POSITIONS.map((p,i)=>`<button class="card pos ${ST.pos===i?'sel':''}" data-pos="${i}"><b>${p.ok?'⭐ ':''}${esc(p.t)}</b><div class="en" style="font-size:15px">${esc(p.en)}</div>${ST.pos===i?`<div class="tip">${esc(p.eval)}</div>`:''}</button>`).join('');}
+$('#posBox').onclick=e=>{const b=e.target.closest('[data-pos]');if(!b)return;ST.pos=+b.dataset.pos;save();renderPos();};renderPos();
+$('#planTbl').innerHTML='<tr><th>Đoạn</th><th>Nhiệm vụ</th><th>Công cụ</th></tr>'+D.PLAN.map(r=>`<tr><td><b>${esc(r[0])}</b></td><td>${esc(r[1])}</td><td>${esc(r[2])}</td></tr>`).join('');
+
+/* ===== ② HIỂU CHỦ ĐỀ ===== */
+D.EVIDENCE.forEach(e=>{const c=h('div',{class:'card evc'});
+  c.innerHTML=`<h3><span class="tag ev">${e.id}</span>${e.icon} ${esc(e.title)}</h3>
+   <p class="story">${esc(e.story)}</p>
+   <div class="tip">💡 <b>Bài học:</b> ${esc(e.lesson)}</div>
+   <div class="tbl" style="margin-top:8px"><table class="kwt"><tr><th>Từ khoá</th><th>Phát âm</th><th>Nghĩa</th></tr>${e.kw.map(k=>`<tr><td>${say(k[0].replace(/ \(.*\)/,''))} <b>${esc(k[0])}</b></td><td class="ipa">${esc(k[1])}</td><td>${esc(k[2])}</td></tr>`).join('')}</table></div>
+   <div class="card sea" data-b6 style="margin:10px 0 4px"><div class="lvl">Câu Band 6 · đọc và ghi âm</div><div class="en">${esc(e.en6)}</div><div class="vi">${esc(e.vi6)}</div></div>
+   <details><summary>Thử thách Band 7+: cùng ý, diễn đạt sâu hơn</summary><div data-b7 style="margin-top:6px"><div class="en">${esc(e.en7)}</div><div class="vi">${esc(e.vi7)}</div></div></details>
+   <label class="row" style="margin-top:10px;font-weight:600"><input type="checkbox" data-pick="${e.id}" ${ST.pick.includes(e.id)?'checked':''}> Dùng thẻ ${e.id} trong bài của em</label>
+   <div class="src">Nguồn: ${e.links.map(l=>`<a href="${l[1]}" target="_blank" rel="noopener">${esc(l[0])}</a>`).join(' · ')}</div>`;
+  c.querySelector('[data-b6]').appendChild(practice({key:'ev6_'+e.id,label:'② Thẻ '+e.id+' · câu Band 6',target:e.en6,maxSec:25,file:'2-Chude_'+e.id+'_Band6'}));
+  c.querySelector('[data-b7]').appendChild(practice({key:'ev7_'+e.id,label:'② Thẻ '+e.id+' · câu Band 7+',target:e.en7,maxSec:30,file:'2-Chude_'+e.id+'_Band7'}));
+  $('#evBox').appendChild(c);});
+$('#evBox').onchange=e=>{const c=e.target.closest('[data-pick]');if(!c)return;const id=c.dataset.pick;ST.pick=c.checked?[...new Set([...ST.pick,id])].sort():ST.pick.filter(x=>x!==id);save();pickSum();};
+function pickSum(){const n=ST.pick.length;$('#pickSum').innerHTML=`<b>Thẻ em chọn:</b> ${n?ST.pick.map(id=>{const e=D.EVIDENCE.find(x=>x.id===id);return `<span class="tag ev">${id}</span>${esc(e.title)}`;}).join(' · '):'chưa chọn'}<div class="tip">${n>=2&&n<=3?'✓ Vừa đủ. Bài 250–300 từ chỉ cần 2–3 bằng chứng.':n>3?'Hơi nhiều: bài 250–300 từ chỉ nên dùng 2–3 thẻ để giải thích kỹ.':'Hãy chọn 2–3 thẻ (đánh dấu ☑ ở cuối mỗi thẻ). Gợi ý: D cho Thân bài 1; A hoặc E cho Thân bài 2; F cho Kết bài.'}</div>`;}
+pickSum();
+D.EVMATCH.forEach((m,i)=>{const d=h('div',{class:'q'});d.innerHTML=`<div class="qt">${i+1}. ${esc(m.q)}</div><select class="inp" data-m="${i}"><option value="">– chọn thẻ –</option>${D.EVIDENCE.map(e=>`<option value="${e.id}" ${ST.evm[i]===e.id?'selected':''}>${e.id} · ${esc(e.title)}</option>`).join('')}</select><div class="fb"></div>`;$('#evMatch').appendChild(d);});
+$('#evMatch').onchange=e=>{const s=e.target.closest('[data-m]');if(!s)return;ST.evm[+s.dataset.m]=s.value;save();};
+function paintEv(){if(!ST.evDone)return;let n=0;$$('#evMatch .q').forEach((d,i)=>{const ok=ST.evm[i]===D.EVMATCH[i].a;if(ok)n++;d.classList.toggle('right',ok);d.classList.toggle('wrong',!ok);d.querySelector('.fb').innerHTML=ok?'✅ Đúng':'❌ Đọc lại câu chuyện, thử thẻ khác nhé.';});
+  $('#evScore').innerHTML=`<span class="score ${n>=5?'hi':n>=3?'mid':'lo'}">${n}/${D.EVMATCH.length}</span>`;}
+$('#evCheck').onclick=()=>{if(ST.evFirst==null)ST.evFirst=D.EVMATCH.reduce((s,m,i)=>s+(ST.evm[i]===m.a?1:0),0);ST.evDone=true;save();paintEv();};paintEv();
+
+/* ===== ③ LÊN Ý ===== */
+$('#knowTbl').innerHTML='<tr><th>Loại hiểu biết</th><th>Học tốt hơn qua</th><th>Vì sao</th></tr>'+D.KNOW.map(r=>`<tr><td><b>${esc(r[0])}</b></td><td>${esc(r[1])}</td><td>${esc(r[2])}</td></tr>`).join('');
+D.THINK.forEach(t=>{const d=h('details',{});d.innerHTML=`<summary><span class="tag ${t.tag.toLowerCase()}">${t.tag}</span>${esc(t.name)}</summary><div class="tip">❓ ${esc(t.q)}</div><div class="card sea" style="margin:8px 0 4px"><div class="en">${esc(t.en)} ${say(t.en)}</div><div class="vi">${esc(t.vi)}</div></div>`;$('#thinkBox').appendChild(d);});
+const EVOPT='<option value="">– thẻ nào? –</option>'+D.EVIDENCE.map(e=>`<option value="${e.id}">${e.id} · ${esc(e.title)}</option>`).join('');
+function ideaRow(col,i){const v=ST.ideas[col][i]||{};const r=h('div',{class:'irow'});
+  r.innerHTML=`<input type="text" data-f="t" placeholder="Ý ${i+1}…" value="${esc(v.t||'')}">
+   <select class="inp" data-f="basis"><option value="">– căn cứ –</option>${D.BASIS.map((b,k)=>`<option value="${k}">${esc(b)}</option>`).join('')}</select>
+   <select class="inp" data-f="ev">${EVOPT}</select>
+   <input type="text" data-f="exp" placeholder="Ví dụ cụ thể: ở đâu, khi nào, chuyện gì…" value="${esc(v.exp||'')}" style="margin-top:6px">
+   <div class="flag"></div>`;
+  ['basis','ev'].forEach(f=>{r.querySelector(`[data-f=${f}]`).value=v[f]||'';});
+  const flag=()=>{const x=ST.ideas[col][i]||{};const fl=r.querySelector('.flag');
+    if(!(x.t||'').trim()){fl.innerHTML='';return;}
+    if(x.basis==='3')fl.innerHTML='🚩 <b>Cảm tính.</b> Ý này khó thuyết phục. Hãy gắn một thẻ A–F hoặc một trải nghiệm thật.';
+    else if(x.basis==='0'&&!x.ev)fl.innerHTML='⚠️ Em chọn “bằng chứng”: hãy chọn thẻ cụ thể.';
+    else if(x.basis==='1'&&!(x.exp||'').trim())fl.innerHTML='⚠️ Ghi cụ thể trải nghiệm: ở đâu, khi nào, chuyện gì.';
+    else if(x.basis)fl.innerHTML='<span class="ok-line">✓ Có căn cứ</span>';else fl.innerHTML='Chọn căn cứ cho ý này.';};
+  const upd=e=>{const f=e.target.dataset.f;if(!f)return;ST.ideas[col][i]=Object.assign(ST.ideas[col][i]||{},{[f]:e.target.value});save();flag();ideaSum();};
+  r.addEventListener('input',upd);r.addEventListener('change',upd);flag();return r;}
+['A','B'].forEach(col=>{for(let i=0;i<2;i++)$('#idea'+col).appendChild(ideaRow(col,i));});
+function allIdeas(){return ['A','B'].flatMap(c=>ST.ideas[c].map((x,i)=>Object.assign({col:c,i},x||{}))).filter(x=>(x.t||'').trim());}
+function ideaSum(){const a=allIdeas();const feel=a.filter(x=>x.basis==='3').length;const A=a.filter(x=>x.col==='A').length,B=a.filter(x=>x.col==='B').length;
+  $('#ideaSum').innerHTML=`<b>Tổng kết:</b> Thân bài 1: ${A}/2 ý · Thân bài 2: ${B}/2 ý · cảm tính: ${feel} ${feel?'🚩':''}<div class="tip">${A&&B?(feel?'Thay ý cảm tính bằng bằng chứng rồi sang bước ④.':'✓ Đủ ý cho cả hai câu hỏi. Các ý này sẽ được đưa vào bản nháp ở bước ⑥.'):'Cần ít nhất 1 ý cho mỗi thân bài.'}</div>`;}
+ideaSum();
+
+/* ===== ④ TỪ VỰNG ===== */
+const LVN=['Bậc 1 · Band 5','Bậc 2 · Band 6–6.5','Bậc 3 · Band 7+'];
+const VITEMS=[];D.VOCAB.forEach((p,pi)=>{const sec=h('div',{});sec.innerHTML=`<h4>📄 ${esc(p.part)} <span class="vi-s" style="font-weight:400">· ${esc(p.use)}</span></h4>`;
+  p.items.forEach((it,ii)=>{const id=pi+'_'+ii;VITEMS.push({id,part:p.part,it});const c=h('div',{class:'card'});
+    c.innerHTML=`<b>💡 Ý: “${esc(it.k)}”</b><div class="ladder" style="margin-top:8px">${it.lv.map((x,k)=>`<div data-lv="${k}" class="${ST.lv[id]===k?'sel':''}"><div class="lvl">${LVN[k]}</div><div><b>${esc(x[0])}</b> ${say(x[0])}</div><div class="ipa">${esc(x[1])}</div><div class="mean">${esc(x[2])}</div></div>`).join('')}</div><div class="vi-s" data-chosen style="margin-top:6px"></div>`;
+    const ch=c.querySelector('[data-chosen]');const showCh=()=>{ch.innerHTML=ST.lv[id]!=null?'✓ Em chọn: <b>'+esc(it.lv[ST.lv[id]][0])+'</b>':'👆 Bấm vào ô của bậc em sẽ dùng.';};showCh();
+    c.querySelector('.ladder').onclick=e=>{if(e.target.closest('[data-say]'))return;const d=e.target.closest('[data-lv]');if(!d)return;ST.lv[id]=+d.dataset.lv;save();c.querySelectorAll('[data-lv]').forEach(x=>x.classList.toggle('sel',x===d));showCh();};
+    c.appendChild(practice({key:'voc_'+id,label:'④ Cụm từ: '+it.k,targetFn:()=>it.lv[ST.lv[id]!=null?ST.lv[id]:1][0],maxSec:12,file:'4-TuVung_'+(VITEMS.length)}));
+    sec.appendChild(c);});$('#vocBox').appendChild(sec);});
+$('#wfIntro').innerHTML='<b>Vì sao phải đổi từ loại?</b> '+md(D.WF_INTRO)+'<div class="tip">Ví dụ: cùng một ý trong đề, viết lại bằng từ loại khác:</div>';
+$('#wfDemo').innerHTML='<tr><th>Trong đề</th><th></th><th>Viết lại (đổi từ loại)</th></tr>'+D.WF_DEMO.map(r=>`<tr><td><i>${esc(r[0])}</i></td><td>${r[1]}</td><td>${md(r[2])}</td></tr>`).join('');
+D.WF.forEach((w,i)=>{const d=h('div',{class:'q'});const s=ST.wf[i]||{};const parts=w.s.split('___');
+  d.innerHTML=`<div>${i+1}. ${esc(parts[0])}<input type="text" data-wf="${i}" value="${esc(s.v||'')}" autocomplete="off" autocapitalize="off" spellcheck="false">${esc(parts[1]||'')} <span class="vi-s">(${esc(w.base)} → ${esc(w.pos)})</span></div><div class="fb"></div>`;$('#wfBox').appendChild(d);});
+$('#wfBox').oninput=e=>{const t=e.target.closest('[data-wf]');if(!t)return;const i=+t.dataset.wf;ST.wf[i]=Object.assign(ST.wf[i]||{},{v:t.value});save();};
+function paintWF(){if(!ST.wfDone)return;let n=0;D.WF.forEach((w,i)=>{const d=$$('#wfBox .q')[i];const v=normS((ST.wf[i]||{}).v);const ok=w.a.includes(v);if(ok)n++;d.classList.toggle('right',ok);d.classList.toggle('wrong',!ok);
+  const full=w.s.replace('___',w.a[0]);d.querySelector('.fb').innerHTML=(ok?'✅ ':'❌ Đáp án: <b>'+esc(w.a[0])+'</b> · ')+`<span class="en" style="font-size:15px">${esc(full.charAt(0).toUpperCase()+full.slice(1))}</span> ${say(full)}<div class="vi">${esc(w.vi)}</div>`;});
+  $('#wfScore').innerHTML=`<span class="score ${n>=7?'hi':n>=5?'mid':'lo'}">${n}/${D.WF.length}</span>`;}
+$('#wfCheck').onclick=()=>{if(ST.wfFirst==null)ST.wfFirst=D.WF.reduce((s,w,i)=>s+(w.a.includes(normS((ST.wf[i]||{}).v))?1:0),0);ST.wfDone=true;save();paintWF();};paintWF();
+const para=$('#para');para.value=ST.para||'';
+function paraFb(){const v=normS(para.value);const fb=$('#paraFb');if(!v){fb.innerHTML='';return;}
+  const copied=['some people say that you can learn more','by watching television programmes and films about it','by actually visiting it'].filter(x=>v.includes(x));
+  fb.innerHTML=copied.length?'⚠️ Còn chép nguyên cụm của đề: <i>'+copied.map(esc).join('</i>, <i>')+'</i>. Thử đổi từ loại hoặc dùng cụm ở phần A.':'<span class="ok-line">✓ Không chép nguyên văn đề.</span> '+wc(para.value)+' từ.';}
+para.oninput=()=>{ST.para=para.value;save();paraFb();};paraFb();
+D.STRESS_RULES.forEach((r,ri)=>{const c=h('div',{class:'card'});
+  c.innerHTML=`<h4 style="margin-top:0">${esc(r.name)}</h4><div class="tip">🎯 ${esc(r.why)}</div>
+   <div class="tbl" style="margin-top:6px"><table class="kwt"><tr><th>Từ</th><th>Âm tiết (IN HOA = nhấn)</th><th>Phát âm</th></tr>${r.words.map(w=>`<tr><td>${say(w[0].replace(/ \(.*\)/,'').replace(' → ',', '))} <b>${esc(w[0])}</b></td><td class="syl">${syl(w[1])}</td><td class="ipa">${esc(w[2])}</td></tr>`).join('')}</table></div>
+   <div class="card sea" data-sent style="margin:8px 0"><div class="lvl">Đọc câu có các từ trên</div><div class="en">${esc(r.sent)}</div></div>
+   <div class="lvl" style="margin-top:8px">Tự kiểm tra: áp dụng quy tắc cho từ mới</div><div data-test></div>`;
+  c.querySelector('[data-sent]').appendChild(practice({key:'stress_'+ri,label:'④ Trọng âm · quy tắc '+(ri+1),target:r.sent,maxSec:20,file:'4-TrongAm_QuyTac'+(ri+1)}));
+  ST.stress[ri]=ST.stress[ri]||{};
+  choiceSet(c.querySelector('[data-test]'),r.test.map(t=>({q:'Trọng âm của “'+t.w+'”?',o:t.o,a:t.a,w:t.w.split(' (')[0].split('→').pop().trim()})),ST.stress[ri],{noNum:true,sayOk:it=>it.w});
+  $('#stressBox').appendChild(c);});
+
+/* ===== ⑤ CÂU THEN CHỐT ===== */
+const SLOTS={'Mở bài':['c1'],'Thân bài 1':['c2','c3'],'Thân bài 2':['c4','c5','c6'],'Kết bài':['c7']};
+function rxOK(b,v){const n=normS(v).replace(/^[\s\-–]+/,'');return !!n&&new RegExp(b.rx).test(n);}
+function renderMap(){$('#slotMap').innerHTML=Object.entries(SLOTS).map(([p,ids])=>`<div><b>${esc(p)}</b><div>${ids.map(id=>{const b=D.BUILD.find(x=>x.id===id);const ok=ST.build[id]&&ST.build[id].ok;return `<a href="#bc-${id}" class="slot ${ok?'ok':''}" title="${esc(b.gram)}">${id.toUpperCase()}${ok?' ✓':''}</a>`;}).join('')}</div><div class="vi-s">${ids.map(id=>esc(D.BUILD.find(x=>x.id===id).gram.split(':')[0])).join(' · ')}</div></div>`).join('');}
+D.BUILD.forEach((b,i)=>{const s=ST.build[b.id]||{};const c=h('div',{class:'card bc',id:'bc-'+b.id});
+  c.innerHTML=`<div class="lvl">${b.id.toUpperCase()} · ${esc(b.slot)}</div>
+   <h3 style="margin:2px 0 4px">${esc(b.gram)}</h3>
+   <div class="tip">📌 <b>Nhiệm vụ của câu:</b> ${esc(b.role)}</div>
+   <div class="tip">🎯 <b>Vì sao dùng cấu trúc này:</b> ${esc(b.why)}</div>
+   <div class="frame">${esc(b.frame)}</div>
+   <div class="card sea" style="margin:8px 0"><div class="lvl">Câu mẫu</div><div class="en">${esc(b.model)} ${say(b.model)}</div><div class="vi">${esc(b.vi)}</div></div>
+   <b>✍️ Câu của em</b> <span class="vi-s">(dùng ý và thẻ bằng chứng của em, đừng chép câu mẫu)</span>
+   <textarea data-bid="${b.id}" placeholder="${esc(b.frame.split('[')[0])}…">${esc(s.v||'')}</textarea>
+   <div class="row"><button class="b primary" data-chk>Kiểm tra cấu trúc</button></div><div class="fb"></div><div data-pr></div>`;
+  const ta=c.querySelector('textarea'),fb=c.querySelector('.fb');
+  const show=()=>{const x=ST.build[b.id];if(!x||x.ok==null){fb.innerHTML='';return;}
+    const same=normS(x.v).replace(/[.,]/g,'')===normS(b.model).replace(/[.,]/g,'');
+    fb.innerHTML=x.ok?(same?'<span class="bad-line">⚠️ Đúng cấu trúc nhưng đang chép câu mẫu.</span> Thay bằng ý của em nhé.':'<span class="ok-line">✅ Đúng cấu trúc!</span> Ghi âm đọc câu của em ở dưới.'):`<span class="bad-line">❌ Chưa đúng cấu trúc.</span> Cần: <b>${esc(b.need)}</b>.`;};
+  c.querySelector('[data-chk]').onclick=()=>{const ok=rxOK(b,ta.value);const x=ST.build[b.id]=ST.build[b.id]||{};x.v=ta.value;if(x.first==null&&ta.value.trim())x.first=ok;x.ok=ok;save();show();renderMap();};
+  ta.oninput=()=>{const x=ST.build[b.id]=ST.build[b.id]||{};x.v=ta.value;if(x.ok!=null){x.ok=rxOK(b,ta.value);show();renderMap();}save();};
+  c.querySelector('[data-pr]').appendChild(practice({key:'own_'+b.id,label:'⑤ '+b.id.toUpperCase()+' (câu của em)',targetFn:()=>ta.value,maxSec:30,own:true,file:'5-CauThenChot_'+b.id.toUpperCase()}));
+  show();$('#buildBox').appendChild(c);});
+renderMap();
+
+/* ===== ⑥ GHÉP BÀI ===== */
+const draft=$('#draft');draft.value=ST.draft||'';
+const sentOf=id=>{const x=ST.build[id];const v=(x&&x.v||'').trim();return v?v.replace(/\s+$/,'')+(/[.!?]$/.test(v)?'':'.'):'['+id.toUpperCase()+': viết ở bước ⑤]';};
+const ideaTxt=(col,i)=>{const x=ST.ideas[col][i]||{};if(!(x.t||'').trim())return '';const ev=x.ev?' (thẻ '+x.ev+')':'';const ex=(x.exp||'').trim()?' – ví dụ: '+x.exp.trim():'';return '[Giải thích ý: '+x.t.trim()+ev+ex+']';};
+function assemble(){
+  const pos=ST.pos!=null?D.POSITIONS[ST.pos].en:'[lập trường: chọn ở bước ①]';
+  const p1=[(ST.para||'').trim()||'[Câu viết lại đề: bước ④B]',sentOf('c1')].join(' ');
+  const p2=[sentOf('c2'),ideaTxt('A',0),sentOf('c3'),ideaTxt('A',1)].filter(Boolean).join(' ');
+  const p3=[sentOf('c4'),ideaTxt('B',0),sentOf('c5'),ideaTxt('B',1),sentOf('c6')].filter(Boolean).join(' ');
+  const p4=[sentOf('c7'),'['+pos.replace(/\.$/,'')+': nhắc lại mức độ bằng lời khác]'].join(' ');
+  return [p1,p2,p3,p4].join('\n\n');}
+$('#assemble').onclick=()=>{if(draft.value.trim()){ST.draftPrev=draft.value;$('#undo').hidden=false;}draft.value=assemble();ST.draft=draft.value;save();draftCheck();toast('Đã ghép bài. Viết tiếp vào các chỗ [ngoặc vuông].');};
+$('#undo').onclick=()=>{if(ST.draftPrev==null)return;draft.value=ST.draftPrev;ST.draft=draft.value;ST.draftPrev=null;$('#undo').hidden=true;save();draftCheck();};
+draft.oninput=()=>{ST.draft=draft.value;save();draftCheck();};
+function draftCheck(){const t=draft.value;const paras=t.split(/\n\s*\n/).filter(x=>x.trim()).length;const brk=(t.match(/\[[^\]]*\]/g)||[]).length;const n=wc(t.replace(/\[[^\]]*\]/g,''));
+  $('#wcInfo').textContent=n+' từ (không tính [ngoặc]) · '+paras+' đoạn';
+  const sents=t.replace(/\[[^\]]*\]/g,'').replace(/([.!?])\s+/g,'$1\n').split(/\n+/).map(s=>s.trim()).filter(Boolean);
+  const found=D.BUILD.map(b=>({id:b.id,ok:sents.some(s=>rxOK(b,s))}));
+  const ev=D.EVIDENCE.filter(e=>e.kw.some(k=>t.toLowerCase().includes(k[0].replace(/ \(.*\)/,'').toLowerCase())));
+  $('#draftChk').innerHTML=[[paras===4,'4 đoạn'],[n>=250,'≥ 250 từ'],[brk===0,'Hết chỗ [ngoặc]'],[/partly|to some extent|up to a point|to a large extent|untrue|entirely true/i.test(t),'Có lập trường rõ'],[ev.length>=2,'Dùng ≥ 2 thẻ bằng chứng']].map(c=>`<span class="chip ${c[0]?'hit':'miss'}">${c[0]?'✓':'○'} ${c[1]}</span>`).join('')
+    +found.map(f=>`<span class="chip ${f.ok?'hit':'miss'}">${f.ok?'✓':'○'} ${f.id.toUpperCase()}</span>`).join('');
+  $('#draftTip').innerHTML=!t.trim()?'Bấm “Ghép bài” để bắt đầu.':brk?`Còn <b>${brk}</b> chỗ [ngoặc vuông]: viết thành câu tiếng Anh hoàn chỉnh (1–2 câu giải thích + ví dụ cho mỗi ý).`:n<250?'Bài còn ngắn: thêm giải thích hoặc ví dụ cụ thể ở thân bài.':'Tốt! Đọc lại để kiểm tra mạo từ (a/an/the), số nhiều (-s) và thì của động từ.';
+  myVocab();}
+function myVocab(){const t=draft.value.toLowerCase();const ch=VITEMS.filter(v=>ST.lv[v.id]!=null);
+  $('#myVocab').innerHTML=ch.length?ch.map(v=>{const ph=v.it.lv[ST.lv[v.id]][0];const head=ph.toLowerCase().split(' ').slice(0,3).join(' ');return `<span class="chip ${t.includes(head)?'hit':''}" title="${esc(v.part)}">${esc(ph)}</span>`;}).join(''):'<span class="vi-s">Chưa chọn cụm nào ở bước ④A.</span>';}
+$('#introPr').appendChild(practice({key:'own_intro',label:'⑥ Mở bài của em',targetFn:()=>draft.value.replace(/\[[^\]]*\]/g,'').split(/\n\s*\n/)[0].trim(),maxSec:60,own:true,file:'6-MoBai_cua_em'}));
+$('#essayBox').innerHTML=D.ESSAY.map((p,i)=>`<p data-pi="${i}"><span class="lab">${esc(p[0])}</span>${esc(p[1])}</p><p class="vi" style="margin-top:-6px">${esc(D.ESSAY_VI[i])}</p>`).join('')+`<div class="vi-s">${wc(D.ESSAY.map(p=>p[1]).join(' '))} từ · Ví dụ Hà Nội là ví dụ chung, em hãy dùng trải nghiệm thật của mình.</div>`;
+let essayIdx=-1;function playEssay(i){if(i>=D.ESSAY.length){$$('#essayBox p[data-pi]').forEach(p=>p.style.background='');return;}essayIdx=i;$$('#essayBox p[data-pi]').forEach((p,k)=>p.style.background=k===i?'var(--sunSoft)':'');speak(D.ESSAY[i][1],{onend:()=>{if(essayIdx===i)setTimeout(()=>playEssay(i+1),400);}});}
+$('#essayPlay').onclick=()=>playEssay(0);$('#essayStop').onclick=()=>{essayIdx=-1;stopSpeak();$$('#essayBox p').forEach(p=>p.style.background='');};
+draftCheck();
+
+/* ===== ⑦ KIỂM TRA ===== */
+choiceSet($('#quizBox'),D.QUIZ,ST.quiz);
+function quizScore(){const done=Object.keys(ST.quiz).length;const sc=firstScore(D.QUIZ,ST.quiz);$('#quizScore').innerHTML=`Đã làm <b>${done}/${D.QUIZ.length}</b> · đúng ngay lần đầu <span class="score ${sc>=10?'hi':sc>=7?'mid':'lo'}">${sc}/${D.QUIZ.length}</span>`;}
+$('#quizBox').addEventListener('click',()=>setTimeout(quizScore,0));quizScore();
+
+/* ===== ⑧ NỘP BÀI ===== */
+const GROUPS=[['2-','② Hiểu chủ đề'],['4-','④ Từ vựng & trọng âm'],['5-','⑤ Câu then chốt'],['6-','⑥ Bài của em']];
+const SKIP=load('skip',{});
+function recKeys(){return Object.keys(RESULTS).sort((a,b)=>String(RESULTS[a].file||a).localeCompare(String(RESULTS[b].file||b),'vi',{numeric:true}));}
+function renderRecs(){const keys=recKeys();let html='<tr><th></th><th>Bản ghi</th><th>Thời lượng</th><th>Phát âm</th><th>Trạng thái</th></tr>';
+  if(!keys.length)html+='<tr><td colspan="5" class="vi-s">Chưa có bản ghi nào. Các nút 🎙 nằm ở bước ②, ④, ⑤, ⑥.</td></tr>';
+  GROUPS.forEach(([pre,name])=>{const ks=keys.filter(k=>String(RESULTS[k].file||'').startsWith(pre));if(!ks.length)return;html+=`<tr class="grp"><td colspan="5">${name}</td></tr>`;
+    ks.forEach(k=>{const r=RESULTS[k];const has=!!BLOBS[k];
+      html+=`<tr><td><input type="checkbox" data-sel="${esc(k)}" ${SKIP[k]||!has?'':'checked'} ${has?'':'disabled'}></td><td>${esc(r.label)}<div class="vi-s">${esc((r.target||'').slice(0,90))}${(r.target||'').length>90?'…':''}</div></td><td>${r.dur}s</td><td>${r.score!=null?`<span class="score ${r.score>=85?'hi':r.score>=60?'mid':'lo'}">${r.score}%</span>`:'–'}</td><td>${has?`<button class="b" data-play="${esc(k)}">▶</button> `:''}${r.sent?'<span class="sent-ok">✅ đã nộp</span>':has?'<span class="sent-wait">💾 chờ nộp</span>':'<span class="sent-bad">⚠️ mất file – hãy ghi lại</span>'}</td></tr>`;});});
+  $('#recTbl').innerHTML=html;const sel=selKeys();$('#recCount').textContent=sel.length+' bản ghi sẽ được nộp';}
+function selKeys(){return recKeys().filter(k=>BLOBS[k]&&!SKIP[k]&&!RESULTS[k].sent);}
+let PA=null;$('#recTbl').onclick=e=>{const p=e.target.closest('[data-play]');if(p){const b=BLOBS[p.dataset.play];if(!b)return;stopSpeak();if(PA)PA.pause();PA=new Audio(URL.createObjectURL(b));PA.play();}};
+$('#recTbl').onchange=e=>{const c=e.target.closest('[data-sel]');if(!c)return;if(c.checked)delete SKIP[c.dataset.sel];else SKIP[c.dataset.sel]=1;store('skip',SKIP);renderRecs();};
+window.onRecSaved=k=>{delete SKIP[k];store('skip',SKIP);refreshDone();};
+
+function progress(){const keys=D.KEYS.filter(k=>k[1]).length;const kw=ST.kwFirst?ST.kwFirst.filter(i=>D.KEYS[i][1]).length:null;
+  const bOK=D.BUILD.filter(b=>ST.build[b.id]&&ST.build[b.id].ok).length;const ideas=allIdeas();const rec=recSummary();const lv=Object.keys(ST.lv).length;
+  const stT=D.STRESS_RULES.reduce((s,r,ri)=>s+r.test.length,0),stOK=D.STRESS_RULES.reduce((s,r,ri)=>s+firstScore(r.test.map(t=>({a:t.a})),ST.stress[ri]||{}),0),stDone=D.STRESS_RULES.reduce((s,r,ri)=>s+Object.keys(ST.stress[ri]||{}).length,0);
+  return {kw:kw==null?'chưa làm':kw+'/'+keys,typ:Object.keys(ST.typ).length?firstScore(D.TYPEQ,ST.typ)+'/'+D.TYPEQ.length:'chưa làm',
+    pos:ST.pos==null?'chưa chọn':D.POSITIONS[ST.pos].t,ev:ST.evFirst==null?'chưa làm':ST.evFirst+'/'+D.EVMATCH.length,pick:ST.pick.join(', ')||'chưa chọn',
+    ideas:ideas.length+' ý ('+ideas.filter(x=>x.basis==='3').length+' cảm tính)',lv:lv+'/'+VITEMS.length+' ý đã chọn bậc',
+    wf:ST.wfFirst==null?'chưa làm':ST.wfFirst+'/'+D.WF.length,stress:stDone?stOK+'/'+stT:'chưa làm',build:bOK+'/'+D.BUILD.length+' đúng cấu trúc',
+    draft:wc((ST.draft||'').replace(/\[[^\]]*\]/g,''))+' từ',quiz:Object.keys(ST.quiz).length?firstScore(D.QUIZ,ST.quiz)+'/'+D.QUIZ.length+' (làm '+Object.keys(ST.quiz).length+')':'chưa làm',rec};}
+function refreshDone(){const p=progress();const done={
+    read:ST.kwDone&&Object.keys(ST.typ).length===D.TYPEQ.length&&ST.pos!=null,topic:ST.evDone&&ST.pick.length>=2,
+    idea:allIdeas().filter(x=>x.basis&&x.basis!=='3').length>=3,vocab:Object.keys(ST.lv).length>=6&&ST.wfDone&&(ST.para||'').trim(),
+    build:D.BUILD.filter(b=>ST.build[b.id]&&ST.build[b.id].ok).length>=5,draft:wc((ST.draft||'').replace(/\[[^\]]*\]/g,''))>=200,
+    quiz:Object.keys(ST.quiz).length===D.QUIZ.length,send:!!ST.submitted};
+  const cur=($('.tab[aria-selected=true]')||{}).dataset;
+  for(const k in done){const t=$(`.tab[data-p="${k}"]`);t&&t.classList.toggle('done',!!done[k]);const j=$(`.jstep[data-go="${k}"]`);if(j){j.classList.toggle('done',!!done[k]);j.classList.toggle('cur',!!cur&&cur.p===k);}}
+  const rows=[['① Từ khoá đúng',p.kw],['① Dạng đề',p.typ],['① Lập trường',p.pos],['② Ghép bằng chứng',p.ev],['② Thẻ chọn dùng',p.pick],['③ Ý tưởng',p.ideas],['④ Bậc từ vựng',p.lv],['④ Đổi từ loại',p.wf],['④ Trọng âm (tự kiểm tra)',p.stress],['⑤ Câu then chốt',p.build],['⑥ Bản nháp',p.draft],['⑦ Kiểm tra',p.quiz],['🎙 Bản ghi đã nộp',p.rec.n+(p.rec.avg!=null?' · phát âm TB '+p.rec.avg+'%':'')]];
+  const st=$('#sumTbl');if(st)st.innerHTML=rows.map(r=>`<tr><td>${r[0]}</td><td><b>${esc(r[1])}</b></td></tr>`).join('');
+  if($('#p-send').classList.contains('on'))renderRecs();}
+function buildSubmit(){const p=progress();const d=[];const add=(part,question,answer,correct,result)=>d.push({part,question,answer:answer==null?'':String(answer),correct:correct==null?'':String(correct),result:result==null?'':String(result)});
+  if(ST.kwFirst)add('① Từ khoá','Chọn từ khoá trong đề',ST.kwFirst.map(i=>D.KEYS[i][0]).join(' | '),D.KEYS.filter(k=>k[1]).map(k=>k[0]).join(' | '),p.kw);
+  D.TYPEQ.forEach((q,i)=>{const s=ST.typ[i];if(s)add('① Dạng đề '+(i+1),q.q,q.o[s.first],q.o[q.a],s.first===q.a?'Đúng':'Sai');});
+  if(ST.pos!=null)add('① Lập trường','Chọn lập trường',D.POSITIONS[ST.pos].t,'Đúng một phần (khuyên dùng)','');
+  if(ST.evFirst!=null)D.EVMATCH.forEach((m,i)=>add('② Ghép bằng chứng '+(i+1),m.q,ST.evm[i]||'(trống)',m.a,ST.evm[i]===m.a?'Đúng':'Sai'));
+  add('② Thẻ chọn dùng','Chọn 2–3 thẻ cho bài',p.pick,'2–3 thẻ',ST.pick.length+' thẻ');
+  allIdeas().forEach(x=>add('③ Ý '+(x.col==='A'?'Thân bài 1':'Thân bài 2')+' – '+(x.i+1),x.col==='A'?'Màn ảnh dạy được gì':'Chỉ đi thực tế mới học được',x.t+(x.exp?' | Ví dụ: '+x.exp:''),'Thẻ: '+(x.ev||'–'),x.basis!=null&&x.basis!==''?D.BASIS[+x.basis]:'chưa chọn căn cứ'));
+  VITEMS.forEach(v=>{if(ST.lv[v.id]!=null)add('④ Từ vựng – '+v.part,v.it.k,v.it.lv[ST.lv[v.id]][0],'',LVN[ST.lv[v.id]]);});
+  if(ST.wfFirst!=null)D.WF.forEach((w,i)=>{const v=(ST.wf[i]||{}).v||'';add('④ Đổi từ loại '+(i+1),w.s+' ('+w.base+')',v||'(trống)',w.a[0],w.a.includes(normS(v))?'Đúng':'Sai');});
+  if((ST.para||'').trim())add('④ Viết lại đề','Paraphrase câu đầu của đề',ST.para,'',wc(ST.para)+' từ');
+  D.STRESS_RULES.forEach((r,ri)=>r.test.forEach((t,ti)=>{const s=(ST.stress[ri]||{})[ti];if(s)add('④ Trọng âm QT'+(ri+1),t.w,t.o[s.first],t.o[t.a],s.first===t.a?'Đúng':'Sai');}));
+  D.BUILD.forEach(b=>{const s=ST.build[b.id];if(s&&(s.v||'').trim())add('⑤ '+b.id.toUpperCase()+' – '+b.gram,b.slot,s.v,b.model,s.ok?(s.first?'Đúng cấu trúc lần đầu':'Đúng sau khi sửa'):'Chưa đúng cấu trúc');});
+  if((ST.draft||'').trim())add('⑥ Bản nháp','Bài viết ghép từ các bước',ST.draft,'',p.draft);
+  D.QUIZ.forEach((q,i)=>{const s=ST.quiz[i];if(s)add('⑦ Kiểm tra '+(i+1),q.q,q.o[s.first],q.o[q.a],s.first===q.a?'Đúng':'Sai');});
+  return {summary:{recordings:p.rec.n,avg:p.rec.avg,full:'Bản nháp '+p.draft+' · Lập trường: '+p.pos+' · Thẻ: '+p.pick,writes:'Câu then chốt '+p.build+' · Đổi từ loại '+p.wf,quiz:'Từ khoá '+p.kw+' · Dạng đề '+p.typ+' · Bằng chứng '+p.ev+' · Kiểm tra '+p.quiz},details:d};}
+$('#submitBtn').onclick=async()=>{const msg=$('#submitMsg');if(!HAS_URL){msg.textContent='⚙️ Trang chưa có link nhận bài.';return;}
+  const name=stuName();if(!name){toast('Em ghi tên trước nhé.');$('#stuName').focus();return;}
+  if(ACTIVE)stopRec();await IDB_READY;
+  const btn=$('#submitBtn'),bar=$('#upBar'),fill=bar.querySelector('i');btn.disabled=true;window.UPLOADING=true;
+  const keys=selKeys();const total=keys.length+1;let done=0,fail=[];bar.hidden=false;fill.style.width='0';
+  const step=t=>{done++;fill.style.width=Math.round(done/total*100)+'%';btn.textContent=t;};
+  try{for(const k of keys){btn.textContent='Đang gửi bản ghi '+(done+1)+'/'+keys.length+'…';try{await uploadRec(k);}catch(e){fail.push(RESULTS[k].label);}step('…');renderRecs();}
+    btn.textContent='Đang gửi bài làm…';await postJSON(Object.assign({type:'submit',name,lesson:LESSON},buildSubmit()));step('✓');
+    ST.submitted=true;save();
+    msg.innerHTML=fail.length?`⚠️ Đã nộp bài làm, nhưng <b>${fail.length}</b> bản ghi chưa gửi được (${fail.map(esc).join(', ')}). Em bấm <b>Nộp tất cả</b> lần nữa để gửi lại.`:`✅ <b>Đã nộp bài!</b> Thầy/cô đã nhận bài làm${keys.length?' và '+keys.length+' bản ghi âm':''}.`;
+    toast(fail.length?'Còn bản ghi chưa gửi được':'✅ Đã nộp bài!',5000);}
+  catch(e){msg.textContent='⚠️ Chưa gửi được (mạng yếu?). Em bấm nộp lại nhé – bản ghi vẫn còn trong máy.';}
+  finally{window.UPLOADING=false;btn.disabled=false;btn.textContent='📨 Nộp tất cả';setTimeout(()=>{bar.hidden=true;},1500);renderRecs();refreshDone();}};
+$('#nextBox').innerHTML=LINK2?`<b>Bước tiếp theo:</b> viết lại bài trong 40 phút, không nhìn tài liệu → <a href="${LINK2}" target="_blank" rel="noopener"><b>Mở Link 2</b></a>`:'<b>Bước tiếp theo:</b> thầy/cô sẽ gửi <b>Link 2</b>: viết bài hoàn chỉnh trong 40 phút.';
+
+initTabs(p=>{refreshDone();if(p==='send'){IDB_READY.then(renderRecs);}if(p==='draft')draftCheck();});initGate();refreshDone();
+if(!SR)setTimeout(()=>toast('Máy này ghi âm được nhưng chưa tự chấm phát âm. Dùng Chrome để được chấm tự động.',6000),1500);
+</script>
+</body>
+</html>
