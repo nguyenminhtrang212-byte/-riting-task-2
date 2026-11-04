@@ -46,6 +46,20 @@
   .hint{font-size:.85rem;color:var(--muted)}
   .actions{display:flex;gap:10px;justify-content:center;margin-top:16px;flex-wrap:wrap}
   footer{color:var(--muted);font-size:.8rem;margin-top:30px;text-align:center}
+  .lesson{margin-top:28px}
+  .lesson>h2{font-size:1.2rem;margin:0 0 4px}
+  details.l{background:var(--card);border:1px solid var(--line);border-radius:12px;margin:10px 0}
+  details.l>summary{padding:12px 14px;cursor:pointer;font-weight:600}
+  details.l .body{padding:0 14px 14px}
+  .badge{font-size:.75rem;padding:2px 8px;border-radius:99px;margin-left:8px;font-weight:600}
+  .badge.red{background:var(--badbg);color:var(--bad)} .badge.green{background:var(--okbg);color:var(--ok)}
+  .ex{background:#f3f6ff;border-left:3px solid var(--brand);padding:6px 10px;margin:6px 0;border-radius:6px}
+  .x{color:var(--bad)} .v{color:var(--ok)}
+  table.g{border-collapse:collapse;width:100%;margin:8px 0;font-size:.93rem}
+  table.g th,table.g td{border:1px solid var(--line);padding:7px 9px;text-align:left;vertical-align:top}
+  table.g th{background:#eef1fb}
+  .c1{background:#e7f0ff}.c2{background:#fff3d6}.c3{background:#e6f6ef}.c4{background:#fde8f1}
+  .c1,.c2,.c3,.c4{padding:1px 5px;border-radius:5px}
 </style>
 </head>
 <body>
@@ -63,6 +77,7 @@
 
   <div class="actions"><button id="submit">Nộp bài</button></div>
   <div id="score"></div>
+  <div id="lesson" class="lesson"></div>
   <footer>IELTS Writing Task 1 · Giai đoạn 2: Tế bào dữ liệu, câu 1 điểm</footer>
 </div>
 
@@ -129,6 +144,61 @@ const PARTS = [
   ]}
 ];
 
+
+const LESSON = [
+ {title:"1. number, amount, percentage: chọn đúng danh từ chỉ lượng", qs:[0,1,2,10,11,12,16], body:`
+  <p>Trước khi viết, tự hỏi một câu: <b>danh từ đứng sau "of" có đếm được không?</b> Đếm được (1, 2, 3…) thì dùng <i>number</i>; không đếm được thì dùng <i>amount</i>.</p>
+  <table class="g"><tr><th>Cụm</th><th>Đi với</th><th>Ví dụ</th></tr>
+  <tr><td>the <b>number</b> of</td><td>danh từ đếm được, số nhiều</td><td>the number of <i>students / visitors / cars</i></td></tr>
+  <tr><td>the <b>amount</b> of</td><td>danh từ không đếm được</td><td>the amount of <i>money / water / rice</i></td></tr>
+  <tr><td>the <b>percentage / proportion</b> of</td><td>cả hai loại</td><td>the percentage of <i>women</i>; the percentage of <i>water</i></td></tr>
+  <tr><td>40 <b>percent</b> of &nbsp;/&nbsp; 40<b>%</b> of</td><td>sau một con số cụ thể</td><td>40% of <i>households</i></td></tr></table>
+  <div class="ex"><span class="x">✗ the number of money</span> → <span class="v">✓ the amount of money</span></div>
+  <div class="ex"><span class="x">✗ 40 percents of / 40 percentage of</span> → <span class="v">✓ 40 percent of</span></div>
+  <p><b>Mẹo nhớ:</b> có <i>the</i> và chưa có con số → <i>the percentage of…</i>. Đã có con số → <i>40 percent of…</i>. Chữ <i>percent</i> không bao giờ thêm -s.</p>`},
+ {title:"2. was hay were? Chia động từ theo danh từ chính", qs:[3,4,6,8,13,14,15,17], body:`
+  <p>Động từ chia theo <b>danh từ chính</b> (number, amount, percentage, figure), <b>không</b> chia theo danh từ đứng sau "of".</p>
+  <div class="ex">The <b>number</b> [of students] <b>was</b> 500. &nbsp; <span class="x">✗ …of students were 500</span></div>
+  <table class="g"><tr><th>Chủ ngữ</th><th>Động từ (quá khứ)</th></tr>
+  <tr><td>The number of students</td><td><b>was</b></td></tr>
+  <tr><td>The amount of rice</td><td><b>was</b></td></tr>
+  <tr><td>The percentage of women</td><td><b>was</b></td></tr>
+  <tr><td>The figure for Japan</td><td><b>was</b></td></tr>
+  <tr><td>Spending on food (không đếm được)</td><td><b>was</b></td></tr>
+  <tr><td><b>A number of</b> students (nghĩa là "một số")</td><td><b>were</b></td></tr></table>
+  <p><b>Hai trường hợp đặc biệt:</b></p>
+  <div class="ex"><i>A number of</i> tourists <b>were</b> from Spain. (khác với <i>The number of</i> tourists <b>was</b> 2 million.)</div>
+  <div class="ex">40% of <i>households</i> <b>had</b> a computer. / 20% of <i>the water</i> <b>was</b> lost. (sau "% of", động từ theo danh từ phía sau)</div>`},
+ {title:"3. Chọn thì theo mốc thời gian", qs:[5,9,18,19], body:`
+  <p>Nhìn <b>mốc thời gian trước</b>, rồi chọn thì. Đây là lỗi mất điểm thường gặp trong Task 1.</p>
+  <table class="g"><tr><th>Mốc thời gian</th><th>Thì</th><th>Ví dụ</th></tr>
+  <tr><td>in 2005, in 1990, last year</td><td>quá khứ đơn</td><td>The number of cars <b>was</b> 3 million in 2005.</td></tr>
+  <tr><td>now, today, at present</td><td>hiện tại đơn</td><td>The figure <b>is</b> 40% now.</td></tr>
+  <tr><td>by 2030, in 2040, in the future</td><td>will be / dự đoán</td><td>The population <b>will be</b> 10 million by 2030.</td></tr></table>
+  <div class="ex"><span class="x">✗ The figure for the UK is 40% in 2000.</span> → <span class="v">✓ The figure for the UK was 40% in 2000.</span></div>`},
+ {title:"4. Câu 4 ô: đủ thành phần, đúng đơn vị, đúng trật tự", qs:[7,9,17,18,19], body:`
+  <p>Một câu mô tả một điểm dữ liệu cần đủ 4 phần:</p>
+  <div class="ex"><span class="c1">The percentage of internet users in Japan</span> <span class="c2">was</span> <span class="c3">80%</span> <span class="c4">in 2010</span>.</div>
+  <div class="ex"><span class="c1">Spending on food</span> <span class="c2">was</span> <span class="c3">$50 per week</span> <span class="c4">in 2010</span>.</div>
+  <p><span class="c1">Cái gì</span> + <span class="c2">was/were</span> + <span class="c3">số liệu + đơn vị</span> + <span class="c4">khi nào / ở đâu</span>. Có thể đảo phần thời gian lên đầu: <i>In 2010, 80% of Japanese people used the internet.</i></p>
+  <table class="g"><tr><th>Lỗi thường gặp</th><th>Sửa</th></tr>
+  <tr><td class="x">The figure for the UK 40% in 2000. (thiếu động từ)</td><td>The figure for the UK <b>was</b> 40% in 2000.</td></tr>
+  <tr><td class="x">55 of Korean households… (thiếu đơn vị)</td><td><b>55%</b> of Korean households…</td></tr>
+  <tr><td class="x">…was 40% 2000 in. (sai trật tự)</td><td>…was 40% <b>in 2000</b>.</td></tr>
+  <tr><td class="x">$50 per weeks (thêm -s sau per)</td><td>$50 per <b>week</b></td></tr></table>
+  <p><b>Tự kiểm tra trước khi nộp:</b> câu có đủ 4 ô chưa? Số liệu có đơn vị chưa? Năm đã qua thì động từ đã ở quá khứ chưa?</p>`}
+];
+function showLesson(wrongIds){
+  const w=new Set(wrongIds);
+  const need=LESSON.map(L=>L.qs.filter(i=>w.has(i)));
+  let h=`<h2>Bài giảng ngữ pháp</h2><p class="hint">${wrongIds.length?`Bạn sai ở câu: <b>${wrongIds.map(i=>i+1).join(', ')}</b>. Các mục có nhãn đỏ là phần nên đọc trước.`:'Bạn đúng hết. Bài giảng dưới đây để ôn lại.'}</p>`;
+  LESSON.forEach((L,i)=>{
+    const n=need[i].length;
+    h+=`<details class="l"${n?' open':''}><summary>${L.title}${n?`<span class="badge red">Cần xem lại · câu ${need[i].map(x=>x+1).join(', ')}</span>`:'<span class="badge green">Bạn làm đúng mục này</span>'}</summary><div class="body">${L.body}</div></details>`;
+  });
+  document.getElementById('lesson').innerHTML=h;
+}
+
 const form=document.getElementById('quiz'); let qn=0; const Q=[];
 const esc=s=>String(s).replace(/[&<>"]/g,c=>({'&':'&amp;','<':'&lt;','>':'&gt;','"':'&quot;'}[c]));
 function shuffle(a){a=a.slice();for(let i=a.length-1;i>0;i--){const j=Math.floor(Math.random()*(i+1));[a[i],a[j]]=[a[j],a[i]]}return a}
@@ -180,9 +250,9 @@ function check(it){
 document.getElementById('submit').addEventListener('click',()=>{
   const left=Q.filter(it=>!answered(it)).length;
   if(left && !confirm(`Còn ${left} câu chưa làm. Vẫn nộp bài?`)) return;
-  let score=0; const ps=PARTS.map(()=>0);
+  let score=0; const ps=PARTS.map(()=>0); const wrong=[];
   Q.forEach(it=>{
-    const r=check(it); if(r.ok) score++;
+    const r=check(it); if(r.ok) score++; else wrong.push(it.id);
     const pi=PARTS.findIndex(p=>p.items.includes(it)); if(r.ok) ps[pi]++;
     let msg;
     if(it.type==='write') msg=r.ok?'Đủ các thành phần chính. ':`Còn thiếu: <b>${r.miss.map(esc).join(', ')}</b>. `;
@@ -192,9 +262,10 @@ document.getElementById('submit').addEventListener('click',()=>{
   const pass=score>=18;
   document.getElementById('score').innerHTML=`<div class="score">
     <div class="n ${pass?'pass':'fail'}">${score}/20</div>
-    <div>${pass?'Đạt cổng Giai đoạn 2. Có thể sang Giai đoạn 3 (câu chỉ xu hướng).':'Chưa đạt cổng (cần từ 18/20). Xem lại các câu sai rồi làm lại.'}</div>
+    <div>${pass?'Đạt cổng Giai đoạn 2. Có thể sang Giai đoạn 3 (câu chỉ xu hướng).':'Chưa đạt cổng (cần từ 18/20). Đọc bài giảng bên dưới rồi làm lại.'}</div>
     <div class="hint" style="margin-top:8px">${PARTS.map((p,i)=>`Phần ${'ABCDE'[i]}: ${ps[i]}/${p.items.length}`).join(' · ')}</div>
     <div class="actions"><button onclick="location.reload()">Làm lại</button></div></div>`;
+  showLesson(wrong);
   document.getElementById('score').scrollIntoView({behavior:'smooth'});
   document.getElementById('submit').disabled=true;
 });
