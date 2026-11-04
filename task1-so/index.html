@@ -1,0 +1,208 @@
+<!DOCTYPE html>
+<html lang="vi">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Writing Task 1: Kiểm tra cách viết và đọc số</title>
+<style>
+  :root{--bg:#f6f7fb;--card:#fff;--ink:#1f2430;--muted:#667085;--line:#e3e6ee;--brand:#2f5bea;--ok:#12805c;--okbg:#e6f6ef;--bad:#b42318;--badbg:#fdeceb}
+  *{box-sizing:border-box}
+  body{margin:0;background:var(--bg);color:var(--ink);font:16px/1.55 system-ui,-apple-system,"Segoe UI",Roboto,sans-serif}
+  .wrap{max-width:760px;margin:0 auto;padding:20px 16px 80px}
+  h1{font-size:1.5rem;margin:8px 0 4px}
+  .sub{color:var(--muted);margin:0 0 16px}
+  .bar{position:sticky;top:0;background:var(--bg);padding:10px 0;z-index:5;border-bottom:1px solid var(--line);margin-bottom:12px}
+  .track{height:8px;background:var(--line);border-radius:99px;overflow:hidden}
+  .fill{height:100%;width:0;background:var(--brand);transition:width .25s}
+  .meta{display:flex;justify-content:space-between;font-size:.85rem;color:var(--muted);margin-top:6px}
+  section{margin:22px 0 8px}
+  section h2{font-size:1.05rem;margin:0 0 2px}
+  section p{margin:0 0 8px;color:var(--muted);font-size:.9rem}
+  .q{background:var(--card);border:1px solid var(--line);border-radius:12px;padding:14px;margin:10px 0}
+  .q .t{font-weight:600;margin-bottom:8px}
+  .num{display:inline-block;min-width:1.9em;color:var(--brand)}
+  .big{font-size:1.25rem;font-weight:700;letter-spacing:.2px}
+  label.opt{display:block;border:1px solid var(--line);border-radius:10px;padding:9px 12px;margin:6px 0;cursor:pointer}
+  label.opt:hover{border-color:var(--brand)}
+  label.opt input{margin-right:8px}
+  input[type=text]{width:100%;padding:10px 12px;border:1px solid var(--line);border-radius:10px;font-size:1rem}
+  input[type=text]:focus{outline:2px solid var(--brand);outline-offset:1px}
+  button{font:inherit;border:0;border-radius:10px;padding:10px 16px;cursor:pointer;background:var(--brand);color:#fff}
+  button.ghost{background:#eef1fb;color:var(--brand)}
+  button:disabled{opacity:.5;cursor:default}
+  .row{display:flex;gap:8px;flex-wrap:wrap;align-items:center;margin-bottom:8px}
+  .hint{font-size:.85rem;color:var(--muted)}
+  .res{margin-top:10px;padding:10px 12px;border-radius:10px;font-size:.93rem}
+  .res.ok{background:var(--okbg);color:var(--ok)}
+  .res.bad{background:var(--badbg);color:var(--bad)}
+  .res b{color:inherit}
+  .score{background:var(--card);border:1px solid var(--line);border-radius:14px;padding:18px;margin:16px 0;text-align:center}
+  .score .n{font-size:2.2rem;font-weight:800}
+  .pass{color:var(--ok)} .fail{color:var(--bad)}
+  .actions{display:flex;gap:10px;justify-content:center;margin-top:16px;flex-wrap:wrap}
+  footer{color:var(--muted);font-size:.8rem;margin-top:30px;text-align:center}
+</style>
+</head>
+<body>
+<div class="wrap">
+  <h1>Kiểm tra: đọc và viết số trong Writing Task 1</h1>
+  <p class="sub">20 câu · 4 phần · Làm xong bấm "Nộp bài" để xem điểm và đáp án. Đạt từ 18/20 là qua cổng Giai đoạn 1.</p>
+
+  <div class="bar">
+    <div class="track"><div class="fill" id="fill"></div></div>
+    <div class="meta"><span id="done">Đã làm 0/20</span><span>Bài làm không được gửi đi đâu, chỉ chấm trên máy của bạn.</span></div>
+  </div>
+
+  <form id="quiz" onsubmit="return false"></form>
+
+  <div class="actions"><button id="submit">Nộp bài</button></div>
+  <div id="score"></div>
+  <footer>IELTS Writing Task 1 · Giai đoạn 1: Đọc và nói con số</footer>
+</div>
+
+<script>
+/* ---------- Dữ liệu câu hỏi ---------- */
+const PARTS = [
+  {title:"Phần A. Chọn cách đọc/viết bằng chữ đúng", note:"Chọn 1 đáp án.", items:[
+    {type:"mc", prompt:"45%", big:true, ans:"forty-five percent",
+     opts:["fourty-five percent","forty-five percent","forty-five percents","forty five per sents"],
+     why:"Viết đúng là <b>forty</b> (không có chữ u), và <b>percent</b> không thêm -s."},
+    {type:"mc", prompt:"$2.5 billion", big:true, ans:"two point five billion dollars",
+     opts:["two point five billions dollars","two and five billion dollars","two point five billion dollars","twenty-five billion dollars"],
+     why:"Dấu chấm thập phân đọc là <b>point</b>, từng chữ số đọc riêng. <b>billion</b> không thêm -s khi có số đứng trước."},
+    {type:"mc", prompt:"2005 (năm)", big:true, ans:"two thousand and five",
+     opts:["twenty hundred five","two thousand fifty","two thousand and five","twenty zero five five"],
+     why:"Năm 2000–2009 đọc <b>two thousand (and) + số</b>. Ví dụ 2005 = two thousand and five."},
+    {type:"mc", prompt:"1999 (năm)", big:true, ans:"nineteen ninety-nine",
+     opts:["one nine nine nine","nineteen nineteen nine","ninety-nine nineteen","nineteen ninety-nine"],
+     why:"Năm thường tách 2 cặp số: <b>nineteen | ninety-nine</b>."},
+    {type:"mc", prompt:"0.5", big:true, ans:"zero point five",
+     opts:["zero point fifty","zero five","point zero five","zero point five"],
+     why:"Sau dấu chấm đọc từng chữ số: 0.5 = <b>zero (nought) point five</b>."}
+  ]},
+  {title:"Phần B. Nghe và gõ số", note:"Bấm nghe (có thể nghe lại), rồi gõ chữ số. Ví dụ nghe \"fifteen percent\" thì gõ 15 hoặc 15%. Nếu máy không phát tiếng, bấm \"Hiện chữ\".", items:[
+    {type:"listen", say:"thirty percent", ans:["30"], show:"30%", why:"<b>thirty</b> = 30 (nhấn âm đầu), khác với <b>thirteen</b> = 13 (nhấn âm sau)."},
+    {type:"listen", say:"seventeen", ans:["17"], show:"17", why:"<b>seventeen</b> = 17; <b>seventy</b> = 70."},
+    {type:"listen", say:"eighty", ans:["80"], show:"80", why:"<b>eighty</b> = 80; <b>eighteen</b> = 18."},
+    {type:"listen", say:"nineteen eighty-seven", ans:["1987"], show:"1987", why:"Năm được tách 2 cặp: nineteen | eighty-seven = 19 | 87."},
+    {type:"listen", say:"two point five million", ans:["2.5million","2.5m","2500000"], show:"2.5 million", why:"<b>two point five million</b> = 2.5 million (2,500,000)."}
+  ]},
+  {title:"Phần C. Viết số bằng chữ", note:"Gõ bằng tiếng Anh. Dấu gạch nối không bắt buộc.", items:[
+    {type:"text", prompt:"12", big:true, ans:["twelve"], why:"12 = <b>twelve</b> (không phải twelf, twelv)."},
+    {type:"text", prompt:"40", big:true, ans:["forty"], why:"40 = <b>forty</b>, khác <b>four</b> = 4 (bỏ u)."},
+    {type:"text", prompt:"15", big:true, ans:["fifteen"], why:"15 = <b>fifteen</b> (không phải fiveteen)."},
+    {type:"text", prompt:"50%", big:true, ans:["fifty percent","fifty per cent"], why:"<b>fifty percent</b> (cũng có thể viết per cent)."},
+    {type:"text", prompt:"2020 (năm)", big:true, ans:["twenty twenty","two thousand and twenty","two thousand twenty"], why:"Cách phổ biến: <b>twenty twenty</b>. Cũng chấp nhận: two thousand (and) twenty."}
+  ]},
+  {title:"Phần D. Chọn câu đúng", note:"Mỗi câu chỉ có 1 đáp án đúng.", items:[
+    {type:"mc", prompt:"Chọn câu đúng:", ans:"The company sold three hundred cars.",
+     opts:["The company sold three hundreds cars.","The company sold three hundred cars.","The company sold three hundred of cars."],
+     why:"Sau một số cụ thể, <b>hundred/thousand/million</b> không thêm -s."},
+    {type:"mc", prompt:"Chọn cách viết số đúng trong tiếng Anh:", ans:"The population was 1,200 in 1990.",
+     opts:["The population was 1.200 in 1990.","The population was 1,200 in 1990.","The population was 1 200 in 1990."],
+     why:"Tiếng Anh dùng <b>dấu phẩy</b> ngăn cách hàng nghìn (1,200), ngược với cách viết ở Việt Nam."},
+    {type:"mc", prompt:"Chọn câu đúng:", ans:"The figure was approximately 20%.",
+     opts:["The figure was approximately of 20%.","The figure was approximately 20%.","The figure was approximately about 20%."],
+     why:"<b>approximately</b> đứng trực tiếp trước số, không thêm <i>of</i> hay <i>about</i>."},
+    {type:"mc", prompt:"Chọn câu đúng:", ans:"The number rose to 3.5 million.",
+     opts:["The number rose to 3,5 million.","The number rose to 3.5 million.","The number rose to 3.5 millions."],
+     why:"Số thập phân dùng <b>dấu chấm</b> (3.5), không dùng dấu phẩy; <b>million</b> không thêm -s."},
+    {type:"mc", prompt:"Chọn câu đúng:", ans:"A quarter of the students were under 18.",
+     opts:["A quarter of the students was under 18.","A quarter of the students were under 18.","A quarter of the student were under 18."],
+     why:"Sau <i>a quarter of the students</i> dùng động từ <b>số nhiều</b> (were), danh từ <b>students</b> số nhiều."}
+  ]}
+];
+
+/* ---------- Dựng giao diện ---------- */
+const form = document.getElementById('quiz');
+let qn = 0; const Q = [];
+function shuffle(a){a=a.slice();for(let i=a.length-1;i>0;i--){const j=Math.floor(Math.random()*(i+1));[a[i],a[j]]=[a[j],a[i]]}return a}
+function esc(s){return String(s).replace(/[&<>"]/g,c=>({'&':'&amp;','<':'&lt;','>':'&gt;','"':'&quot;'}[c]))}
+
+PARTS.forEach(part=>{
+  const sec=document.createElement('section');
+  sec.innerHTML=`<h2>${part.title}</h2><p>${part.note}</p>`;
+  part.items.forEach(it=>{
+    const id=qn++; it.id=id; Q.push(it);
+    const d=document.createElement('div'); d.className='q'; d.id='q'+id;
+    let h='';
+    if(it.type==='mc'){
+      h+=`<div class="t"><span class="num">${id+1}.</span>${it.big?`<span class="big">${esc(it.prompt)}</span>`:esc(it.prompt)}</div>`;
+      shuffle(it.opts).forEach(o=>{h+=`<label class="opt"><input type="radio" name="q${id}" value="${esc(o)}">${esc(o)}</label>`});
+    }else if(it.type==='text'){
+      h+=`<div class="t"><span class="num">${id+1}.</span><span class="big">${esc(it.prompt)}</span></div><input type="text" name="q${id}" autocomplete="off" autocapitalize="off" spellcheck="false" placeholder="Gõ bằng chữ tiếng Anh">`;
+    }else{
+      h+=`<div class="t"><span class="num">${id+1}.</span>Nghe và gõ số bạn nghe được</div>
+      <div class="row"><button type="button" class="ghost" data-say="${id}">▶ Nghe</button><button type="button" class="ghost" data-show="${id}">Hiện chữ</button><span class="hint" id="sh${id}"></span></div>
+      <input type="text" name="q${id}" autocomplete="off" inputmode="decimal" placeholder="Gõ số, ví dụ 15">`;
+    }
+    h+=`<div id="r${id}"></div>`;
+    d.innerHTML=h; sec.appendChild(d);
+  });
+  form.appendChild(sec);
+});
+
+/* ---------- Phát âm (nếu trình duyệt hỗ trợ) ---------- */
+function speak(text){
+  if(!('speechSynthesis' in window)) return false;
+  speechSynthesis.cancel();
+  const u=new SpeechSynthesisUtterance(text); u.lang='en-GB'; u.rate=.8;
+  speechSynthesis.speak(u); return true;
+}
+form.addEventListener('click',e=>{
+  const s=e.target.dataset.say, h=e.target.dataset.show;
+  if(s!==undefined){ if(!speak(Q[s].say)) document.getElementById('sh'+s).textContent='Máy không hỗ trợ phát âm. Bấm "Hiện chữ".'; }
+  if(h!==undefined){ document.getElementById('sh'+h).textContent='Lời đọc: "'+Q[h].say+'"'; }
+});
+
+/* ---------- Tiến độ ---------- */
+function answered(it){
+  const el=form.elements['q'+it.id];
+  if(it.type==='mc') return !!form.querySelector(`input[name="q${it.id}"]:checked`);
+  return el.value.trim()!=='';
+}
+function progress(){
+  const n=Q.filter(answered).length;
+  document.getElementById('done').textContent=`Đã làm ${n}/${Q.length}`;
+  document.getElementById('fill').style.width=(n/Q.length*100)+'%';
+}
+form.addEventListener('input',progress); form.addEventListener('change',progress);
+
+/* ---------- Chấm ---------- */
+const normWords=s=>s.toLowerCase().replace(/-/g,' ').replace(/[^a-z0-9. ]/g,'').replace(/\s+/g,' ').trim();
+const normNum=s=>s.toLowerCase().replace(/[,\s%$]/g,'');
+function check(it){
+  if(it.type==='mc'){
+    const c=form.querySelector(`input[name="q${it.id}"]:checked`);
+    return {ok:!!c&&c.value===it.ans, given:c?c.value:'(chưa chọn)', right:it.ans};
+  }
+  const v=form.elements['q'+it.id].value;
+  if(it.type==='text'){
+    const g=normWords(v); const ok=it.ans.some(a=>normWords(a)===g);
+    return {ok, given:v.trim()||'(chưa gõ)', right:it.ans[0]};
+  }
+  const g=normNum(v); const ok=it.ans.some(a=>normNum(a)===g);
+  return {ok, given:v.trim()||'(chưa gõ)', right:it.show};
+}
+document.getElementById('submit').addEventListener('click',()=>{
+  const left=Q.filter(it=>!answered(it)).length;
+  if(left && !confirm(`Còn ${left} câu chưa làm. Vẫn nộp bài?`)) return;
+  let score=0; const partScore=PARTS.map(()=>0);
+  Q.forEach(it=>{
+    const r=check(it); if(r.ok){score++;}
+    const pi=PARTS.findIndex(p=>p.items.includes(it)); if(r.ok) partScore[pi]++;
+    const box=document.getElementById('r'+it.id);
+    box.innerHTML=`<div class="res ${r.ok?'ok':'bad'}">${r.ok?'Đúng.':'Chưa đúng. Đáp án: <b>'+esc(r.right)+'</b>.'} ${it.why}</div>`;
+  });
+  const pass=score>=18;
+  document.getElementById('score').innerHTML=`<div class="score">
+    <div class="n ${pass?'pass':'fail'}">${score}/20</div>
+    <div>${pass?'Đạt cổng Giai đoạn 1. Có thể sang Giai đoạn 2.':'Chưa đạt cổng (cần từ 18/20). Xem lại các câu sai rồi làm lại.'}</div>
+    <div class="hint" style="margin-top:8px">${PARTS.map((p,i)=>`Phần ${'ABCD'[i]}: ${partScore[i]}/${p.items.length}`).join(' · ')}</div>
+    <div class="actions"><button onclick="location.reload()">Làm lại</button></div></div>`;
+  document.getElementById('score').scrollIntoView({behavior:'smooth'});
+  document.getElementById('submit').disabled=true;
+});
+</script>
+</body>
+</html>
