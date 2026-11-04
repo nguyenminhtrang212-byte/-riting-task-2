@@ -1,0 +1,203 @@
+<!DOCTYPE html>
+<html lang="vi">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Writing Task 1: Từ một số liệu viết thành một câu đúng</title>
+<style>
+  :root{--bg:#f6f7fb;--card:#fff;--ink:#1f2430;--muted:#667085;--line:#e3e6ee;--brand:#2f5bea;--ok:#12805c;--okbg:#e6f6ef;--bad:#b42318;--badbg:#fdeceb}
+  *{box-sizing:border-box}
+  body{margin:0;background:var(--bg);color:var(--ink);font:16px/1.55 system-ui,-apple-system,"Segoe UI",Roboto,sans-serif}
+  .wrap{max-width:760px;margin:0 auto;padding:20px 16px 80px}
+  h1{font-size:1.5rem;margin:8px 0 4px}
+  .sub{color:var(--muted);margin:0 0 16px}
+  .back{font-size:.85rem;margin-bottom:6px}
+  a{color:var(--brand)}
+  .bar{position:sticky;top:0;background:var(--bg);padding:10px 0;z-index:5;border-bottom:1px solid var(--line);margin-bottom:12px}
+  .track{height:8px;background:var(--line);border-radius:99px;overflow:hidden}
+  .fill{height:100%;width:0;background:var(--brand);transition:width .25s}
+  .meta{display:flex;justify-content:space-between;gap:8px;font-size:.85rem;color:var(--muted);margin-top:6px}
+  section{margin:22px 0 8px}
+  section h2{font-size:1.05rem;margin:0 0 2px}
+  section p{margin:0 0 8px;color:var(--muted);font-size:.9rem}
+  .q{background:var(--card);border:1px solid var(--line);border-radius:12px;padding:14px;margin:10px 0}
+  .q .t{font-weight:600;margin-bottom:8px}
+  .num{display:inline-block;min-width:1.9em;color:var(--brand)}
+  .sent{font-size:1.1rem}
+  .blank{display:inline-block;min-width:4.5em;border-bottom:2px solid var(--brand);text-align:center;color:var(--brand)}
+  label.opt{display:block;border:1px solid var(--line);border-radius:10px;padding:9px 12px;margin:6px 0;cursor:pointer}
+  label.opt:hover{border-color:var(--brand)}
+  label.opt input{margin-right:8px}
+  input[type=text],textarea{width:100%;padding:10px 12px;border:1px solid var(--line);border-radius:10px;font:inherit}
+  input[type=text]:focus,textarea:focus{outline:2px solid var(--brand);outline-offset:1px}
+  textarea{min-height:76px;resize:vertical}
+  table.data{border-collapse:collapse;margin:8px 0 4px;background:var(--card)}
+  table.data th,table.data td{border:1px solid var(--line);padding:7px 14px;text-align:center}
+  table.data th{background:#eef1fb}
+  .cap{font-size:.85rem;color:var(--muted);margin:0 0 4px}
+  button{font:inherit;border:0;border-radius:10px;padding:10px 16px;cursor:pointer;background:var(--brand);color:#fff}
+  button:disabled{opacity:.5;cursor:default}
+  .res{margin-top:10px;padding:10px 12px;border-radius:10px;font-size:.93rem}
+  .res.ok{background:var(--okbg);color:var(--ok)}
+  .res.bad{background:var(--badbg);color:var(--bad)}
+  .score{background:var(--card);border:1px solid var(--line);border-radius:14px;padding:18px;margin:16px 0;text-align:center}
+  .score .n{font-size:2.2rem;font-weight:800}
+  .pass{color:var(--ok)} .fail{color:var(--bad)}
+  .hint{font-size:.85rem;color:var(--muted)}
+  .actions{display:flex;gap:10px;justify-content:center;margin-top:16px;flex-wrap:wrap}
+  footer{color:var(--muted);font-size:.8rem;margin-top:30px;text-align:center}
+</style>
+</head>
+<body>
+<div class="wrap">
+  <div class="back"><a href="../task1-so/">← Bài 1: Đọc và viết số</a></div>
+  <h1>Kiểm tra: từ một số liệu viết thành một câu đúng</h1>
+  <p class="sub">20 câu · 5 phần · Công thức: <b>[Cái gì] + was/were + [số liệu] + [khi nào/ở đâu]</b>. Đạt từ 18/20 là qua cổng Giai đoạn 2.</p>
+
+  <div class="bar">
+    <div class="track"><div class="fill" id="fill"></div></div>
+    <div class="meta"><span id="done">Đã làm 0/20</span><span>Bài làm không được gửi đi đâu, chỉ chấm trên máy của bạn.</span></div>
+  </div>
+
+  <form id="quiz" onsubmit="return false"></form>
+
+  <div class="actions"><button id="submit">Nộp bài</button></div>
+  <div id="score"></div>
+  <footer>IELTS Writing Task 1 · Giai đoạn 2: Tế bào dữ liệu, câu 1 điểm</footer>
+</div>
+
+<script>
+const TABLE = `<p class="cap">Phần trăm hộ gia đình có máy tính (percentage of households with a computer)</p>
+<table class="data"><tr><th></th><th>2000</th><th>2010</th></tr><tr><th>UK</th><td>40%</td><td>70%</td></tr><tr><th>Korea</th><td>55%</td><td>80%</td></tr></table>`;
+
+const PARTS = [
+  {title:"Phần A. Chọn từ đúng điền vào chỗ trống", note:"Chú ý: đếm được hay không đếm được, số ít hay số nhiều, quá khứ hay tương lai.", items:[
+    {type:"mc", sent:"The ___ of students in the class was 30.", ans:"number", opts:["number","amount","many","much"],
+     why:"<b>the number of</b> + danh từ đếm được số nhiều (students)."},
+    {type:"mc", sent:"The ___ of money spent on food was $50.", ans:"amount", opts:["number","amount","many","few"],
+     why:"<b>the amount of</b> + danh từ không đếm được (money)."},
+    {type:"mc", sent:"In 2010, 40 ___ of Japanese people used the internet.", ans:"percent", opts:["percent","percents","percentage","per"],
+     why:"Sau một con số dùng <b>percent</b> (không thêm -s). <i>Percentage</i> dùng sau <i>the</i>: the percentage of…"},
+    {type:"mc", sent:"The number of visitors ___ 2 million in 2015.", ans:"was", opts:["was","were","is","are"],
+     why:"Chủ ngữ là <b>number</b> (số ít) và 2015 là quá khứ nên dùng <b>was</b>."},
+    {type:"mc", sent:"In 2015, a number of tourists ___ from Spain.", ans:"were", opts:["was","were","is","be"],
+     why:"<b>a number of</b> nghĩa là \"một số\", đi với động từ <b>số nhiều</b>. 2015 là quá khứ nên dùng <b>were</b>."},
+    {type:"mc", sent:"By 2030, the population ___ 10 million.", ans:"will be", opts:["was","will be","has","were"],
+     why:"Mốc 2030 là tương lai nên dùng <b>will be</b>."}
+  ]},
+  {title:"Phần B. Đọc bảng, chọn câu mô tả đúng", note:"Nhìn kỹ số liệu, năm và đối tượng.", html:TABLE, items:[
+    {type:"mc", prompt:"Chọn câu đúng về UK:", ans:"The percentage of UK households with a computer was 70% in 2010.",
+     opts:["The percentage of UK households with a computer was 70% in 2010.","The percentage of UK households with a computer was 70% in 2000.","The percentage of UK households with a computer were 70% in 2010.","The percentage of UK households with a computer was 40% in 2010."],
+     why:"UK năm 2010 là 70%. Chủ ngữ <i>the percentage</i> là số ít nên dùng <b>was</b>."},
+    {type:"mc", prompt:"Chọn câu đúng về Korea:", ans:"In 2000, 55% of Korean households had a computer.",
+     opts:["In 2000, 55% of Korean households had a computer.","In 2000, 55 of Korean households had a computer.","In 2010, 55% of Korean households had a computer.","In 2000, 80% of Korean households had a computer."],
+     why:"Korea năm 2000 là 55%. Phải có đơn vị <b>%</b>, nếu thiếu sẽ không rõ đây là phần trăm."},
+    {type:"mc", prompt:"Chọn câu đúng:", ans:"In 2000, the figure for Korea was 55%.",
+     opts:["In 2000, the figure for Korea was 55%.","In 2000, the figure for Korea was 40%.","In 2000, the figure for Korea were 55%.","In 2010, the figure for Korea was 55%."],
+     why:"<b>the figure for + đối tượng</b> là số ít (was). Korea năm 2000 là 55%."},
+    {type:"mc", prompt:"Chọn câu đủ 4 phần (cái gì, động từ, số liệu, thời gian):", ans:"The figure for the UK was 40% in 2000.",
+     opts:["The figure for the UK 40% in 2000.","The figure for the UK is 40% in 2000.","The figure for the UK was 40% in 2000.","The figure for the UK was 40% 2000 in."],
+     why:"Câu 1 là thiếu động từ, câu 2 sai thì (năm 2000 đã qua, dùng <b>was</b>), câu 4 sai trật tự (<b>in 2000</b>)."}
+  ]},
+  {title:"Phần C. Gõ từ còn thiếu", note:"Gõ 1 từ tiếng Anh.", items:[
+    {type:"blank", sent:"The ___ of visitors was 2 million in 2015.", ans:["number"], why:"visitors đếm được số nhiều: <b>the number of</b>."},
+    {type:"blank", sent:"The ___ of water used in 2010 was 500 litres.", ans:["amount"], why:"water không đếm được: <b>the amount of</b>."},
+    {type:"blank", sent:"In 2000, 20 ___ of people owned a car.", ans:["percent","per cent"], why:"Sau con số 20: <b>percent</b> (hoặc per cent)."},
+    {type:"blank", sent:"The number of cars ___ 3 million in 2005.", ans:["was"], why:"Chủ ngữ <i>the number</i> số ít, 2005 là quá khứ: <b>was</b>."}
+  ]},
+  {title:"Phần D. Bắt lỗi: chọn câu đúng", note:"Mỗi câu có 1 đáp án đúng.", items:[
+    {type:"mc", prompt:"Chọn câu đúng:", ans:"The percentage of women was 45% in 1990.",
+     opts:["The percentage of women were 45% in 1990.","The percentage of women was 45% in 1990.","The percentage of women is 45% in 1990."],
+     why:"Chủ ngữ là <i>percentage</i> (số ít), mốc 1990 là quá khứ: <b>was</b>."},
+    {type:"mc", prompt:"Chọn câu đúng:", ans:"The number of students was 500 in 2005.",
+     opts:["The number of students were 500 in 2005.","The number of students was 500 in 2005.","The number of student was 500 in 2005."],
+     why:"<i>students</i> phải số nhiều, còn động từ chia theo <i>number</i> (số ít): <b>was</b>."},
+    {type:"mc", prompt:"Chọn câu đúng:", ans:"The amount of rice exported was 3 million tonnes in 2000.",
+     opts:["The number of rice exported was 3 million tonnes in 2000.","The amount of rice exported was 3 million tonnes in 2000.","The amount of rice exported were 3 million tonnes in 2000."],
+     why:"rice không đếm được nên dùng <b>amount</b>; <i>the amount</i> là số ít nên dùng <b>was</b>."},
+    {type:"mc", prompt:"Chọn câu đúng:", ans:"Spending on food was $50 per week in 2010.",
+     opts:["Spending on food was $50 per weeks in 2010.","Spending on food was $50 per week in 2010.","Spending on food were $50 per week in 2010."],
+     why:"<b>per week</b> (không thêm -s). <i>Spending</i> là danh từ không đếm được nên dùng <b>was</b>."}
+  ]},
+  {title:"Phần E. Tự viết một câu từ một số liệu", note:"Viết 1 câu tiếng Anh đủ 4 phần. Máy kiểm tra các thành phần chính; giáo viên có thể xem lại ngữ pháp chi tiết.", items:[
+    {type:"write", data:"Đối tượng: Japan · Số liệu: 80% người dùng internet · Năm: 2010",
+     must:[[/japan/i,"tên nước (Japan)"],[/2010/,"năm 2010"],[/80/,"số 80"],[/%|percent|per cent/i,"đơn vị phần trăm"],[/\b(was|were|used|had|accounted|stood|reached)\b/i,"động từ ở thì quá khứ"]],
+     model:"The percentage of internet users in Japan was 80% in 2010.", why:"Câu mẫu: <b>The percentage of internet users in Japan was 80% in 2010.</b> Cũng đúng: <i>In 2010, 80% of Japanese people used the internet.</i>"},
+    {type:"write", data:"Đối tượng: chi tiêu cho thức ăn (spending on food) · Số liệu: $50 mỗi tuần · Năm: 2010",
+     must:[[/food/i,"chủ đề (food)"],[/2010/,"năm 2010"],[/50/,"số 50"],[/\$|dollar/i,"đơn vị tiền ($)"],[/\b(was|were|stood|reached|amounted)\b/i,"động từ ở thì quá khứ"]],
+     model:"Spending on food was $50 per week in 2010.", why:"Câu mẫu: <b>Spending on food was $50 per week in 2010.</b>"}
+  ]}
+];
+
+const form=document.getElementById('quiz'); let qn=0; const Q=[];
+const esc=s=>String(s).replace(/[&<>"]/g,c=>({'&':'&amp;','<':'&lt;','>':'&gt;','"':'&quot;'}[c]));
+function shuffle(a){a=a.slice();for(let i=a.length-1;i>0;i--){const j=Math.floor(Math.random()*(i+1));[a[i],a[j]]=[a[j],a[i]]}return a}
+const blankSent=s=>esc(s).replace('___','<span class="blank">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</span>');
+
+PARTS.forEach(part=>{
+  const sec=document.createElement('section');
+  sec.innerHTML=`<h2>${part.title}</h2><p>${part.note}</p>${part.html||''}`;
+  part.items.forEach(it=>{
+    const id=qn++; it.id=id; Q.push(it);
+    const d=document.createElement('div'); d.className='q'; let h='';
+    if(it.type==='mc'){
+      h+=`<div class="t"><span class="num">${id+1}.</span>${it.sent?`<span class="sent">${blankSent(it.sent)}</span>`:esc(it.prompt)}</div>`;
+      shuffle(it.opts).forEach(o=>{h+=`<label class="opt"><input type="radio" name="q${id}" value="${esc(o)}">${esc(o)}</label>`});
+    }else if(it.type==='blank'){
+      h+=`<div class="t"><span class="num">${id+1}.</span><span class="sent">${blankSent(it.sent)}</span></div><input type="text" name="q${id}" autocomplete="off" autocapitalize="off" spellcheck="false" placeholder="Gõ 1 từ">`;
+    }else{
+      h+=`<div class="t"><span class="num">${id+1}.</span>${esc(it.data)}</div><textarea name="q${id}" spellcheck="false" placeholder="Viết 1 câu tiếng Anh"></textarea>`;
+    }
+    h+=`<div id="r${id}"></div>`; d.innerHTML=h; sec.appendChild(d);
+  });
+  form.appendChild(sec);
+});
+
+const val=it=>form.elements['q'+it.id];
+function answered(it){
+  if(it.type==='mc') return !!form.querySelector(`input[name="q${it.id}"]:checked`);
+  return val(it).value.trim()!=='';
+}
+function progress(){
+  const n=Q.filter(answered).length;
+  document.getElementById('done').textContent=`Đã làm ${n}/${Q.length}`;
+  document.getElementById('fill').style.width=(n/Q.length*100)+'%';
+}
+form.addEventListener('input',progress); form.addEventListener('change',progress);
+
+const norm=s=>s.toLowerCase().replace(/[^a-z0-9 ]/g,'').replace(/\s+/g,' ').trim();
+function check(it){
+  if(it.type==='mc'){
+    const c=form.querySelector(`input[name="q${it.id}"]:checked`);
+    return {ok:!!c&&c.value===it.ans, right:it.ans};
+  }
+  if(it.type==='blank'){
+    const g=norm(val(it).value); return {ok:it.ans.some(a=>norm(a)===g), right:it.ans[0]};
+  }
+  const t=val(it).value; const miss=it.must.filter(m=>!m[0].test(t)).map(m=>m[1]);
+  return {ok:miss.length===0, miss, right:it.model};
+}
+document.getElementById('submit').addEventListener('click',()=>{
+  const left=Q.filter(it=>!answered(it)).length;
+  if(left && !confirm(`Còn ${left} câu chưa làm. Vẫn nộp bài?`)) return;
+  let score=0; const ps=PARTS.map(()=>0);
+  Q.forEach(it=>{
+    const r=check(it); if(r.ok) score++;
+    const pi=PARTS.findIndex(p=>p.items.includes(it)); if(r.ok) ps[pi]++;
+    let msg;
+    if(it.type==='write') msg=r.ok?'Đủ các thành phần chính. ':`Còn thiếu: <b>${r.miss.map(esc).join(', ')}</b>. `;
+    else msg=r.ok?'Đúng. ':`Chưa đúng. Đáp án: <b>${esc(r.right)}</b>. `;
+    document.getElementById('r'+it.id).innerHTML=`<div class="res ${r.ok?'ok':'bad'}">${msg}${it.why}</div>`;
+  });
+  const pass=score>=18;
+  document.getElementById('score').innerHTML=`<div class="score">
+    <div class="n ${pass?'pass':'fail'}">${score}/20</div>
+    <div>${pass?'Đạt cổng Giai đoạn 2. Có thể sang Giai đoạn 3 (câu chỉ xu hướng).':'Chưa đạt cổng (cần từ 18/20). Xem lại các câu sai rồi làm lại.'}</div>
+    <div class="hint" style="margin-top:8px">${PARTS.map((p,i)=>`Phần ${'ABCDE'[i]}: ${ps[i]}/${p.items.length}`).join(' · ')}</div>
+    <div class="actions"><button onclick="location.reload()">Làm lại</button></div></div>`;
+  document.getElementById('score').scrollIntoView({behavior:'smooth'});
+  document.getElementById('submit').disabled=true;
+});
+</script>
+</body>
+</html>
