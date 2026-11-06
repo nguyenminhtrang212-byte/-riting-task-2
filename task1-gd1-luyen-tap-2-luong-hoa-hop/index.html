@@ -1,0 +1,61 @@
+<!DOCTYPE html><html lang="vi"><head><meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1">
+<title>Task 1 – Giai đoạn 1 – Link 2/3 · number / amount và hòa hợp chủ vị</title><style>
+body{font-family:system-ui,Segoe UI,Arial,sans-serif;max-width:820px;margin:0 auto;padding:16px;line-height:1.55;color:#1b2430;background:#fafbfd}
+h1{font-size:1.5rem;color:#12355b}h2{font-size:1.15rem;color:#12355b;border-bottom:2px solid #cfd8e6;padding-bottom:4px;margin-top:28px}
+.note{background:#eef4fb;border-left:4px solid #2f6db5;padding:10px 14px;border-radius:6px;font-size:.95rem}
+.q{background:#fff;border:1px solid #d9e0ea;border-radius:8px;padding:10px 14px;margin:10px 0}
+.q.ok{border-color:#2e9e5b;background:#f3fbf6}.q.bad{border-color:#d9534f;background:#fff6f5}
+.opt{display:block;margin:4px 0;padding:4px 6px;border-radius:5px;cursor:pointer}.opt:hover{background:#f0f4fa}
+input[type=text]{font-size:1rem;padding:5px 8px;border:1px solid #9aa8bd;border-radius:5px;width:min(100%,420px)}
+button{font-size:1rem;padding:9px 18px;border:0;border-radius:6px;background:#12355b;color:#fff;cursor:pointer;margin:6px 6px 6px 0}
+button.sec{background:#5c6b80}.why{margin-top:6px;font-size:.92rem;color:#334}
+.res{background:#fff;border:2px solid #12355b;border-radius:8px;padding:12px 16px;margin:16px 0}
+code.c{display:block;background:#f1f3f6;padding:8px;border-radius:5px;word-break:break-all}
+.small{font-size:.85rem;color:#556}
+</style></head><body>
+<h1>Task 1 – Giai đoạn 1 – Link 2/3 · number / amount và hòa hợp chủ vị</h1>
+<p class="small">Giai đoạn 1 – 3 bài tự học: <a href="../task1-gd1-luyen-tap-1-so-nam/" style="margin-right:12px;">Link 1/3</a><a href="../task1-gd1-luyen-tap-2-luong-hoa-hop/" style="margin-right:12px;font-weight:bold">Link 2/3</a><a href="../task1-gd1-luyen-tap-3-cau-4-o/" style="margin-right:12px;">Link 3/3</a><a href="../task1-gd1-luyen-tap/">Trang chung</a></p>
+<div class="note"><b>GD1-L2</b> — Làm hết rồi bấm <b>Nộp bài</b>. Bài chấm tự động và giải thích từng câu. Số liệu trong bài là <b>giả định</b>.<br>
+Nhập đáp án bằng chữ tiếng Anh (không cần viết hoa, "and" có hoặc không đều được). Cần đọc lại lý thuyết: <a href="../task1-gd1-sach-hoc/">sách học</a> · <a href="../task1-gd1-sach-hoc/sach-giai-doan-1.pdf">PDF</a>.</div>
+<form id="f" onsubmit="return false"><div id="qs"></div>
+<button id="sub">Nộp bài</button><button class="sec" id="retry" style="display:none">Làm lại câu sai</button><button class="sec" id="reset">Làm lại từ đầu</button></form>
+<div id="out"></div>
+<script>
+var ITEMS=[{"sec": "C", "type": "mc", "q": "The <b>_____</b> of students in the class was 30.", "opts": ["number", "amount"], "ok": 0, "why": "students đếm được nên dùng number.", "id": "C1"}, {"sec": "C", "type": "mc", "q": "The <b>_____</b> of water used in 2010 was 500 million litres.", "opts": ["number", "amount"], "ok": 1, "why": "water không đếm được nên dùng amount.", "id": "C2"}, {"sec": "C", "type": "mc", "q": "The <b>_____</b> of money spent on food was $400.", "opts": ["number", "amount"], "ok": 1, "why": "money không đếm được nên dùng amount.", "id": "C3"}, {"sec": "C", "type": "mc", "q": "There were <b>_____</b> visitors in 2015 than in 2010.", "opts": ["less", "fewer"], "ok": 1, "why": "visitors đếm được số nhiều nên dùng fewer.", "id": "C4"}, {"sec": "C", "type": "mc", "q": "Families spent <b>_____</b> money on clothes in 2020 than in 2010.", "opts": ["less", "fewer"], "ok": 0, "why": "money không đếm được nên dùng less.", "id": "C5"}, {"sec": "C", "type": "mc", "q": "The number of tourists <b>_____</b> 2 million in 2005.", "opts": ["was", "were"], "ok": 0, "why": "The number of … + động từ SỐ ÍT. Năm 2005 đã qua nên dùng quá khứ.", "id": "C6"}, {"sec": "C", "type": "mc", "q": "A number of tourists <b>_____</b> unhappy with the service.", "opts": ["was", "were"], "ok": 1, "why": "A number of = một số, động từ SỐ NHIỀU.", "id": "C7"}, {"sec": "C", "type": "mc", "q": "The proportion of students who passed <b>_____</b> 60%.", "opts": ["was", "were"], "ok": 0, "why": "Chủ ngữ là proportion (số ít), không phải students.", "id": "C8"}, {"sec": "C", "type": "mc", "q": "Forty percent of the students <b>_____</b> women.", "opts": ["was", "were"], "ok": 1, "why": "% of + danh từ: động từ theo danh từ sau of; students số nhiều nên were.", "id": "C9"}, {"sec": "C", "type": "mc", "q": "Forty percent of the water <b>_____</b> used for farming.", "opts": ["was", "were"], "ok": 0, "why": "water không đếm được nên dùng was.", "id": "C10"}, {"sec": "C", "type": "mc", "q": "A quarter of the money <b>_____</b> spent on rent.", "opts": ["was", "were"], "ok": 0, "why": "money không đếm được nên dùng was.", "id": "C11"}, {"sec": "C", "type": "mc", "q": "The figures for Museum A and Museum B <b>_____</b> 50,000 and 36,000.", "opts": ["was", "were"], "ok": 1, "why": "figures số nhiều nên dùng were.", "id": "C12"}, {"sec": "C", "type": "mc", "q": "Spending on food <b>_____</b> $400 in 2015.", "opts": ["was", "were"], "ok": 0, "why": "spending không đếm được, số ít, dùng was.", "id": "C13"}, {"sec": "C", "type": "mc", "q": "Half of the families <b>_____</b> two cars in 2010.", "opts": ["had", "has"], "ok": 0, "why": "Mốc quá khứ: had. (Half of + danh từ số nhiều: động từ chia số nhiều, ở quá khứ không đổi.)", "id": "C14"}, {"sec": "F", "type": "mc", "q": "Chủ ngữ của câu 'The number of visitors ___ 50,000.' là gì để chia động từ?", "opts": ["number (số ít) → was", "visitors (số nhiều) → were", "cả hai đều được"], "ok": 0, "why": "Chủ ngữ chính là 'the number' (số ít) nên dùng was.", "id": "F1"}, {"sec": "F", "type": "mc", "q": "'A number of' có nghĩa là:", "opts": ["con số – động từ số ít", "tổng số – số ít", "một số (nhiều) – động từ số nhiều"], "ok": 2, "why": "A number of + danh từ số nhiều + động từ số nhiều (= several).", "id": "F2"}, {"sec": "F", "type": "mc", "q": "Chọn: ___ of water used fell in 2010.", "opts": ["The amount", "A number", "The number"], "ok": 0, "why": "water không đếm được → amount.", "id": "F3"}, {"sec": "F", "type": "mc", "q": "Chọn: ___ of cars sold rose in 2010.", "opts": ["The amount", "Much", "The number"], "ok": 2, "why": "cars đếm được → number.", "id": "F4"}, {"sec": "F", "type": "mc", "q": "Nhận định: 'The amount of students' là đúng.", "opts": ["Đúng", "Sai"], "ok": 1, "why": "Sai: students đếm được → the number of students.", "id": "F5"}, {"sec": "F", "type": "mc", "q": "Chọn: Fewer ___ visited in 2010.", "opts": ["water", "money", "people"], "ok": 2, "why": "fewer + danh từ đếm được số nhiều; less + không đếm được.", "id": "F6"}, {"sec": "F", "type": "mc", "q": "Chọn: Families spent ___ money on food.", "opts": ["less", "fewer", "many"], "ok": 0, "why": "money không đếm được → less.", "id": "F7"}, {"sec": "F", "type": "mc", "q": "Chia động từ: 30% of the cars ___ red.", "opts": ["were", "was", "is"], "ok": 0, "why": "Theo danh từ sau of: cars (số nhiều) → were.", "id": "F8"}, {"sec": "F", "type": "mc", "q": "Chia động từ: 30% of the electricity ___ wasted.", "opts": ["were", "are", "was"], "ok": 2, "why": "electricity không đếm được → was.", "id": "F9"}, {"sec": "F", "type": "mc", "q": "Chia động từ: Half of the students ___ girls.", "opts": ["is", "was", "were"], "ok": 2, "why": "students số nhiều → were.", "id": "F10"}, {"sec": "F", "type": "mc", "q": "Câu có lỗi hòa hợp là:", "opts": ["The number of visitors was 50,000.", "The number of visitors were 50,000.", "A number of visitors were unhappy."], "ok": 1, "why": "The number of → số ít → was.", "id": "F11"}, {"sec": "F", "type": "mc", "q": "Danh từ nào KHÔNG đếm được?", "opts": ["student", "money", "visitor"], "ok": 1, "why": "money, water, electricity, energy là không đếm được.", "id": "F12"}, {"sec": "F", "type": "mc", "q": "The proportion of women ___ 40% in 2010.", "opts": ["were", "was", "are"], "ok": 1, "why": "proportion số ít → was.", "id": "F13"}, {"sec": "F", "type": "mc", "q": "Chọn câu đúng:", "opts": ["The figures for A and B were 20 and 30.", "The figure for A and B were 20 and 30.", "The figures for A and B was 20 and 30."], "ok": 0, "why": "figures số nhiều → were.", "id": "F14"}], SEC={"A": ["Đọc và viết số", "Chương 5 của sách: dấu phẩy–chấm, thousand/million, thập phân, phân số"], "B": ["Năm và khoảng thời gian", "Chương 5, mục 5.6: cách đọc năm, from…to…, thì quá khứ"], "C": ["Lượng và hòa hợp", "Chương 6: number/amount, was/were, % of + danh từ"], "D": ["Câu 4 ô", "Chương 7: Cái gì + was/were + số + đơn vị + khi nào"], "E": ["Lý thuyết: số, dấu, năm, đơn vị", "Chương 5 (mục 5.1–5.6) và Chương 4"], "F": ["Lý thuyết: number / amount, hòa hợp", "Chương 6"], "G": ["Lý thuyết: câu 4 ô", "Chương 7"]};
+function norm(s,mode){s=String(s||'').toLowerCase().trim();
+ if(mode=='words'){s=s.replace(/-/g,' ').replace(/,/g,' ').replace(/\band\b/g,' ');return s.split(/\s+/).filter(Boolean).join(' ')}
+ if(mode=='num'){return s.replace(/[\s,]/g,'')}
+ return s.replace(/\s+/g,' ')}
+function accepted(it){var a=(it.accept||[it.ans]).slice();return a}
+function render(list){var h='',cur='';list.forEach(function(it,i){
+ if(it.sec!=cur){cur=it.sec;h+='<h2>'+it.sec+'. '+SEC[it.sec][0]+'</h2>'}
+ h+='<div class="q" id="q_'+it.id+'"><b>'+it.id+'.</b> '+it.q;
+ if(it.type=='mc'){it.opts.forEach(function(o,k){h+='<label class="opt"><input type="radio" name="r_'+it.id+'" value="'+k+'"> '+o+'</label>'})}
+ else h+='<div style="margin-top:6px"><input type="text" id="t_'+it.id+'" autocomplete="off" autocapitalize="off" spellcheck="false"></div>';
+ h+='<div class="why" id="w_'+it.id+'"></div></div>'});
+ document.getElementById('qs').innerHTML=h}
+var CUR=ITEMS;
+function check(it){
+ if(it.type=='mc'){var r=document.querySelector('input[name=r_'+it.id+']:checked');return !!r&&+r.value==it.ok}
+ var v=document.getElementById('t_'+it.id).value;var m=it.norm||'text';var n=norm(v,m);
+ return accepted(it).some(function(a){return norm(a,m)==n})}
+function answerText(it){return it.type=='mc'?it.opts[it.ok]:(it.ans||accepted(it)[0])}
+var wrong=[];
+function submit(){var tot={},ok={};wrong=[];
+ CUR.forEach(function(it){var good=check(it);tot[it.sec]=(tot[it.sec]||0)+1;if(good)ok[it.sec]=(ok[it.sec]||0)+1;else wrong.push(it);
+  var q=document.getElementById('q_'+it.id);q.className='q '+(good?'ok':'bad');
+  document.getElementById('w_'+it.id).innerHTML=(good?'✔ Đúng. ':'✘ Đáp án: <b>'+answerText(it)+'</b>. ')+it.why});
+ var T=0,O=0,h='<div class="res"><h2 style="margin-top:0">Kết quả</h2>';
+ Object.keys(tot).sort().forEach(function(k){T+=tot[k];O+=(ok[k]||0);var p=Math.round(100*(ok[k]||0)/tot[k]);
+  h+='<p><b>'+k+'. '+SEC[k][0]+'</b>: '+(ok[k]||0)+'/'+tot[k]+' ('+p+'%)'+(p<80?' — nên đọc lại: '+SEC[k][1]:' — tốt')+'</p>'});
+ var code=(tot.A?'':'')+Object.keys(tot).sort().map(function(k){return k+(ok[k]||0)+'/'+tot[k]}).join(' ')+' | tong '+O+'/'+T+' | '+new Date().toISOString().slice(0,10);
+ h+='<p><b>Tổng: '+O+'/'+T+' ('+Math.round(100*O/T)+'%)</b></p><p class="small">Dán dòng này cho giáo viên:</p><code class="c">GD1-L2 '+code+'</code></div>';
+ document.getElementById('out').innerHTML=h;
+ document.getElementById('retry').style.display=wrong.length?'inline-block':'none';
+ try{localStorage.setItem('GD1-L2',code)}catch(e){}
+ document.getElementById('out').scrollIntoView({behavior:'smooth'})}
+document.getElementById('sub').onclick=submit;
+document.getElementById('retry').onclick=function(){CUR=wrong.slice();render(CUR);document.getElementById('out').innerHTML='';window.scrollTo(0,0)};
+document.getElementById('reset').onclick=function(){CUR=ITEMS;render(CUR);document.getElementById('out').innerHTML='';document.getElementById('retry').style.display='none'};
+render(CUR);
+</script></body></html>
